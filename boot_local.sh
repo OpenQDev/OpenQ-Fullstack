@@ -14,11 +14,13 @@ cd ./contracts
 yarn
 yarn deploy:local
 
+echo -e "Contracts deployed to Hardhat blockchain\n"
+
 cd ..
 
 if [ -d "./OpenQ-API" ] 
 then
-    echo -e "\n/OpenQ-API directory found\n" 
+    echo -e "OpenQ-API directory found\n" 
 else
     echo -e "No OpenQ-API directory found. Cloning OpenQ-API...\n"
     git clone https://github.com/OpenQDev/OpenQ-API.git

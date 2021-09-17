@@ -13,7 +13,7 @@ services:
       - ./OpenQ-API:/app
   openq-frontend:
     build:
-      dockerfile: /Dockerfile.dev
+      dockerfile: Dockerfile.dev
       context: ./frontend
     ports:
       - "3000:3000"
