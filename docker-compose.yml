@@ -1,0 +1,25 @@
+version: "3.9"
+services:
+  openq-api:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./OpenQ-API
+    ports:
+      - "8090:8090"
+    env_file:
+      - ./OpenQ-API/.env.docker
+    volumes:
+      - /app/node_modules
+      - ./OpenQ-API:/app
+  openq-frontend:
+    build:
+      dockerfile: /Dockerfile.dev
+      context: ./frontend
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./frontend/.env.docker
+    volumes:
+      - /app/node_modules
+      - ./frontend:/app
+    

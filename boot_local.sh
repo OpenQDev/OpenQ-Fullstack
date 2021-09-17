@@ -28,4 +28,15 @@ echo -e "Copying .env.docker file to OpenQ-API to connect to proper RPC node and
 cp ./contracts/.env.docker ./OpenQ-API/.env.docker
 cd ./OpenQ-API
 yarn
+
+cd ..
+
+if [ -d "./frontend" ] 
+then
+    echo -e "\n/frontend directory found\n" 
+else
+    echo -e "No frontend directory found. Cloning OpenQ-API...\n"
+    git clone https://github.com/OpenQDev/frontend.git
+fi
+
 docker compose up
