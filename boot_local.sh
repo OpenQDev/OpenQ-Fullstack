@@ -41,4 +41,9 @@ else
     git clone https://github.com/OpenQDev/frontend.git
 fi
 
-docker compose up
+if [ $1 == "build" ] 
+then
+    docker compose up --build
+else
+    docker compose up
+fi
