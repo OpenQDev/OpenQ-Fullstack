@@ -1,6 +1,5 @@
 #!/bin/bash
 echo -e "Booting OpenQ devevelopment environment\n"
-echo -e "Assumes an Ethreum RPC node is running at localhost:8545\n"
 
 if [ -d "./contracts" ] 
 then
@@ -12,6 +11,12 @@ fi
 
 cd ./contracts
 yarn
+
+echo -e "Deploying Hardhat Ethreum RPC node on localhost:8545\n"
+echo -e "This will take 5 seconds..."
+echo -e "You can find the local nodes public/private keys in contracts/nohup.out\n"
+nohup yarn ethnode &
+sleep 5
 yarn deploy:local
 
 echo -e "Contracts deployed to Hardhat blockchain\n"
@@ -41,7 +46,7 @@ else
     git clone https://github.com/OpenQDev/frontend.git
 fi
 
-if [ $1 == "build" ] 
+if [ $1 == "build" ]
 then
     docker compose up --build
 else
