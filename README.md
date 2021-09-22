@@ -13,7 +13,7 @@
 
 4. Any changes you make to fronend or OpenQ-API will trigger and update
 
-5. Run with sudo in case your having trouble with the bash script / docker compose only works in old version
+5. Run with sudo in case your having trouble with the bash script / docker compose only works in old versions.
 
 ## NOTE
 Passing the argument `build` after `./boot_local.sh` will rebuild the frontend and backend images with `docker compose --build`.    
