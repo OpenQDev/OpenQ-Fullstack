@@ -33,6 +33,9 @@ fi
 
 echo -e "Copying .env.docker file to OpenQ-API to connect to proper RPC node and contract addresses\n"
 cp ./contracts/.env.docker ./OpenQ-API/.env.docker
+
+echo -e "Copying .env.docker file to frontend .env to connect to proper RPC node and contract addresses\n"
+cp ./contracts/.env.docker ./frontend/.env
 cd ./OpenQ-API
 yarn
 
