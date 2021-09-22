@@ -6,7 +6,7 @@ then
     echo -e "/contracts directory found\n" 
 else
     echo -e "No contracts directory found. Cloning contracts...\n"
-    git clone git@github.com:OpenQDev/contracts.git
+    git clone https://github.com/OpenQDev/contracts.git
 fi
 
 cd ./contracts
@@ -28,7 +28,7 @@ then
     echo -e "OpenQ-API directory found\n" 
 else
     echo -e "No OpenQ-API directory found. Cloning OpenQ-API...\n"
-    git clone git@github.com:OpenQDev/OpenQ-API.git
+    git clone https://github.com/OpenQDev/OpenQ-API.git
 fi
 
 echo -e "Copying .env.docker file to OpenQ-API to connect to proper RPC node and contract addresses\n"
@@ -46,7 +46,7 @@ then
     echo -e "\n/frontend directory found\n" 
 else
     echo -e "No frontend directory found. Cloning frontend...\n"
-    git clone git@github.com:OpenQDev/frontend.git
+    git clone https://github.com/OpenQDev/frontend.git
 fi
 
 if [ $1 == "build" ]
