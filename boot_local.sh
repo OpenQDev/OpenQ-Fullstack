@@ -48,7 +48,7 @@ fi
 
 if [ $1 == "build" ]
 then
-    docker compose up --build
+    docker-compose up --build
 else
-    docker compose up
+    docker-compose up
 fi

@@ -1,4 +1,4 @@
-version: "3.9"
+version: "3"
 services:
   openq-api:
     build:
@@ -18,7 +18,7 @@ services:
     ports:
       - "3000:3000"
     env_file:
-      - ./frontend/.env.docker
+      - ./frontend/.env
     volumes:
       - /app/node_modules
       - ./frontend:/app
