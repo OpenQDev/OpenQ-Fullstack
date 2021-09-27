@@ -1,57 +1,25 @@
 #!/bin/bash
 echo -e "Booting OpenQ devevelopment environment\n"
 
-if [ -d "./contracts" ] 
-then
-    echo -e "/contracts directory found\n" 
-else
-    echo -e "No contracts directory found. Cloning contracts...\n"
-    git clone https://github.com/OpenQDev/contracts.git
-fi
+# Grant execution permissions to bootscript
+chmod u+x setup_contracts.sh
+chmod u+x setup_node.sh
+chmod u+x setup_api.sh
+chmod u+x setup_frontend.sh
+chmod u+x setup_fullstack.sh
 
-cd ./contracts
-yarn
+# Pull repos (if not present) and install dependencies
+./setup_contracts.sh
+./setup_node.sh
+./setup_api.sh
+./setup_frontend.sh
 
-echo -e "Deploying Hardhat Ethreum RPC node on localhost:8545\n"
-echo -e "This will take 5 seconds..."
-echo -e "You can find the local nodes public/private keys in contracts/nohup.out\n"
-nohup yarn ethnode &
-sleep 5
-yarn deploy:local
-
-echo -e "Contracts deployed to Hardhat blockchain\n"
-
-cd ..
-
-if [ -d "./OpenQ-API" ] 
-then
-    echo -e "OpenQ-API directory found\n" 
-else
-    echo -e "No OpenQ-API directory found. Cloning OpenQ-API...\n"
-    git clone https://github.com/OpenQDev/OpenQ-API.git
-fi
-
+# Copy contract addresses and provider URL
 echo -e "Copying .env.docker file to OpenQ-API to connect to proper RPC node and contract addresses\n"
 cp ./contracts/.env.docker ./OpenQ-API/.env.docker
-
 echo -e "Copying .env.docker file to frontend .env to connect to proper RPC node and contract addresses\n"
 cp ./contracts/.env.docker ./frontend/.env
-cd ./OpenQ-API
-yarn
+cat PAT >> ./frontend/.env
 
-cd ..
-
-if [ -d "./frontend" ] 
-then
-    echo -e "\n/frontend directory found\n" 
-else
-    echo -e "No frontend directory found. Cloning frontend...\n"
-    git clone https://github.com/OpenQDev/frontend.git
-fi
-
-if [ $1 == "build" ]
-then
-    docker-compose up --build
-else
-    docker-compose up
-fi
+# Boot and wire fullstack with Docker compose
+./setup_fullstack.sh

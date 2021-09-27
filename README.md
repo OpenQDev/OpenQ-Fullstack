@@ -2,7 +2,7 @@
 
 ## Running boot_local.sh
 
-1. Boot a local Ethereum RPC node on localhost:8545
+1. Put your GitHub Personal Access Token (PAT) in the `PAT` file.
 
 2. Run it
 ```bash
