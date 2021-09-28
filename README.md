@@ -15,5 +15,5 @@
 
 5. Run with sudo in case your having trouble with the bash script / docker compose only works in old versions.
 
-## NOTE
+## Rebuilding Images after environment or dependency change
 Passing the argument `build` after `./boot_local.sh` will rebuild the frontend and backend images with `docker compose --build`.    
