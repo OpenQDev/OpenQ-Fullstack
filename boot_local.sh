@@ -21,7 +21,7 @@ echo -e "Copying .env.docker file to OpenQ-API to connect to proper RPC node and
 cp ./contracts/.env.docker ./OpenQ-API/.env.docker
 echo -e "Copying .env.docker file to frontend .env to connect to proper RPC node and contract addresses\n"
 cp ./contracts/.env.docker ./frontend/.env
-cp -R ./contracts/artifacts ./frontend/artifacts
+cp -R ./contracts/artifacts ./frontend/
 cat PAT >> ./frontend/.env
 
 # Boot and wire fullstack with Docker compose
