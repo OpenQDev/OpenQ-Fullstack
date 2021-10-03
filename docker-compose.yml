@@ -22,4 +22,4 @@ services:
     volumes:
       - /app/node_modules
       - ./frontend:/app
-    
+    entrypoint: ["yarn", "boot:${DEPLOY_ENV}"]
