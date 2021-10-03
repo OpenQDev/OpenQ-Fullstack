@@ -1,6 +1,8 @@
 {
     "search.exclude": {
+        "**/.next": true,
         "**/artifacts/build-info": true,
         "**/cache": true
-    }
+    },
+    "search.useIgnoreFiles": false
 }
