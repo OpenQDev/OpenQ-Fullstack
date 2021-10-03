@@ -1,0 +1,6 @@
+{
+    "search.exclude": {
+        "**/artifacts/build-info": true,
+        "**/cache": true
+    }
+}
