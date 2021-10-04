@@ -2,5 +2,6 @@ contracts/
 OpenQ-API/
 frontend/
 OpenQ-Helm/
+OpenQ-Kubeconfig/
 PAT
 nohup.out
