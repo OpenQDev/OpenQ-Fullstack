@@ -10,6 +10,7 @@ chmod u+x 3_deploy_contracts.sh
 chmod u+x 4_setup_api.sh
 chmod u+x 5_setup_frontend.sh
 chmod u+x 6_setup_helm.sh
+chmod u+x 7_setup_kubeconfig.sh
 chmod u+x 7_setup_fullstack.sh
 
 # Pull repos (if not present) and install dependencies
@@ -19,6 +20,7 @@ chmod u+x 7_setup_fullstack.sh
 ./4_setup_api.sh
 ./5_setup_frontend.sh
 ./6_setup_helm.sh
+./7_setup_kubeconfig.sh
 
 # Copy contract addresses and provider URL
 echo -e "Copying .env.docker file to OpenQ-API to connect to proper RPC node and contract addresses\n"
@@ -28,4 +30,4 @@ cp ./contracts/.env.docker ./frontend/.env
 cp -R ./contracts/artifacts ./frontend/
 cat PAT >> ./frontend/.env
 
-./7_setup_fullstack.sh $1
+./8_setup_fullstack.sh $1
