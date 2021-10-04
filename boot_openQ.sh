@@ -1,7 +1,7 @@
 #!/bin/bash
 . ./colors.sh
-
-echo -e "${BBlue}Booting OpenQ devevelopment environment${Color_Off}\n"
+chmod u+x asciiart.sh
+./asciiart.sh
 
 # Grant execution permissions to bootscript
 chmod u+x 1_setup_contracts.sh
