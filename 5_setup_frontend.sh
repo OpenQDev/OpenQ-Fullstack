@@ -1,13 +1,13 @@
 #!/bin/bash
 . ./colors.sh
 
-if [ -d "./frontend" ] 
+if [ -d "./OpenQ-Frontend" ] 
 then
-    echo -e "\n/frontend directory found\n" 
+    echo -e "\n/OpenQ-Frontend directory found\n" 
 else
-    echo -e "No frontend directory found. Cloning frontend...\n"
-    git clone https://github.com/OpenQDev/frontend.git
+    echo -e "No OpenQ-Frontend directory found. Cloning OpenQ-Frontend...\n"
+    git clone https://github.com/OpenQDev/OpenQ-Frontend.git
 fi
-cd ./frontend
+cd ./OpenQ-Frontend
 touch .env
 yarn

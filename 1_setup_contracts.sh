@@ -1,12 +1,12 @@
 #!/bin/bash
 . ./colors.sh
 
-if [ -d "./contracts" ] 
+if [ -d "./OpenQ-Contracts" ] 
 then
-    echo -e "/contracts directory found\n" 
+    echo -e "/OpenQ-Contracts directory found\n" 
 else
-    echo -e "No contracts directory found. Cloning contracts...\n"
-    git clone https://github.com/OpenQDev/contracts.git
+    echo -e "No OpenQ-Contracts directory found. Cloning OpenQ-Contracts...\n"
+    git clone https://github.com/OpenQDev/OpenQ-Contracts.git
 fi
-cd ./contracts
+cd ./OpenQ-Contracts
 yarn

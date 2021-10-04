@@ -14,12 +14,12 @@ services:
   openq-frontend:
     build:
       dockerfile: Dockerfile.dev
-      context: ./frontend
+      context: ./OpenQ-Frontend
     ports:
       - "3000:3000"
     env_file:
-      - ./frontend/.env
+      - ./OpenQ-Frontend/.env
     volumes:
       - /app/node_modules
-      - ./frontend:/app
+      - ./OpenQ-Frontend:/app
     entrypoint: ["yarn", "boot:${DEPLOY_ENV}"]

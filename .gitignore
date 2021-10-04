@@ -1,6 +1,6 @@
-contracts/
+OpenQ-Frontend/
 OpenQ-API/
-frontend/
+OpenQ-Contracts/
 OpenQ-Helm/
 OpenQ-Kubeconfig/
 PAT
