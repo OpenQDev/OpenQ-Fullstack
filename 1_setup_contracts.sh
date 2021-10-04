@@ -1,4 +1,6 @@
 #!/bin/bash
+. ./colors.sh
+
 if [ -d "./contracts" ] 
 then
     echo -e "/contracts directory found\n" 

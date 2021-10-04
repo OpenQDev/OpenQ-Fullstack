@@ -1,4 +1,6 @@
 #!/bin/bash
+. ./colors.sh
+
 if [ -d "./frontend" ] 
 then
     echo -e "\n/frontend directory found\n" 

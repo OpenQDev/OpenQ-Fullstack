@@ -1,5 +1,7 @@
 #!/bin/bash
-echo -e "Booting OpenQ devevelopment environment\n"
+. ./colors.sh
+
+echo -e "${BBlue}Booting OpenQ devevelopment environment${Color_Off}\n"
 
 # Grant execution permissions to bootscript
 chmod u+x 1_setup_contracts.sh

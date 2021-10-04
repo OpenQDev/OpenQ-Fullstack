@@ -1,4 +1,6 @@
 #!/bin/bash
+. ./colors.sh
+
 if [ -d "./OpenQ-Helm" ] 
 then
     echo -e "\n/OpenQ-Helm directory found\n" 

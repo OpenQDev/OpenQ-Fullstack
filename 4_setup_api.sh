@@ -1,4 +1,6 @@
 #!/bin/bash
+. ./colors.sh
+
 if [ -d "./OpenQ-API" ] 
 then
     echo -e "OpenQ-API directory found\n" 
