@@ -39,10 +39,10 @@ fi
 echo -e "Copying .env.docker file to OpenQ-API to connect to proper RPC node and contract addresses\n"
 cp ./OpenQ-Contracts/.env.docker ./OpenQ-API/.env.docker
 echo -e "Copying .env.docker file to frontend .env to connect to proper RPC node and contract addresses\n"
-cp ./OpenQ-Contracts/.env.docker ./OpenQ-Frontend/.env
+cp ./OpenQ-Contracts/.env.docker ./OpenQ-Frontend/.env.$DEPLOY_ENV
 cp -R ./OpenQ-Contracts/artifacts ./OpenQ-Frontend/
 
-cat PAT >> ./OpenQ-Frontend/.env
+cat PAT >> ./OpenQ-Frontend/.env.$DEPLOY_ENV
 if test $? -eq 1
 then
     echo -e "${Red}You need to add a GitHub Personal Access Token (PAT) to a file simply called PAT if you want to continue.${Color_Off}"
