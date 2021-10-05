@@ -15,4 +15,5 @@ else
         rm ./nohup.out    
     fi
     nohup yarn ethnode &
+    sleep 2
 fi
