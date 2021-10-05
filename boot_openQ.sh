@@ -47,7 +47,7 @@ if test $? -eq 1
 then
     echo -e "${Red}You need to add a GitHub Personal Access Token (PAT) to a file simply called PAT if you want to continue.${Color_Off}"
     echo -e "To get a PAT, follow the instructions here: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token"
-    echo -e "NOTE: You will need repo and org read access :-)"
+    echo -e "NOTE: You will need the full repo and user privileges."
     lsof -ti tcp:8545 | xargs kill
     exit 1
 else
