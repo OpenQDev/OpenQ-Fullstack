@@ -3,5 +3,7 @@ OpenQ-API/
 OpenQ-Contracts/
 OpenQ-Helm/
 OpenQ-Kubeconfig/
+OpenQ-CertManager/
+OpenQ-Github-OAuth-Server/
 PAT
 nohup.out
