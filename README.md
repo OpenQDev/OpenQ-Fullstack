@@ -16,7 +16,7 @@ Boot the full stack locally and connect it all.
 
 1. Create a file called `PAT` in the root of the project
 
-2. Put your GitHub Personal Access Token (PAT) in the `PAT` file.
+2. Put your GitHub Personal Access Token (PAT) in the `PAT` file like `PAT=nweirubffsk`.
 
 3. Run the environment you want:
 
