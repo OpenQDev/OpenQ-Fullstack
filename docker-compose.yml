@@ -23,3 +23,14 @@ services:
       - /app/node_modules
       - ./OpenQ-Frontend:/app
     entrypoint: ["yarn", "boot:${DEPLOY_ENV}"]
+  github-oauth-server:
+    build:
+      dockerfile: Dockerfile
+      context: ./OpenQ-Github-OAuth-Server
+    ports:
+      - "3001:3001"
+    env_file:
+      - ./OpenQ-Github-OAuth-Server/.env
+    volumes:
+      - /app/node_modules
+      - ./OpenQ-Github-OAuth-Server:/app
