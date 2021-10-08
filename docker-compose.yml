@@ -1,5 +1,9 @@
 version: "3"
 services:
+  openq-json-rpc-node:
+    image: alo42/openq-json-rpc-node:latest
+    ports:
+      - "8545:8545"
   openq-api:
     build:
       dockerfile: Dockerfile.dev

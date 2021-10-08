@@ -1,0 +1,14 @@
+{
+  "name": "OpenQ-JSON-RPC-Node",
+  "description": "Containerized JSON RPC Node for local development",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "ethnode": "hardhat node"
+  },
+  "dependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.0.2",
+    "@nomiclabs/hardhat-waffle": "^2.0.1",
+    "hardhat": "^2.6.2"
+  }
+}
