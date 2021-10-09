@@ -12,8 +12,6 @@ services:
     build:
       dockerfile: Dockerfile.dev
       context: ./OpenQ-Contracts
-    env_file:
-      - ./OpenQ-Contracts/.env.docker
     volumes:
       - /app/node_modules
       - ./OpenQ-Contracts:/app
@@ -27,12 +25,11 @@ services:
       context: ./OpenQ-API
     ports:
       - "8090:8090"
-    env_file:
-      - ./OpenQ-Contracts/.env.docker
     volumes:
+      - /app/node_modules
       - ./OpenQ-API:/app
       - ./OpenQ-Contracts/artifacts:/app/artifacts
-      - ./OpenQ-Contracts/.env.docker:/app/.env
+      - ./OpenQ-Contracts/environments:/app/environments
   openq-frontend:
     container_name: openq-frontend
     depends_on:
@@ -43,13 +40,11 @@ services:
       context: ./OpenQ-Frontend
     ports:
       - "3000:3000"
-    env_file:
-      - ./OpenQ-Contracts/.env.docker
     volumes:
       - /app/node_modules
       - ./OpenQ-Frontend:/app
       - ./OpenQ-Contracts/artifacts:/app/artifacts
-      - ./OpenQ-Contracts/.env.docker:/app/.env.docker
+      - ./OpenQ-Contracts/environments:/app/environments
     entrypoint: ["yarn", "boot:${DEPLOY_ENV}"]
   github-oauth-server:
     container_name: github-oauth-server
@@ -58,8 +53,6 @@ services:
       context: ./OpenQ-Github-OAuth-Server
     ports:
       - "3001:3001"
-    env_file:
-      - ./OpenQ-Contracts/.env.docker
     volumes:
       - /app/node_modules
       - ./OpenQ-Github-OAuth-Server:/app
