@@ -9,7 +9,9 @@ services:
     container_name: openq-contracts
     depends_on:
       - openq-json-rpc-node
-    image: alo42/openq-contracts
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./OpenQ-Contracts
     env_file:
       - ./OpenQ-Contracts/.env.docker
     volumes:
@@ -52,7 +54,7 @@ services:
   github-oauth-server:
     container_name: github-oauth-server
     build:
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
       context: ./OpenQ-Github-OAuth-Server
     ports:
       - "3001:3001"
