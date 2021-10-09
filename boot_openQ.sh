@@ -36,6 +36,4 @@ fi
 printf "\n" >> ./OpenQ-Contracts/.env.docker
 cat ./OpenQ-Contracts/.env >> ./OpenQ-Contracts/.env.docker
 
-# The remaining environment variables consisting of contract addresses can only be known at the time of deployment.
-# As such, they are written to ./OpenQ-Contract/.env.docker by deploy/deploy.js
 ./8_fullstack.sh $1

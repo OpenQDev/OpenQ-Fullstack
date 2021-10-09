@@ -15,21 +15,24 @@ services:
     volumes:
       - /app/node_modules
       - ./OpenQ-Contracts:/app
-  openq-api:
-    container_name: openq-api
-    depends_on:
-      - openq-json-rpc-node
-      - openq-contracts
-    build:
-      dockerfile: Dockerfile.dev
-      context: ./OpenQ-API
-    ports:
-      - "8090:8090"
-    volumes:
-      - /app/node_modules
-      - ./OpenQ-API:/app
-      - ./OpenQ-Contracts/artifacts:/app/artifacts
-      - ./OpenQ-Contracts/environments:/app/environments
+  # openq-api:
+  #   container_name: openq-api
+  #   depends_on:
+  #     - openq-json-rpc-node
+  #     - openq-contracts
+  #   build:
+  #     dockerfile: Dockerfile.dev
+  #     context: ./OpenQ-API
+  #   ports:
+  #     - "8090:8090"
+  #   env_file:
+  #     - ./OpenQ-Contracts/.env.docker
+  #   volumes:
+  #     - /app/node_modules
+  #     - ./OpenQ-API:/app
+  #     - ./OpenQ-Contracts/artifacts:/app/artifacts
+  #     - ./OpenQ-Contracts/.env.docker:/app/.env.docker
+  #     - ./OpenQ-Contracts/addresses.json:/app/addresses.json
   openq-frontend:
     container_name: openq-frontend
     depends_on:
@@ -40,19 +43,22 @@ services:
       context: ./OpenQ-Frontend
     ports:
       - "3000:3000"
+    env_file:
+      - ./OpenQ-Contracts/.env.docker
     volumes:
       - /app/node_modules
       - ./OpenQ-Frontend:/app
+      - ./OpenQ-Contracts/.env.docker:/app/.env.docker
       - ./OpenQ-Contracts/artifacts:/app/artifacts
-      - ./OpenQ-Contracts/environments:/app/environments
+      - ./OpenQ-Contracts/addresses.json:/app/addresses.json
     entrypoint: ["yarn", "boot:${DEPLOY_ENV}"]
-  github-oauth-server:
-    container_name: github-oauth-server
-    build:
-      dockerfile: Dockerfile.dev
-      context: ./OpenQ-Github-OAuth-Server
-    ports:
-      - "3001:3001"
-    volumes:
-      - /app/node_modules
-      - ./OpenQ-Github-OAuth-Server:/app
+  # github-oauth-server:
+  #   container_name: github-oauth-server
+  #   build:
+  #     dockerfile: Dockerfile.dev
+  #     context: ./OpenQ-Github-OAuth-Server
+  #   ports:
+  #     - "3001:3001"
+  #   volumes:
+  #     - /app/node_modules
+  #     - ./OpenQ-Github-OAuth-Server:/app
