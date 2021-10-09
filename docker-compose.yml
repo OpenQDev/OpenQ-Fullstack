@@ -28,10 +28,9 @@ services:
     env_file:
       - ./OpenQ-Contracts/.env.docker
     volumes:
-      - ./OpenQ-Contracts/artifacts:/app/artifacts
-      - /app/node_modules
       - ./OpenQ-API:/app
-      - ./OpenQ-Contracts/.env.docker:/app/.env.docker
+      - ./OpenQ-Contracts/artifacts:/app/artifacts
+      - ./OpenQ-Contracts/.env.docker:/app/.env
   openq-frontend:
     container_name: openq-frontend
     depends_on:
