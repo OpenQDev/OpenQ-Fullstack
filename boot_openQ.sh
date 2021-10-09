@@ -4,20 +4,24 @@ chmod u+x asciiart.sh
 ./asciiart.sh
 
 # Grant execution permissions to bootscript
-chmod u+x 1_setup_contracts.sh
-chmod u+x 3_deploy_contracts.sh
-chmod u+x 4_setup_api.sh
-chmod u+x 5_setup_frontend.sh
-chmod u+x 6_setup_helm.sh
-chmod u+x 7_setup_kubeconfig.sh
-chmod u+x 8_setup_github_oauth_server.sh
-chmod u+x 9_setup_cert_manager.sh
-chmod u+x 10_setup_fullstack.sh
+chmod u+x 1_contracts.sh
+chmod u+x 2_api.sh
+chmod u+x 3_frontend.sh
+chmod u+x 4_helm.sh
+chmod u+x 5_kubeconfig.sh
+chmod u+x 6_github_oauth_server.sh
+chmod u+x 7_cert_manager.sh
+chmod u+x 8_fullstack.sh
 
-./1_setup_contracts.sh
-./4_setup_api.sh
-./5_setup_frontend.sh
+./1_contracts.sh
+./2_api.sh
+./3_frontend.sh
+./4_helm.sh
+./5_kubeconfig.sh
+./6_github_oauth_server.sh
+./7_cert_manager.sh
 
+cat PAT > ./OpenQ-Contracts/.env.docker
 if test $? -eq 1
 then
     echo -e "${Red}You need to add a GitHub Personal Access Token (PAT) to a file simply called PAT if you want to continue.${Color_Off}"
@@ -26,14 +30,12 @@ then
     lsof -ti tcp:8545 | xargs kill
     exit 1
 else
-		echo -e "PAT copied into frontend. Proceeding..."
+		echo -e "PAT copied into environment file. Proceeding..."
 fi
 
-cat PAT > ./OpenQ-Contracts/.env.docker
 printf "\n" >> ./OpenQ-Contracts/.env.docker
 cat ./OpenQ-Contracts/.env >> ./OpenQ-Contracts/.env.docker
 
-./10_setup_fullstack.sh $1
-
-# Since docker compose doesnt wait for ethnode to be fully "ready", add logic to deploy that ensures it's reachable before deploying
-# Is this already part of deploy?
+# The remaining environment variables consisting of contract addresses can only be known at the time of deployment.
+# As such, they are written to ./OpenQ-Contract/.env.docker by deploy/deploy.js
+./8_fullstack.sh $1
