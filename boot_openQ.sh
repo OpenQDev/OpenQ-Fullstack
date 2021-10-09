@@ -18,8 +18,6 @@ chmod u+x 10_setup_fullstack.sh
 ./4_setup_api.sh
 ./5_setup_frontend.sh
 
-# override only this key without deleting others
-cat PAT >> ./OpenQ-Contracts/.env.docker
 if test $? -eq 1
 then
     echo -e "${Red}You need to add a GitHub Personal Access Token (PAT) to a file simply called PAT if you want to continue.${Color_Off}"
@@ -30,6 +28,10 @@ then
 else
 		echo -e "PAT copied into frontend. Proceeding..."
 fi
+
+cat PAT > ./OpenQ-Contracts/.env.docker
+printf "\n" >> ./OpenQ-Contracts/.env.docker
+cat ./OpenQ-Contracts/.env >> ./OpenQ-Contracts/.env.docker
 
 ./10_setup_fullstack.sh $1
 
