@@ -2,39 +2,61 @@ version: "3"
 services:
   openq-json-rpc-node:
     image: alo42/openq-json-rpc-node:latest
+    container_name: ethnode
     ports:
       - "8545:8545"
+  openq-contracts:
+    container_name: openq-contracts
+    depends_on:
+      - openq-json-rpc-node
+    image: alo42/openq-contracts
+    env_file:
+      - ./OpenQ-Contracts/.env.docker
+    volumes:
+      - /app/node_modules
+      - ./OpenQ-Contracts:/app
   openq-api:
+    container_name: openq-api
+    depends_on:
+      - openq-json-rpc-node
+      - openq-contracts
     build:
       dockerfile: Dockerfile.dev
       context: ./OpenQ-API
     ports:
       - "8090:8090"
     env_file:
-      - ./OpenQ-API/.env.docker
+      - ./OpenQ-Contracts/.env.docker
     volumes:
       - /app/node_modules
       - ./OpenQ-API:/app
   openq-frontend:
+    container_name: openq-frontend
+    depends_on:
+      - openq-json-rpc-node
+      - openq-contracts
     build:
       dockerfile: Dockerfile.dev
       context: ./OpenQ-Frontend
     ports:
       - "3000:3000"
     env_file:
-      - ./OpenQ-Frontend/.env.${DEPLOY_ENV}
+      - ./OpenQ-Contracts/.env.docker
     volumes:
       - /app/node_modules
       - ./OpenQ-Frontend:/app
+      - ./OpenQ-Contracts/artifacts:/app/artifacts
+      - ./OpenQ-Contracts/.env.docker:/app/.env.docker
     entrypoint: ["yarn", "boot:${DEPLOY_ENV}"]
   github-oauth-server:
+    container_name: github-oauth-server
     build:
       dockerfile: Dockerfile
       context: ./OpenQ-Github-OAuth-Server
     ports:
       - "3001:3001"
     env_file:
-      - ./OpenQ-Github-OAuth-Server/.env
+      - ./OpenQ-Contracts/.env.docker
     volumes:
       - /app/node_modules
       - ./OpenQ-Github-OAuth-Server:/app

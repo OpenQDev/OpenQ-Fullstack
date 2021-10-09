@@ -5,7 +5,6 @@ chmod u+x asciiart.sh
 
 # Grant execution permissions to bootscript
 chmod u+x 1_setup_contracts.sh
-chmod u+x 2_setup_node.sh
 chmod u+x 3_deploy_contracts.sh
 chmod u+x 4_setup_api.sh
 chmod u+x 5_setup_frontend.sh
@@ -15,34 +14,12 @@ chmod u+x 8_setup_github_oauth_server.sh
 chmod u+x 9_setup_cert_manager.sh
 chmod u+x 10_setup_fullstack.sh
 
-# Pull repos (if not present) and install dependencies
 ./1_setup_contracts.sh
-./2_setup_node.sh
-# Exit if a process was running on port 8545
-if test $? -eq 1
-then
-    echo -e "See you soon!"
-    exit 1
-else
-	echo -e "Ethereum RPC Node deployed to port 8545. Proceeding..."
-fi
-
-./3_deploy_contracts.sh
 ./4_setup_api.sh
 ./5_setup_frontend.sh
-./6_setup_helm.sh
-./7_setup_kubeconfig.sh
-./8_setup_github_oauth_server.sh
-./9_setup_cert_manager.sh
 
-# Copy contract addresses and provider URL
-echo -e "Copying .env.docker file to OpenQ-API to connect to proper RPC node and contract addresses\n"
-cp ./OpenQ-Contracts/.env.docker ./OpenQ-API/.env.docker
-echo -e "Copying .env.docker file to frontend .env to connect to proper RPC node and contract addresses\n"
-cp ./OpenQ-Contracts/.env.docker ./OpenQ-Frontend/.env.$DEPLOY_ENV
-cp -R ./OpenQ-Contracts/artifacts ./OpenQ-Frontend/
-
-cat PAT >> ./OpenQ-Frontend/.env.$DEPLOY_ENV
+# override only this key without deleting others
+cat PAT >> ./OpenQ-Contracts/.env.docker
 if test $? -eq 1
 then
     echo -e "${Red}You need to add a GitHub Personal Access Token (PAT) to a file simply called PAT if you want to continue.${Color_Off}"
@@ -55,3 +32,6 @@ else
 fi
 
 ./10_setup_fullstack.sh $1
+
+# Since docker compose doesnt wait for ethnode to be fully "ready", add logic to deploy that ensures it's reachable before deploying
+# Is this already part of deploy?

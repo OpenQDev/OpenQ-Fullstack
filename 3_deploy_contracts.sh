@@ -2,5 +2,5 @@
 . ./colors.sh
 
 cd ./OpenQ-Contracts
-yarn deploy:local
+yarn deploy:docker
 echo -e "Contracts deployed to Hardhat blockchain\n"

@@ -1,2 +1,2 @@
 #!/bin/bash
-DEPLOY_ENV=local ./boot_openQ.sh $1
+DEPLOY_ENV=docker ./boot_openQ.sh $1
