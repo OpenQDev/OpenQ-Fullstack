@@ -33,3 +33,5 @@ Boot the full stack locally and connect it all.
 ## Rebuilding images
 
 Passing the argument `build` after `./boot_local.sh` will rebuild the frontend and backend images with `docker compose --build`.
+
+`lsof -ti tcp:8545 | xargs kill`
