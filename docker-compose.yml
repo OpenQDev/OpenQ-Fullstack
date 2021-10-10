@@ -10,7 +10,7 @@ services:
     depends_on:
       - openq-json-rpc-node
     build:
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
       context: ./OpenQ-Contracts
     volumes:
       - /app/node_modules
@@ -52,13 +52,13 @@ services:
       - ./OpenQ-Contracts/artifacts:/app/artifacts
       - ./OpenQ-Contracts/addresses.json:/app/addresses.json
     entrypoint: ["yarn", "boot:${DEPLOY_ENV}"]
-  # github-oauth-server:
-  #   container_name: github-oauth-server
-  #   build:
-  #     dockerfile: Dockerfile.dev
-  #     context: ./OpenQ-Github-OAuth-Server
-  #   ports:
-  #     - "3001:3001"
-  #   volumes:
-  #     - /app/node_modules
-  #     - ./OpenQ-Github-OAuth-Server:/app
+  github-oauth-server:
+    container_name: github-oauth-server
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./OpenQ-Github-OAuth-Server
+    ports:
+      - "3001:3001"
+    volumes:
+      - /app/node_modules
+      - ./OpenQ-Github-OAuth-Server:/app
