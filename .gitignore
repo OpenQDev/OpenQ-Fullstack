@@ -2,6 +2,7 @@ OpenQ-Frontend/
 OpenQ-API/
 OpenQ-Contracts/
 OpenQ-Helm/
+OpenQ-JSON-RPC-Node/
 OpenQ-Kubeconfig/
 OpenQ-CertManager/
 OpenQ-Github-OAuth-Server/

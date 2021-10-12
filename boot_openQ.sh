@@ -4,45 +4,24 @@ chmod u+x asciiart.sh
 ./asciiart.sh
 
 # Grant execution permissions to bootscript
-chmod u+x 1_setup_contracts.sh
-chmod u+x 2_setup_node.sh
-chmod u+x 3_deploy_contracts.sh
-chmod u+x 4_setup_api.sh
-chmod u+x 5_setup_frontend.sh
-chmod u+x 6_setup_helm.sh
-chmod u+x 7_setup_kubeconfig.sh
-chmod u+x 8_setup_github_oauth_server.sh
-chmod u+x 9_setup_cert_manager.sh
-chmod u+x 10_setup_fullstack.sh
+chmod u+x 1_contracts.sh
+chmod u+x 2_api.sh
+chmod u+x 3_frontend.sh
+chmod u+x 4_helm.sh
+chmod u+x 5_kubeconfig.sh
+chmod u+x 6_github_oauth_server.sh
+chmod u+x 7_cert_manager.sh
+chmod u+x 8_fullstack.sh
 
-# Pull repos (if not present) and install dependencies
-./1_setup_contracts.sh
-./2_setup_node.sh
-# Exit if a process was running on port 8545
-if test $? -eq 1
-then
-    echo -e "See you soon!"
-    exit 1
-else
-	echo -e "Ethereum RPC Node deployed to port 8545. Proceeding..."
-fi
+./1_contracts.sh
+./2_api.sh
+./3_frontend.sh
+./4_helm.sh
+./5_kubeconfig.sh
+./6_github_oauth_server.sh
+./7_cert_manager.sh
 
-./3_deploy_contracts.sh
-./4_setup_api.sh
-./5_setup_frontend.sh
-./6_setup_helm.sh
-./7_setup_kubeconfig.sh
-./8_setup_github_oauth_server.sh
-./9_setup_cert_manager.sh
-
-# Copy contract addresses and provider URL
-echo -e "Copying .env.docker file to OpenQ-API to connect to proper RPC node and contract addresses\n"
-cp ./OpenQ-Contracts/.env.docker ./OpenQ-API/.env.docker
-echo -e "Copying .env.docker file to frontend .env to connect to proper RPC node and contract addresses\n"
-cp ./OpenQ-Contracts/.env.docker ./OpenQ-Frontend/.env.$DEPLOY_ENV
-cp -R ./OpenQ-Contracts/artifacts ./OpenQ-Frontend/
-
-cat PAT >> ./OpenQ-Frontend/.env.$DEPLOY_ENV
+cat PAT > ./OpenQ-Contracts/.env.docker
 if test $? -eq 1
 then
     echo -e "${Red}You need to add a GitHub Personal Access Token (PAT) to a file simply called PAT if you want to continue.${Color_Off}"
@@ -51,7 +30,10 @@ then
     lsof -ti tcp:8545 | xargs kill
     exit 1
 else
-		echo -e "PAT copied into frontend. Proceeding..."
+		echo -e "PAT copied into environment file. Proceeding..."
 fi
 
-./10_setup_fullstack.sh $1
+printf "\n" >> ./OpenQ-Contracts/.env.docker
+cat ./OpenQ-Contracts/.env >> ./OpenQ-Contracts/.env.docker
+
+./8_fullstack.sh $1

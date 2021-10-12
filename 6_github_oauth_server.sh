@@ -9,5 +9,4 @@ else
     git clone https://github.com/OpenQDev/OpenQ-Github-OAuth-Server.git
 fi
 cd OpenQ-Github-OAuth-Server
-touch .env
 yarn
