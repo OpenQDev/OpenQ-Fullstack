@@ -26,7 +26,7 @@ services:
     ports:
       - "8090:8090"
     env_file:
-      - ./OpenQ-Contracts/.env.docker
+      - ./OpenQ-Contracts/.env
     volumes:
       - /app/node_modules
       - ./OpenQ-API:/app
@@ -43,7 +43,8 @@ services:
     ports:
       - "3000:3000"
     env_file:
-      - ./OpenQ-Contracts/.env.docker
+      - ./OpenQ-Contracts/.env
+      - ./OpenQ-Frontend/PAT
     volumes:
       - /app/node_modules
       - ./OpenQ-Frontend:/app
