@@ -11,7 +11,8 @@ chmod u+x 4_helm.sh
 chmod u+x 5_kubeconfig.sh
 chmod u+x 6_github_oauth_server.sh
 chmod u+x 7_cert_manager.sh
-chmod u+x 8_fullstack.sh
+chmod u+x 8_json_rpc_node.sh
+chmod u+x 9_fullstack.sh
 
 ./1_contracts.sh
 ./2_api.sh
@@ -20,6 +21,7 @@ chmod u+x 8_fullstack.sh
 ./5_kubeconfig.sh
 ./6_github_oauth_server.sh
 ./7_cert_manager.sh
+./8_json_rpc_node.sh
 
 cat PAT > ./OpenQ-Contracts/.env.docker
 if test $? -eq 1
@@ -36,4 +38,4 @@ fi
 printf "\n" >> ./OpenQ-Contracts/.env.docker
 cat ./OpenQ-Contracts/.env >> ./OpenQ-Contracts/.env.docker
 
-./8_fullstack.sh $1
+./9_fullstack.sh $1
