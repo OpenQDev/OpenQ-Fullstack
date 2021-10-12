@@ -31,7 +31,7 @@ services:
       - /app/node_modules
       - ./OpenQ-API:/app
       - ./OpenQ-Contracts/artifacts:/app/artifacts
-      - ./OpenQ-Contracts/addresses.json:/app/addresses.json
+      - ./OpenQ-Contracts/addresses.json:/app/addresses/addresses.json
   openq-frontend:
     container_name: openq-frontend
     depends_on:
@@ -48,7 +48,7 @@ services:
       - /app/node_modules
       - ./OpenQ-Frontend:/app
       - ./OpenQ-Contracts/artifacts:/app/artifacts
-      - ./OpenQ-Contracts/addresses.json:/app/addresses.json
+      - ./OpenQ-Contracts/addresses.json:/app/addresses/addresses.json
     entrypoint: ["yarn", "boot:${DEPLOY_ENV}"]
   github-oauth-server:
     container_name: github-oauth-server
