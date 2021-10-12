@@ -31,7 +31,6 @@ services:
       - /app/node_modules
       - ./OpenQ-API:/app
       - ./OpenQ-Contracts/artifacts:/app/artifacts
-      - ./OpenQ-Contracts/.env.docker:/app/.env.docker
       - ./OpenQ-Contracts/addresses.json:/app/addresses.json
   openq-frontend:
     container_name: openq-frontend
@@ -48,7 +47,6 @@ services:
     volumes:
       - /app/node_modules
       - ./OpenQ-Frontend:/app
-      - ./OpenQ-Contracts/.env.docker:/app/.env.docker
       - ./OpenQ-Contracts/artifacts:/app/artifacts
       - ./OpenQ-Contracts/addresses.json:/app/addresses.json
     entrypoint: ["yarn", "boot:${DEPLOY_ENV}"]
