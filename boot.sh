@@ -8,9 +8,9 @@ export DEPLOY_ENV=$1
 clone() {
 if [ -d "./$1" ] 
 then
-    echo -e "$1 directory found\n" 
+    echo -e "${Blue}$1 directory found${Color_Off}\n" 
 else
-    echo -e "No $1 directory found. Cloning $1...\n"
+    echo -e "${UCyan}No $1 directory found. Cloning $1...${Color_Off}\n"
     git clone https://github.com/OpenQDev/$1.git
 fi
 }
@@ -27,8 +27,8 @@ declare -a repos=("OpenQ-API"
 
 for repo in "${repos[@]}"
 do
-    echo $repo
-   clone "$repo"
+    echo -e "\n${BBlue}$repo${Color_Off}"
+    clone "$repo"
 done
 
 docker-compose up $2
