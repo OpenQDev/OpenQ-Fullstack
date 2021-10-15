@@ -4,13 +4,15 @@ Shell script for booting the full OpenQ stack in one go.
 
 ## Environments
 
-### boot_mock.sh
-Boots everything, but the frontend will be interacting with mocked versions of the backing services.
+To clone all repos and boot locally, run:
 
-Excellent for frontend only design.
+```bash
+./boot.sh docker
+```
 
-### boot_local.sh
-Boot the full stack locally and connect it all.
+```bash
+./boot.sh docker --build
+```
 
 ## Getting started
 
@@ -21,17 +23,11 @@ Boot the full stack locally and connect it all.
 3. Run the environment you want:
 
 ```bash
-./boot_local.sh
+./boot.sh docker
 ```
 
 4. Access frontend on localhost:3000 and backend on localhost:8090.
 
-5. Any changes you make to fronend or OpenQ-API will trigger and update.
+5. Any changes you make to an application will trigger an update.
 
 6. Run with sudo in case your having trouble with the bash script / docker compose only works in old versions
-
-## Rebuilding images
-
-Passing the argument `build` after `./boot_local.sh` will rebuild the frontend and backend images with `docker compose --build`.
-
-`lsof -ti tcp:8545 | xargs kill`
