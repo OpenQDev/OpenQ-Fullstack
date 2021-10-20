@@ -15,23 +15,36 @@ services:
     volumes:
       - /app/node_modules
       - ./OpenQ-Contracts:/app
-  openq-api:
-    container_name: openq-api
+  openq-oracle:
+    container_name: openq-oracle
     depends_on:
       - openq-json-rpc-node
       - openq-contracts
     build:
       dockerfile: Dockerfile.dev
-      context: ./OpenQ-API
+      context: ./OpenQ-Oracle
     ports:
       - "8090:8090"
     env_file:
       - ./OpenQ-Contracts/.env
     volumes:
       - /app/node_modules
-      - ./OpenQ-API:/app
+      - ./OpenQ-Oracle:/app
       - ./OpenQ-Contracts/artifacts:/app/artifacts
       - ./OpenQ-Contracts/addresses.json:/app/addresses/addresses.json
+  openq-coinapi:
+    container_name: openq-coinapi
+    depends_on:
+      - openq-json-rpc-node
+      - openq-contracts
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./OpenQ-CoinAPI
+    ports:
+      - "8081:8081"
+    volumes:
+      - /app/node_modules
+      - ./OpenQ-CoinAPI:/app
   openq-frontend:
     container_name: openq-frontend
     depends_on:
