@@ -1,6 +1,8 @@
 OpenQ-Frontend/
 OpenQ-Oracle/
 OpenQ-Contracts/
+OpenQ-CoinAPI/
+OpenQ-API/
 OpenQ-Helm/
 OpenQ-JSON-RPC-Node/
 OpenQ-Kubeconfig/
