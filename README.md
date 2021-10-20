@@ -31,3 +31,19 @@ To clone all repos and boot locally, run:
 5. Any changes you make to an application will trigger an update.
 
 6. Run with sudo in case your having trouble with the bash script / docker compose only works in old versions
+
+## Clear Images and Rebuild when Adding Dependencies
+
+Clear cache and rebuild images after changing dependencies by:
+
+```bash
+docker system prune
+```
+
+```bash
+docker rmi -f $(docker images -a -q)
+```
+
+```bash
+./boot.sh docker --build
+```
