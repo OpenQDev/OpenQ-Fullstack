@@ -16,9 +16,9 @@ To clone all repos and boot locally, run:
 
 ## Getting started
 
-1. Create a file called `PAT` in the root of the project
+1. Create a file called `.env` in the root of the project
 
-2. Put your GitHub Personal Access Token (PAT) in the `PAT` file like `PAT=nweirubffsk`.
+2. Put your GitHub Personal Access Token (PAT) in the `OpenQ-Frontend/.env` file like `PAT=nweirubffsk`.
 
 3. Run the environment you want:
 

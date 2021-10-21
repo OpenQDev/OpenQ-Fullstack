@@ -45,6 +45,8 @@ services:
     volumes:
       - /app/node_modules
       - ./OpenQ-CoinAPI:/app
+    env_file:
+      - ./OpenQ-CoinAPI/.env
   openq-frontend:
     container_name: openq-frontend
     depends_on:
@@ -57,7 +59,7 @@ services:
       - "3000:3000"
     env_file:
       - ./OpenQ-Contracts/.env
-      - ./OpenQ-Frontend/PAT
+      - ./OpenQ-Frontend/.env
     volumes:
       - /app/node_modules
       - ./OpenQ-Frontend:/app
@@ -76,3 +78,10 @@ services:
     volumes:
       - /app/node_modules
       - ./OpenQ-Github-OAuth-Server:/app
+  redis:
+    container_name: redis
+    image: redis:6.2.6-alpine
+    ports: 
+      - "6379:6379"
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
