@@ -1,7 +1,7 @@
 version: "3"
 services:
   openq-json-rpc-node:
-    image: alo42/openq-json-rpc-node:latest
+    image: openq/openq-json-rpc-node:latest
     container_name: ethnode
     ports:
       - "8545:8545"
