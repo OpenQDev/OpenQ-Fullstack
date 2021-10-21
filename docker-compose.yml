@@ -78,6 +78,18 @@ services:
     volumes:
       - /app/node_modules
       - ./OpenQ-Github-OAuth-Server:/app
+  openq-api:
+    container_name: openq-api
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./OpenQ-API
+    env_file:
+      - ./OpenQ-API/.env
+    ports:
+      - "4000:4000"
+    volumes:
+      - /app/node_modules
+      - ./OpenQ-API:/app
   redis:
     container_name: redis
     image: redis:6.2.6-alpine

@@ -45,7 +45,16 @@ Then add:
 REDIS_URL=redis
 ```
 
-### OpenQ-CoinAPI .env
+### OpenQ-API .env
+Create a file called `.env` in the root of the `OpenQ-API` project.
+
+Then add:
+
+```bash
+DATABASE_CONNECTION_STRING=https://example.com
+```
+
+### Boot Environment
 
 Run the environment you want:
 
@@ -58,6 +67,7 @@ Run the environment you want:
 | OpenQ Service      | URL |
 | ----------- | ----------- |
 | OpenQ-Frontend      | localhost:3000       |
+| OpenQ-API      | localhost:4000       |
 | OpenQ-Oracle   | localhost:8090        |
 | OpenQ-Github-OAuth-Server   | localhost:3001        |
 | OpenQ-CoinAPI   | localhost:8081        |
