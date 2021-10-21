@@ -16,21 +16,58 @@ To clone all repos and boot locally, run:
 
 ## Getting started
 
-1. Create a file called `.env` in the root of the project
+### OpenQ-Frontend .env
+1. Create a file called `.env` in the root of the `OpenQ-Frotnend` project.
 
-2. Put your GitHub Personal Access Token (PAT) in the `OpenQ-Frontend/.env` file like `PAT=nweirubffsk`.
+Then add your Github Personal Access Token (PAT):
 
-3. Run the environment you want:
+```bash
+PAT=<YOUR PAT HERE>
+```
+
+### OpenQ-Github-OAuth-Server .env
+Create a file called `.env` in the root of the `OpenQ-Github-OAuth-Server` project.
+
+Then add:
+
+```bash
+OPENQ_ID=5fbd39c6916b7efb63cc
+OPENQ_SECRET=<get from admin>
+ORIGIN_URL=http://localhost:3000
+```
+
+### OpenQ-CoinAPI .env
+Create a file called `.env` in the root of the `OpenQ-CoinAPI` project.
+
+Then add:
+
+```bash
+REDIS_URL=redis
+```
+
+### OpenQ-CoinAPI .env
+
+Run the environment you want:
 
 ```bash
 ./boot.sh docker
 ```
 
-4. Access frontend on localhost:3000 and backend on localhost:8090.
+## Access Services
 
-5. Any changes you make to an application will trigger an update.
+| OpenQ Service      | URL |
+| ----------- | ----------- |
+| OpenQ-Frontend      | localhost:3000       |
+| OpenQ-Oracle   | localhost:8090        |
+| OpenQ-Github-OAuth-Server   | localhost:3001        |
+| OpenQ-CoinAPI   | localhost:8081        |
+| Redis   | localhost:6379       |
+| OpenQ-JSON-RPC-Node   | localhost:8545       |
 
-6. Run with sudo in case your having trouble with the bash script / docker compose only works in old versions
+
+Any changes you make to an application will trigger an update.
+
+Run with sudo in case your having trouble with the bash script / docker compose only works in old versions
 
 ## Clear Images and Rebuild when Adding Dependencies
 
