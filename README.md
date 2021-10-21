@@ -51,7 +51,7 @@ Create a file called `.env` in the root of the `OpenQ-API` project.
 Then add:
 
 ```bash
-DATABASE_CONNECTION_STRING=https://example.com
+DATABASE_CONNECTION_STRING="mongodb+srv://admin:<password>!@openq-mongo.y8tho.mongodb.net/user?retryWrites=true&w=majority"
 ```
 
 ### Boot Environment
