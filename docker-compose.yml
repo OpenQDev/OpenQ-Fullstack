@@ -27,6 +27,7 @@ services:
       - "8090:8090"
     env_file:
       - ./OpenQ-Contracts/.env
+      - ./OpenQ-Oracle/.env
     volumes:
       - /app/node_modules
       - ./OpenQ-Oracle:/app

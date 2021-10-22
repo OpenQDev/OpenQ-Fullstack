@@ -54,6 +54,15 @@ Then add:
 DATABASE_CONNECTION_STRING="mongodb+srv://admin:<password>!@openq-mongo.y8tho.mongodb.net/user?retryWrites=true&w=majority"
 ```
 
+### OpenQ-Oracle .env
+Create a file called `.env` in the root of the `OpenQ-Oracle` project.
+
+Then add:
+
+```bash
+ORIGIN_URL="http://localhost:3000"
+```
+
 ### Boot Environment
 
 Run the environment you want:
