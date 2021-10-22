@@ -3,6 +3,7 @@ services:
   openq-json-rpc-node:
     image: openq/openq-json-rpc-node:latest
     container_name: ethnode
+    hostname: ethnode
     ports:
       - "8545:8545"
   openq-contracts:
