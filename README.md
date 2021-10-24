@@ -101,5 +101,9 @@ docker rmi -f $(docker images -a -q)
 ```
 
 ```bash
+docker stop $(docker ps -aq) && docker rm $(docker ps -aq)
+```
+
+```bash
 ./boot.sh docker --build
 ```

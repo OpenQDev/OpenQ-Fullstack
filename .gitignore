@@ -11,3 +11,5 @@ OpenQ-Github-OAuth-Server/
 PAT
 nohup.out
 yarn.lock
+package.json
+node_modules/
