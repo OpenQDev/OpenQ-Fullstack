@@ -90,7 +90,7 @@ Run with sudo in case your having trouble with the bash script / docker compose 
 
 ## Clear Images and Rebuild when Adding Dependencies
 
-Clear cache and rebuild images after changing dependencies by:
+Clear cache and rebuild images after changing dependencies by running the following commands:
 
 ```bash
 docker system prune
