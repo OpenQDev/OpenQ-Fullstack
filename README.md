@@ -23,6 +23,7 @@ Then add your Github Personal Access Token (PAT):
 
 ```bash
 PAT=<YOUR PAT HERE>
+OPENQ_ID=5fbd39c6916b7efb63cc
 ```
 
 ### OpenQ-Github-OAuth-Server .env
@@ -88,6 +89,14 @@ Any changes you make to an application will trigger an update.
 
 Run with sudo in case your having trouble with the bash script / docker compose only works in old versions
 
+## Mumbai Contract Addresses
+
+OPENQ_ADDRESS: 0x0c3dCa7865203A9bbdC83942a3f1B1567D331Aa6
+
+MOCK_TOKEN_ADDRESS: 0x6444FB48C0c640e6C25150bb17b9E9d842126043
+
+FAKE_TOKEN_ADDRESS: 0xA1c3A3dBFcF4E0BE3f023BAB58254fB4CcB10127
+
 ## Clear Images and Rebuild when Adding Dependencies
 
 Clear cache and rebuild images after changing dependencies by running the following commands:
@@ -96,12 +105,28 @@ Clear cache and rebuild images after changing dependencies by running the follow
 docker system prune
 ```
 
+### Stop and Remove All Containers
+
+```bash
+docker stop $(docker ps -aq) && docker rm $(docker ps -aq)
+```
+
+### Remove all images
+
 ```bash
 docker rmi -f $(docker images -a -q)
 ```
 
+### Remove All Volumes
+
 ```bash
-docker stop $(docker ps -aq) && docker rm $(docker ps -aq)
+docker volume rm $(docker volume ls -q)
+```
+
+### Kill Process on a Port
+
+```bash
+lsof -ti tcp:<PORT> | xargs kill
 ```
 
 ```bash

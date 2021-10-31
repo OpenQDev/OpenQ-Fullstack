@@ -29,11 +29,11 @@ services:
     env_file:
       - ./OpenQ-Contracts/.env
       - ./OpenQ-Oracle/.env
+      - ./OpenQ-Contracts/.env.contracts
     volumes:
       - /app/node_modules
       - ./OpenQ-Oracle:/app
       - ./OpenQ-Contracts/artifacts:/app/artifacts
-      - ./OpenQ-Contracts/addresses.json:/app/addresses/addresses.json
   openq-coinapi:
     container_name: openq-coinapi
     depends_on:
@@ -62,11 +62,11 @@ services:
     env_file:
       - ./OpenQ-Contracts/.env
       - ./OpenQ-Frontend/.env
+      - ./OpenQ-Contracts/.env.contracts
     volumes:
       - /app/node_modules
       - ./OpenQ-Frontend:/app
       - ./OpenQ-Contracts/artifacts:/app/artifacts
-      - ./OpenQ-Contracts/addresses.json:/app/addresses/addresses.json
     entrypoint: ["yarn", "boot:${DEPLOY_ENV}"]
   github-oauth-server:
     container_name: github-oauth-server
