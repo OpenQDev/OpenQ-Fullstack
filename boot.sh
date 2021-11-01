@@ -33,4 +33,12 @@ do
     clone "$repo"
 done
 
+echo -e "${Red}NOTE:${Color_Off} ${Blue}You will need .env files in the root of the following repositories: ${Color_Off}" 
+echo -e ${Cyan}- OpenQ-Frontend${Color_Off}
+echo -e ${Cyan}- OpenQ-Oracle${Color_Off}
+echo -e ${Cyan}- OpenQ-Github-OAuth-Server${Color_Off}
+echo -e ${Cyan}- OpenQ-CoinAPI\n${Color_Off}
+
+echo -e ${Blue}No worries! See the README for instructions${Color_Off}
+
 docker-compose up $2
