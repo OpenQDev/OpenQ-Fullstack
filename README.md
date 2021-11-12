@@ -33,6 +33,11 @@ Then add your Github Personal Access Token (PAT):
 
 You can get a PAT [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
 
+Necessary Scopes:
+`admin:org`
+`repo`
+`user`
+
 ```bash
 PAT=<YOUR PAT HERE>
 OPENQ_ID=5fbd39c6916b7efb63cc
