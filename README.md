@@ -1,25 +1,37 @@
-# Bootscripts
+# OpenQ-Fullstack
 
-Shell script for booting the full OpenQ stack in one go.
+Welcome to OpenQ! The world's simplest crypto-powered bounty system.
 
-## Environments
+Let's get you started.
 
-To clone all repos and boot locally, run:
+## Step 1: Cloning all Repositories
+
+The OpenQ fullstack consists of 5 containerized microservices and a local JSON RPC Ethereum node.
+
+Let's clone the repositories for them now.
+
+To clone all repositories, run:
 
 ```bash
 ./boot.sh docker
 ```
 
-```bash
-./boot.sh docker --build
-```
+## Step 2: Setting up .env files
 
-## Getting started
+You'll see an error:
+
+`NOTE: You will need .env files in the root of the following repositories:`
+
+Let's add .env files to each repository now.
+
+Follow the below very closely.
 
 ### OpenQ-Frontend .env
 1. Create a file called `.env` in the root of the `OpenQ-Frotnend` project.
 
 Then add your Github Personal Access Token (PAT):
+
+You can get a PAT [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
 
 ```bash
 PAT=<YOUR PAT HERE>
@@ -29,18 +41,16 @@ OPENQ_ID=5fbd39c6916b7efb63cc
 ### OpenQ-Github-OAuth-Server .env
 Create a file called `.env` in the root of the `OpenQ-Github-OAuth-Server` project.
 
-Then add:
-
 ```bash
 OPENQ_ID=5fbd39c6916b7efb63cc
 OPENQ_SECRET=<get from admin>
 ORIGIN_URL=http://localhost:3000
 ```
 
+Contact @FlacoJones for the development OAuth client secret.
+
 ### OpenQ-CoinAPI .env
 Create a file called `.env` in the root of the `OpenQ-CoinAPI` project.
-
-Then add:
 
 ```bash
 REDIS_URL=redis
@@ -49,8 +59,6 @@ REDIS_URL=redis
 ### OpenQ-API .env
 Create a file called `.env` in the root of the `OpenQ-API` project.
 
-Then add:
-
 ```bash
 DATABASE_CONNECTION_STRING="mongodb+srv://admin:<password>!@openq-mongo.y8tho.mongodb.net/user?retryWrites=true&w=majority"
 ```
@@ -58,15 +66,17 @@ DATABASE_CONNECTION_STRING="mongodb+srv://admin:<password>!@openq-mongo.y8tho.mo
 ### OpenQ-Oracle .env
 Create a file called `.env` in the root of the `OpenQ-Oracle` project.
 
-Then add:
-
 ```bash
 ORIGIN_URL="http://localhost:3000"
 ```
 
-### Boot Environment
+### Step 3: Booting Fullstack with docker-compose
 
-Run the environment you want:
+For local development, we orchestrate with [docker-compose](https://docs.docker.com/compose/).
+
+For development.openq.dev, staging.openq.dev, and app.openq.dev (production) we orchestrate with [Kubernetes](https://kubernetes.io/).
+
+Now that :
 
 ```bash
 ./boot.sh docker
