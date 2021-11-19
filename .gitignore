@@ -7,6 +7,7 @@ OpenQ-Helm/
 OpenQ-JSON-RPC-Node/
 OpenQ-Kubeconfig/
 OpenQ-CertManager/
+OpenQ-Graph/
 OpenQ-Github-OAuth-Server/
 PAT
 nohup.out
