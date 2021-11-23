@@ -1,3 +1,4 @@
+# Repositories
 OpenQ-Frontend/
 OpenQ-Oracle/
 OpenQ-Contracts/
@@ -9,8 +10,7 @@ OpenQ-Kubeconfig/
 OpenQ-CertManager/
 OpenQ-Graph/
 OpenQ-Github-OAuth-Server/
-PAT
-nohup.out
-yarn.lock
-package.json
-node_modules/
+OpenQ-Graph-Node/
+
+# Data from The Graph Node's Postgres and IPFS
+data/

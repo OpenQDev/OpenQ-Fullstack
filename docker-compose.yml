@@ -67,7 +67,7 @@ services:
       - /app/node_modules
       - ./OpenQ-Frontend:/app
       - ./OpenQ-Contracts/artifacts:/app/artifacts
-    entrypoint: ["yarn", "boot:${DEPLOY_ENV}"]
+    entrypoint: [ "yarn", "boot:${DEPLOY_ENV}" ]
   github-oauth-server:
     container_name: github-oauth-server
     build:
@@ -95,5 +95,10 @@ services:
   redis:
     container_name: redis
     image: redis:6.2.6-alpine
-    ports: 
+    ports:
       - "6379:6379"
+  openq_subgraph_deployer:
+    container_name: openq_subgraph_deployer
+    build:
+      dockerfile: Dockerfile
+      context: ./OpenQ-Graph
