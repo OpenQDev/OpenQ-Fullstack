@@ -41,7 +41,8 @@ Necessary Scopes:
 ```bash
 PAT=<YOUR PAT HERE>
 OPENQ_ID=5fbd39c6916b7efb63cc
-OPENQ_SUBGRAPH_URL=http://localhost:8000/subgraphs/name/openqdev/openq
+OPENQ_SUBGRAPH_HTTP_URL=http://localhost:8000/subgraphs/name/openqdev/openq
+OPENQ_SUBGRAPH_WEBSOCKET_URL=ws://localhost:8001/subgraphs/name/openqdev/openq
 ```
 
 ### OpenQ-Github-OAuth-Server .env
