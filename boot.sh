@@ -42,4 +42,11 @@ echo -e ${Cyan}- OpenQ-CoinAPI \n${Color_Off}
 
 echo -e ${Blue}No worries! See the README for instructions${Color_Off}
 
+if [ -d "./data" ] 
+then
+    rm -rf ./data
+else
+    echo "No Postgres data dir found. Good."
+fi
+
 docker-compose -f docker-compose.yml up $2
