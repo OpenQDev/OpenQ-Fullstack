@@ -25,7 +25,6 @@ declare -a repos=("OpenQ-Oracle"
                 "OpenQ-JSON-RPC-Node"
                 "OpenQ-CertManager"
 								"OpenQ-Graph"
-								"OpenQ-Graph-Node"
                 "OpenQ-Kubeconfig"
                 )
 
