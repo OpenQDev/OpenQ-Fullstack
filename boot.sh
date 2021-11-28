@@ -3,7 +3,7 @@
 chmod u+x asciiart.sh
 ./asciiart.sh
 
-export DEPLOY_ENV=$1
+export DEPLOY_ENV=docker
 
 clone() {
 if [ -d "./$1" ] 
@@ -43,4 +43,4 @@ echo -e ${Cyan}- OpenQ-CoinAPI \n${Color_Off}
 
 echo -e ${Blue}No worries! See the README for instructions${Color_Off}
 
-docker-compose -f docker-compose.yml -f ./OpenQ-Graph-Node/docker/docker-compose.yml up $2
+docker-compose -f docker-compose.yml up $2

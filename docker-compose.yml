@@ -1,7 +1,15 @@
 version: "3"
 services:
+  openq-json-rpc-node:
+    image: openq/openq-json-rpc-node:latest
+    container_name: ethnode
+    hostname: ethnode
+    ports:
+      - "8545:8545"
   openq-contracts:
     container_name: openq-contracts
+    depends_on:
+      - openq-json-rpc-node
     build:
       dockerfile: Dockerfile
       context: ./OpenQ-Contracts
@@ -11,6 +19,7 @@ services:
   openq-oracle:
     container_name: openq-oracle
     depends_on:
+      - openq-json-rpc-node
       - openq-contracts
     build:
       dockerfile: Dockerfile.dev
@@ -28,6 +37,7 @@ services:
   openq-coinapi:
     container_name: openq-coinapi
     depends_on:
+      - openq-json-rpc-node
       - openq-contracts
     build:
       dockerfile: Dockerfile.dev
@@ -42,6 +52,7 @@ services:
   openq-frontend:
     container_name: openq-frontend
     depends_on:
+      - openq-json-rpc-node
       - openq-contracts
     build:
       dockerfile: Dockerfile.dev
@@ -86,3 +97,54 @@ services:
     image: redis:6.2.6-alpine
     ports:
       - "6379:6379"
+  openq_subgraph_deployer:
+    container_name: openq_subgraph_deployer
+    depends_on:
+      - openq-json-rpc-node
+      - openq-contracts
+      - graph-node
+    build:
+      dockerfile: Dockerfile
+      context: ./OpenQ-Graph
+  graph-node:
+    container_name: graph_node
+    image: graphprotocol/graph-node
+    ports:
+      - '8000:8000'
+      - '8001:8001'
+      - '8020:8020'
+      - '8030:8030'
+      - '8040:8040'
+    depends_on:
+      - ipfs
+      - postgres
+    environment:
+      postgres_host: postgres
+      postgres_user: graph-node
+      postgres_pass: let-me-in
+      postgres_db: graph-node
+      ipfs: 'ipfs:5001'
+      ethereum: 'mainnet:http://ethnode:8545'
+      GRAPH_LOG: info
+  ipfs:
+    container_name: ipfs
+    image: ipfs/go-ipfs:v0.4.23
+    ports:
+      - '5001:5001'
+    volumes:
+      - ./data/ipfs:/data/ipfs
+  postgres:
+    image: postgres
+    ports:
+      - '5432:5432'
+    command:
+      [
+        "postgres",
+        "-cshared_preload_libraries=pg_stat_statements"
+      ]
+    environment:
+      POSTGRES_USER: graph-node
+      POSTGRES_PASSWORD: let-me-in
+      POSTGRES_DB: graph-node
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
