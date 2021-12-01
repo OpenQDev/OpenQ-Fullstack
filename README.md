@@ -59,8 +59,15 @@ Contact @FlacoJones for the development OAuth client secret.
 ### OpenQ-CoinAPI .env
 Create a file called `.env` in the root of the `OpenQ-CoinAPI` project.
 
+In Docker-Compose:
 ```bash
 REDIS_URL=redis
+ORIGIN_URL=http://localhost:3000
+```
+
+Or locally:
+```bash
+REDIS_URL=localhost
 ORIGIN_URL=http://localhost:3000
 ```
 
