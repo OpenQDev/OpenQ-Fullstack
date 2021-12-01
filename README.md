@@ -13,7 +13,7 @@ Let's clone the repositories for them now.
 To clone all repositories, run:
 
 ```bash
-./boot.sh docker
+./boot.sh
 ```
 
 ## Step 2: Setting up .env files
@@ -65,12 +65,6 @@ REDIS_URL=redis
 ORIGIN_URL=http://localhost:3000
 ```
 
-Or locally:
-```bash
-REDIS_URL=localhost
-ORIGIN_URL=http://localhost:3000
-```
-
 ### OpenQ-API .env
 Create a file called `.env` in the root of the `OpenQ-API` project.
 
@@ -94,7 +88,7 @@ For development.openq.dev, staging.openq.dev, and app.openq.dev (production) we 
 Now that :
 
 ```bash
-./boot.sh docker
+./boot.sh
 ```
 
 ## Access Services
@@ -155,5 +149,5 @@ lsof -ti tcp:<PORT> | xargs kill
 ```
 
 ```bash
-./boot.sh docker --build
+./boot.sh --build
 ```
