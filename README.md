@@ -94,7 +94,7 @@ For development.openq.dev, staging.openq.dev, and app.openq.dev (production) we 
 Now that :
 
 ```bash
-./boot.sh docker
+./boot.sh 
 ```
 
 ## Access Services
