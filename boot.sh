@@ -42,9 +42,16 @@ echo -e ${Cyan}- OpenQ-CoinAPI \n${Color_Off}
 
 echo -e ${Blue}No worries! See the README for instructions${Color_Off}
 
-if [ -d "./data" ] 
+if [ -d "./ipfs" ] 
 then
-    rm -rf ./data
+    rm -rf ./ipfs
+else
+    echo "No IPFS data dir found. This is good, otherwise the Graph complains about a mismatch between genesis blocks."
+fi
+
+if [ -d "./postgres" ] 
+then
+    rm -rf ./postgres
 else
     echo "No Postgres data dir found. This is good, otherwise the Graph complains about a mismatch between genesis blocks."
 fi
