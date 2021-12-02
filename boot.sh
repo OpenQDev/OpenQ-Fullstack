@@ -3,7 +3,7 @@
 chmod u+x asciiart.sh
 ./asciiart.sh
 
-export DEPLOY_ENV=$1
+export DEPLOY_ENV=docker
 
 clone() {
 if [ -d "./$1" ] 
@@ -42,4 +42,11 @@ echo -e ${Cyan}- OpenQ-CoinAPI \n${Color_Off}
 
 echo -e ${Blue}No worries! See the README for instructions${Color_Off}
 
-docker-compose up $2
+if [ -d "./data" ] 
+then
+    rm -rf ./data
+else
+    echo "No Postgres data dir found. Good."
+fi
+
+docker-compose -f docker-compose.yml up $2
