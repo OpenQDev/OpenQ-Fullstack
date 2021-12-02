@@ -14,3 +14,5 @@ OpenQ-Graph-Node/
 
 # Data from The Graph Node's Postgres and IPFS
 data/
+ipfs/
+postgres/
