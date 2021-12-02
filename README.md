@@ -65,12 +65,6 @@ REDIS_URL=redis
 ORIGIN_URL=http://localhost:3000
 ```
 
-Or locally:
-```bash
-REDIS_URL=localhost
-ORIGIN_URL=http://localhost:3000
-```
-
 ### OpenQ-API .env
 Create a file called `.env` in the root of the `OpenQ-API` project.
 
@@ -155,5 +149,5 @@ lsof -ti tcp:<PORT> | xargs kill
 ```
 
 ```bash
-./boot.sh docker --build
+./boot.sh --build
 ```
