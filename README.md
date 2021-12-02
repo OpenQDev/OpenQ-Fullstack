@@ -13,7 +13,7 @@ Let's clone the repositories for them now.
 To clone all repositories, run:
 
 ```bash
-./boot.sh
+./boot.sh 
 ```
 
 ## Step 2: Setting up .env files
@@ -88,7 +88,7 @@ For development.openq.dev, staging.openq.dev, and app.openq.dev (production) we 
 Now that :
 
 ```bash
-./boot.sh
+./boot.sh 
 ```
 
 ## Access Services
