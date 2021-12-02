@@ -13,7 +13,7 @@ Let's clone the repositories for them now.
 To clone all repositories, run:
 
 ```bash
-./boot.sh docker
+./boot.sh 
 ```
 
 ## Step 2: Setting up .env files
