@@ -132,7 +132,7 @@ services:
     ports:
       - '5001:5001'
     volumes:
-      - ./ipfs:/data/ipfs
+      - ./data/ipfs:/data/ipfs
   postgres:
     image: postgres
     ports:
@@ -147,10 +147,4 @@ services:
       POSTGRES_PASSWORD: let-me-in
       POSTGRES_DB: graph-node
     volumes:
-      - ./postgres:/var/lib/postgresql/data
-
-volumes:
-  postgres:
-    external: false
-  ipfs:
-    external: false
+      - ./data/postgres:/var/lib/postgresql/data
