@@ -45,6 +45,17 @@ OPENQ_SUBGRAPH_HTTP_URL=http://localhost:8000/subgraphs/name/openqdev/openq
 OPENQ_SUBGRAPH_WEBSOCKET_URL=ws://localhost:8001/subgraphs/name/openqdev/openq
 ```
 
+### OpenQ-Contracts .env
+
+Create a file called `.env` in the root of the `OpenQ-Github-OAuth-Server` project.
+
+```bash
+PROVIDER_URL=http://ethnode:8545
+WALLET_KEY=<WALLET_KEY>
+CHAIN_ID=31337
+BLOCK_EXPLORER_BASE_URL="https://mumbai.polygonscan.com" # This doesnt actually matter when running locally
+```
+
 ### OpenQ-Github-OAuth-Server .env
 Create a file called `.env` in the root of the `OpenQ-Github-OAuth-Server` project.
 
