@@ -45,12 +45,12 @@ echo -e ${Blue}No worries! See the README for instructions${Color_Off}
 
 if [ -d "./data" ]
 then
-	sudo chmod 777 -R ./data
+	sudo chmod -R 777 ./data
 else
 	echo "No data dir found. creating..."
   mkdir data
 	echo "Data dir created"
-	sudo chmod 777 -R ./data
+	sudo chmod -R 777 ./data
 fi
 
 if [ -d "./data/ipfs" ]
