@@ -43,11 +43,28 @@ echo -e ${Cyan}- OpenQ-CoinAPI \n${Color_Off}
 
 echo -e ${Blue}No worries! See the README for instructions${Color_Off}
 
-if [ -d "./data" ] 
+if [ -d "./data" ]
 then
-    rm -rf ./data
+	sudo chmod 777 -R ./data
 else
-    echo "No data dir found. This is good, otherwise the Graph complains about a mismatch between genesis blocks."
+	echo "No data dir found. creating..."
+  mkdir data
+	echo "Data dir created"
+	sudo chmod 777 -R ./data
+fi
+
+if [ -d "./data/ipfs" ]
+then
+    rm -rf ./data/ipfs
+else
+    echo "No data dir found for IPFS. This is good, otherwise the Graph complains about a mismatch between genesis blocks."
+fi
+
+if [ -d "./data/postgres" ] 
+then
+    rm -rf ./data/postgres
+else
+    echo "No data dir found for Postgres. This is good, otherwise the Graph complains about a mismatch between genesis blocks."
 fi
 
 docker-compose -f docker-compose.yml up $2
