@@ -11,6 +11,7 @@ OpenQ-CertManager/
 OpenQ-Graph/
 OpenQ-Github-OAuth-Server/
 OpenQ-Graph-Node/
+OpenQ-Bot/
 
 # Data from The Graph Node's Postgres and IPFS
 data/
