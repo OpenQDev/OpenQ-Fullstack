@@ -45,9 +45,24 @@ echo -e ${Blue}No worries! See the README for instructions${Color_Off}
 
 if [ -d "./data" ]
 then
-	rm -rf data/
+	chmod -R a+rwx ./data
 else
-	echo "No data dir found. Good."
+	mkdir data
+	chmod -R a+rwx ./data
+fi
+
+if [ -d "./data/postgres" ]
+then
+	rm -rf data/postgres
+else
+	echo "No data/postgres dir found. Proceeding"
+fi
+
+if [ -d "./data/ipfs" ]
+then
+	rm -rf data/ipfs
+else
+	echo "No data/ipfs dir found. Proceeding"
 fi
 
 docker-compose -f docker-compose.yml up $2
