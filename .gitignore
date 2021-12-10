@@ -17,3 +17,6 @@ OpenQ-Bot/
 data/
 ipfs/
 postgres/
+
+node_modules/
+yarn.lock
