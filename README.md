@@ -61,6 +61,7 @@ Create a file called `.env` in the root of the `OpenQ-Github-OAuth-Server` proje
 ```bash
 PROVIDER_URL=http://ethnode:8545
 CLIENT=<WALLET_KEY>
+CONTRIBUTOR=<WALLET_KEY>
 CHAIN_ID=31337
 BLOCK_EXPLORER_BASE_URL="https://mumbai.polygonscan.com" # This doesnt actually matter when running locally
 ```
