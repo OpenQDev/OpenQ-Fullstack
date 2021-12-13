@@ -175,28 +175,44 @@ lsof -ti tcp:<PORT> | xargs kill
 
 ## Deploying Fullstack Across the Environments
 
-### 1. Deploy Contracts to Correct Network
+### 1. Deploy Contracts
 
-Copy the `.env.[environment]` into `.env` and fill with appropriate values.
+1. Copy the `.env.[environment]` into `.env` and fill with appropriate values.
 
 NOTE!: Do NOT leave any private keys in the `.env.[environment]` file, as this will be checked in. Always copy into `.env` first to ensure it is ignored.
 
-development.openq.dev: `yarn deploy:mumbai`
-staging.openq.dev and app.openq.dev: `yarn deploy:polygon`
+2. Run the deploy script for the target environment (mumbai or mainnet):
 
-### 2. Deploy the Subgraph to The Correct Environment and Point to Correct Contract Address
+For [development.openq.dev](https://development.openq.dev): `yarn deploy:mumbai`
+For [staging.openq.dev]((https://staging.openq.dev)) and [app.openq.dev]((https://app.openq.dev)): `yarn deploy:polygon`
 
-Edit `/config/[environment].json` with:
-1. The OpenQ contract address you just deployed
-2. The `startBlock` (This should be the block just before the OpenQ contract creation)
+### 2. Deploy Subgraph
 
-Run `yarn prepare-[environment].yml`. This will use Mustache templating to insert those value into the `subgraph.yml`.
+1. Update the `OpenQ.json` ABI in `OpenQ-Graph/abis/OpenQ.json` with those compiled to `OpenQ-Contracts/artifacts/contracts/OpenQ.sol/OpenQ.json`.
 
-### Update Microservices
+NOTE!: Only copy in the `abi` field, an array of `OpenQ.sol`'s properties. NOT the other metadata like `_format` or `sourceName` etc.
 
-Update the appropriate `values-[environment].yml` file in `OpenQ-Helm` with the new OpenQ, MockLink and MockDai contract addresses.
+2. Edit `OpenQ-Graph/config/[environment].json` with:
+- The OpenQ contract address you just deployed in Deploy Contracts Step 1.2
+- The `startBlock` (This should be ONE block just before the OpenQ contract creation block. If the OpenQ contract was deployed on block 123456 on Mumbai, `startBlock` should be 123455)
 
-Tag and push `OpenQ-Helm` with your environment like so: 
+3. Run `yarn prepare-[environment].yml`. This will use Mustache templating to insert those value into the `subgraph.yml`
+
+4. Run the deploy script for the target environment (mumbai or mainnet):
+
+For [development.openq.dev](https://development.openq.dev): `yarn deploy-development`
+For [staging.openq.dev]((https://staging.openq.dev)): `yarn deploy-staging`
+For [app.openq.dev]((https://app.openq.dev)): `yarn deploy-production`
+
+### 3. Update Helm Values
+
+1. Update the abis in `OpenQ-Helm/abis` with the artifacts from `OpenQ-Contracts/artifacts/contracts/OpenQ.sol/OpenQ.json`
+
+NOTE!: Copy in the FULL ABI including metadata like `_format` or `sourceName` etc.
+
+2. Update the appropriate `values-[environment].yml` file in `OpenQ-Helm` with the new OpenQ, MockLink and MockDai contract addresses. These can be found in the values file at `.contracts.`
+
+3. Tag and push `OpenQ-Helm` to the target environment like so: 
 
 ```bash
 git tag -f development && git push -f origin development
