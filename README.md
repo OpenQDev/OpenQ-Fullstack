@@ -172,3 +172,36 @@ lsof -ti tcp:<PORT> | xargs kill
 ```bash
 ./boot.sh --build
 ```
+
+## Deploying Fullstack Across the Environments
+
+### 1. Deploy Contracts to Correct Network
+
+Copy the `.env.[environment]` into `.env` and fill with appropriate values.
+
+NOTE!: Do NOT leave any private keys in the `.env.[environment]` file, as this will be checked in. Always copy into `.env` first to ensure it is ignored.
+
+development.openq.dev: `yarn deploy:mumbai`
+staging.openq.dev and app.openq.dev: `yarn deploy:polygon`
+
+### 2. Deploy the Subgraph to The Correct Environment and Point to Correct Contract Address
+
+Edit `/config/[environment].json` with:
+1. The OpenQ contract address you just deployed
+2. The `startBlock` (This should be the block just before the OpenQ contract creation)
+
+Run `yarn prepare-[environment].yml`. This will use Mustache templating to insert those value into the `subgraph.yml`.
+
+### Update Microservices
+
+Update the appropriate `values-[environment].yml` file in `OpenQ-Helm` with the new OpenQ, MockLink and MockDai contract addresses.
+
+Tag and push `OpenQ-Helm` with your environment like so: 
+
+```bash
+git tag -f development && git push -f origin development
+git tag -f staging && git push -f origin staging
+git tag -f production && git push -f origin production
+```
+
+This will set off the CircleCI pipeline here to deploy: https://app.circleci.com/pipelines/github/OpenQDev/OpenQ-Helm
