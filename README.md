@@ -181,7 +181,9 @@ lsof -ti tcp:<PORT> | xargs kill
 
 NOTE!: Do NOT leave any private keys in the `.env.[environment]` file, as this will be checked in. Always copy into `.env` first to ensure it is ignored.
 
-2. Run the deploy script for the target environment (mumbai or mainnet):
+2. Ensure both the account for `CLIENT` and `CONTRIBUTOR` have enough MATIC to pay for gas. Should be no more than a 1-2 MATIC.
+
+3. Run the deploy script for the target environment (mumbai or mainnet):
 
 For [development.openq.dev](https://development.openq.dev): `yarn deploy:mumbai`
 For [staging.openq.dev]((https://staging.openq.dev)) and [app.openq.dev]((https://app.openq.dev)): `yarn deploy:polygon`
@@ -196,13 +198,23 @@ NOTE!: Only copy in the `abi` field, an array of `OpenQ.sol`'s properties. NOT t
 - The OpenQ contract address you just deployed in Deploy Contracts Step 1.2
 - The `startBlock` (This should be ONE block just before the OpenQ contract creation block. If the OpenQ contract was deployed on block 123456 on Mumbai, `startBlock` should be 123455)
 
-3. Run `yarn prepare-[environment].yml`. This will use Mustache templating to insert those value into the `subgraph.yml`
+3. Run `yarn prepare-[environment].yml`. This will use Mustache templating to insert those value into `subgraph.yml`
 
-4. Run the deploy script for the target environment (mumbai or mainnet):
+4. Run the deploy script for the target environment:
 
-For [development.openq.dev](https://development.openq.dev): `yarn deploy-development`
-For [staging.openq.dev]((https://staging.openq.dev)): `yarn deploy-staging`
-For [app.openq.dev]((https://app.openq.dev)): `yarn deploy-production`
+| Environment      | Deploy Script |
+| ----------- | ----------- |
+| Development      | `yarn deploy-development`       |
+| Staging      | `yarn deploy-staging`       |
+| Production   | `yarn deploy-production`        |
+
+5. Confirm the update by going to the Hosted Service Graph Explorer:
+
+| Environment      | Subgraph URL |
+| ----------- | ----------- |
+| Development      | https://thegraph.com/hosted-service/subgraph/openqdev/openq-development       |
+| Staging      | https://thegraph.com/hosted-service/subgraph/openqdev/openq-staging       |
+| Production   | https://thegraph.com/hosted-service/subgraph/openqdev/openq        |
 
 ### 3. Update Helm Values
 
@@ -214,10 +226,18 @@ NOTE!: Copy in the FULL ABI including metadata like `_format` or `sourceName` et
 
 3. Tag and push `OpenQ-Helm` to the target environment like so: 
 
-```bash
-git tag -f development && git push -f origin development
-git tag -f staging && git push -f origin staging
-git tag -f production && git push -f origin production
-```
+| Environment      | Git Tag Command |
+| ----------- | ----------- |
+| Development      | `git tag -f development && git push -f origin development`       |
+| Staging      | `git tag -f staging && git push -f origin staging`       |
+| Production   | `git tag -f production && git push -f origin production`        |
 
-This will set off the CircleCI pipeline here to deploy: https://app.circleci.com/pipelines/github/OpenQDev/OpenQ-Helm
+4. This will set off the CircleCI pipeline here to deploy: https://app.circleci.com/pipelines/github/OpenQDev/OpenQ-Helm. Confirm it has passed.
+
+### 4. Verify Deployment
+
+| Environment      | URL |
+| ----------- | ----------- |
+| Development      | [development.openq.dev](https://development.openq.dev)       |
+| Staging      | [staging.openq.dev](https://staging.openq.dev)       |
+| Production   | [app.openq.dev](https://app.openq.dev)        |
