@@ -216,7 +216,17 @@ NOTE!: Only copy in the `abi` field, an array of `OpenQ.sol`'s properties. NOT t
 | Staging      | https://thegraph.com/hosted-service/subgraph/openqdev/openq-staging       |
 | Production   | https://thegraph.com/hosted-service/subgraph/openqdev/openq        |
 
-### 3. Update Helm Values
+### 3. Update Mock Token Contract Addresses in Token Metadata
+
+1. In `OpenQ-Frontend/constants/config/[environment].json` add the correct MockLink and MockDai token addresses retrieved from the [Deploy Contracts step](https://github.com/OpenQDev/OpenQ-Fullstack#1-deploy-contracts)
+
+2. In `OpenQ-Frontend` run:
+
+`yarn prepare-mumbai` or `yarn prepare-mainnet`
+
+3. You will need the JSON output here for the next step.
+
+### 4. Update Helm Values
 
 1. Update the abis in `OpenQ-Helm/abis` with the artifacts from `OpenQ-Contracts/artifacts/contracts/OpenQ.sol/OpenQ.json`
 
@@ -234,7 +244,7 @@ NOTE!: Copy in the FULL ABI including metadata like `_format` or `sourceName` et
 
 4. This will set off the CircleCI pipeline here to deploy: https://app.circleci.com/pipelines/github/OpenQDev/OpenQ-Helm. Confirm it has passed.
 
-### 4. Verify Deployment
+### 5. Verify Deployment
 
 | Environment      | URL |
 | ----------- | ----------- |
