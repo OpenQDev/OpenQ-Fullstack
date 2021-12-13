@@ -232,9 +232,11 @@ NOTE!: Only copy in the `abi` field, an array of `OpenQ.sol`'s properties. NOT t
 
 NOTE!: Copy in the FULL ABI including metadata like `_format` or `sourceName` etc.
 
-2. Update the appropriate `values-[environment].yml` file in `OpenQ-Helm` with the new OpenQ, MockLink and MockDai contract addresses. These can be found in the values file at `.contracts.`
+2. Update the token metadata JSON in the root of the Helm directory. Make sure you've updated them with the latest Mock Link and Mock Dai contract addresses.
 
-3. Tag and push `OpenQ-Helm` to the target environment like so: 
+3. Update the appropriate `values-[environment].yml` file in `OpenQ-Helm` with the new OpenQ, MockLink and MockDai contract addresses. These can be found in the values file at `.contracts.`
+
+4. Tag and push `OpenQ-Helm` to the target environment like so: 
 
 | Environment      | Git Tag Command |
 | ----------- | ----------- |
@@ -242,7 +244,7 @@ NOTE!: Copy in the FULL ABI including metadata like `_format` or `sourceName` et
 | Staging      | `git tag -f staging && git push -f origin staging`       |
 | Production   | `git tag -f production && git push -f origin production`        |
 
-4. This will set off the CircleCI pipeline here to deploy: https://app.circleci.com/pipelines/github/OpenQDev/OpenQ-Helm. Confirm it has passed.
+5. This will set off the CircleCI pipeline here to deploy: https://app.circleci.com/pipelines/github/OpenQDev/OpenQ-Helm. Confirm it has passed.
 
 ### 5. Verify Deployment
 
