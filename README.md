@@ -56,7 +56,7 @@ OPENQ_SUBGRAPH_WEBSOCKET_URL=ws://localhost:8001/subgraphs/name/openqdev/openq-d
 
 ### OpenQ-Contracts .env
 
-Create a file called `.env` in the root of the `OpenQ-Github-OAuth-Server` project.
+Create a file called `.env` in the root of the `OpenQ-Contracts` project.
 
 ```bash
 PROVIDER_URL=http://ethnode:8545
@@ -100,7 +100,7 @@ Create a file called `.env` in the root of the `OpenQ-Oracle` project.
 ORIGIN_URL="http://localhost:3000"
 ```
 
-### Step 3: Booting Fullstack with docker-compose
+### Booting Fullstack with docker-compose
 
 For local development, we orchestrate with [docker-compose](https://docs.docker.com/compose/).
 
@@ -117,6 +117,7 @@ Now that :
 | OpenQ Service      | URL |
 | ----------- | ----------- |
 | OpenQ-Frontend      | localhost:3000       |
+| OpenQ-Graph   | http://localhost:8000/subgraphs/name/openqdev/openq        |
 | OpenQ-API      | localhost:4000       |
 | OpenQ-Oracle   | localhost:8090        |
 | OpenQ-Github-OAuth-Server   | localhost:3001        |
