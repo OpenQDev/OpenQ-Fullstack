@@ -106,6 +106,8 @@ services:
     build:
       dockerfile: Dockerfile
       context: ./OpenQ-Graph
+    volumes:
+      - /app/node_modules
   graph-node:
     container_name: graph_node
     image: graphprotocol/graph-node
