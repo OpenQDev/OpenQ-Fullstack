@@ -191,13 +191,14 @@ For [staging.openq.dev]((https://staging.openq.dev)) and [app.openq.dev]((https:
 
 ### 2. Deploy Subgraph
 
-1. Update the `OpenQ.json` ABI in `OpenQ-Graph/abis/OpenQ.json` with those compiled to `OpenQ-Contracts/artifacts/contracts/OpenQ.sol/OpenQ.json`.
+1. Update the `OpenQV0.json` ABI in `OpenQ-Graph/abis/OpenQV0.json` with those compiled to `OpenQ-Contracts/artifacts/contracts/OpenQ/Implementations/OpenQV0.sol/OpenQV0.json`.
 
-NOTE!: Only copy in the `abi` field, an array of `OpenQ.sol`'s properties. NOT the other metadata like `_format` or `sourceName` etc.
+NOTE!: Only copy in the `abi` field, an array of `OpenQV0.sol`'s properties. NOT the other metadata like `_format` or `sourceName` etc.
 
 2. Edit `OpenQ-Graph/config/[environment].json` with:
-- The OpenQ contract address you just deployed in Deploy Contracts Step 1.2
-- The `startBlock` (This should be ONE block just before the OpenQ contract creation block. If the OpenQ contract was deployed on block 123456 on Mumbai, `startBlock` should be 123455)
+- The OpenQProxy contract address you just deployed in Deploy Contracts Step 1.2
+NOTE! Use the OpenQProxy, NOT the implementation address!
+- The `startBlock` (This should be ONE block before the OpenQ contract creation block. If the OpenQ contract was deployed on block 123456 on Mumbai, `startBlock` should be 123455)
 
 3. Run `yarn prepare-[environment].yml`. This will use Mustache templating to insert those value into `subgraph.yml`
 
