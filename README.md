@@ -43,6 +43,11 @@ PAT=<YOUR PAT HERE>
 OPENQ_ID=5fbd39c6916b7efb63cc
 OPENQ_SUBGRAPH_HTTP_URL=http://localhost:8000/subgraphs/name/openqdev/openq
 OPENQ_SUBGRAPH_WEBSOCKET_URL=ws://localhost:8001/subgraphs/name/openqdev/openq
+BASE_URL=http://localhost:3000
+AUTH_URL=http://localhost:3001
+ORACLE_URL=http://localhost:8090
+API_URL=http://localhost:4000
+COIN_API_URL=http://localhost:8081
 ```
 
 #### OpenQ-Frontend .env for Running without The Graph locally
