@@ -57,18 +57,26 @@ PAT=<YOUR PAT HERE>
 OPENQ_ID=5fbd39c6916b7efb63cc
 OPENQ_SUBGRAPH_HTTP_URL=https://api.thegraph.com/subgraphs/name/openqdev/openq-development
 OPENQ_SUBGRAPH_WEBSOCKET_URL=ws://localhost:8001/subgraphs/name/openqdev/openq-development
+BASE_URL=http://localhost:3000
+AUTH_URL=http://localhost:3001
+ORACLE_URL=http://localhost:8090
+API_URL=http://localhost:4000
+COIN_API_URL=http://localhost:8081
 ```
 
 ### OpenQ-Contracts .env
 
 Create a file called `.env` in the root of the `OpenQ-Contracts` project.
 
+See `.env.docker.sample`.
+
 ```bash
 PROVIDER_URL=http://ethnode:8545
+CHAIN_ID=31337
+BLOCK_EXPLORER_BASE_URL="https://mumbai.polygonscan.com"
 CLIENT=<WALLET_KEY>
 CONTRIBUTOR=<WALLET_KEY>
-CHAIN_ID=31337
-BLOCK_EXPLORER_BASE_URL="https://mumbai.polygonscan.com" # This doesnt actually matter when running locally
+ # This doesnt actually matter when running locally
 ```
 
 ### OpenQ-Github-OAuth-Server .env
