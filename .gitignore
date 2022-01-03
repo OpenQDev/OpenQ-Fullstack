@@ -12,6 +12,7 @@ OpenQ-Graph/
 OpenQ-Github-OAuth-Server/
 OpenQ-Graph-Node/
 OpenQ-Bot/
+OpenQ-Architecture/
 
 # Data from The Graph Node's Postgres and IPFS
 data/
