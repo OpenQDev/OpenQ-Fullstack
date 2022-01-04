@@ -268,3 +268,6 @@ NOTE!: Copy in the FULL ABI including metadata like `_format` or `sourceName` et
 | Development      | [development.openq.dev](https://development.openq.dev)       |
 | Staging      | [staging.openq.dev](https://staging.openq.dev)       |
 | Production   | [app.openq.dev](https://app.openq.dev)        |
+
+# Pre-commit Checklist
+✅ Passes Husky Pre-commit ESLINT check
