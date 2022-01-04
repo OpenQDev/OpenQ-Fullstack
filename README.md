@@ -190,6 +190,9 @@ lsof -ti tcp:<PORT> | xargs kill
 ## Deploying Fullstack Across the Environments
 
 ### 1. Deploy Contracts
+```diff
+- WARNING! HARDHAT CURRENTLY RETURNS THE WRONG ADDRESSES FOR CONTRACTS DEPLOYED TO MUMBAI. THIS HAS TO BE DONE IN REMIX...
+```
 
 1. Copy the `.env.[environment]` into `.env` and fill with appropriate values.
 
