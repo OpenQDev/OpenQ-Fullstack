@@ -24,3 +24,5 @@ node_modules/
 yarn.lock
 
 .deps
+
+.DS_Store
