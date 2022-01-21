@@ -28,6 +28,7 @@ declare -a repos=("OpenQ-Oracle"
                 "OpenQ-Kubeconfig"
 								"OpenQ-Bot"
 								"OpenQ-Architecture"
+								"OpenQ-OZ-Claim-AutoTask"
                 )
 
 for repo in "${repos[@]}"
