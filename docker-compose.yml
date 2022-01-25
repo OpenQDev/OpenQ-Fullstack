@@ -34,6 +34,17 @@ services:
       - /app/node_modules
       - ./OpenQ-Oracle:/app
       - ./OpenQ-Contracts/artifacts:/app/artifacts
+  openq-oz-claim-autotask:
+    container_name: openq-oz-claim-autotask
+    depends_on:
+      - openq-json-rpc-node
+      - openq-contracts
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./OpenQ-OZ-Claim-Autotask
+    volumes:
+      - /app/node_modules
+      - ./OpenQ-OZ-Claim-Autotask:/app
   openq-coinapi:
     container_name: openq-coinapi
     depends_on:
