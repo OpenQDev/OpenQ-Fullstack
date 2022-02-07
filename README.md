@@ -6,14 +6,20 @@ Let's get you started.
 
 ## Step 1: Cloning all Repositories
 
-The OpenQ fullstack consists of 5 containerized microservices and a local JSON RPC Ethereum node.
+The OpenQ fullstack consists of several containerized microservices and a local JSON RPC Ethereum node.
 
 Let's clone the repositories for them now.
 
-To clone all repositories, run:
+To clone all repositories and boot them with [docker-compose](https://docs.docker.com/compose/), simply run:
 
 ```bash
-./boot.sh 
+./boot.sh
+```
+
+You may have to make this shell script executable first. To do so on Mac run:
+
+```bash
+chmod u+x boot.sh
 ```
 
 ## Step 2: Setting up .env files
@@ -24,19 +30,27 @@ You'll see an error:
 
 Let's add .env files to each repository now.
 
-Follow the below very closely.
+Follow the below VERY closely.
 
 ### OpenQ-Frontend .env
-1. Create a file called `.env` in the root of the `OpenQ-Frotnend` project.
 
-Then add your Github Personal Access Token (PAT):
+In the root of `OpenQ-Frontend`, create a `.env` file.
 
-You can get a PAT [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
+Copy the following from `.env.sample` to `.env`. Please don't delete `.env.sample`.
 
-Necessary Scopes:
-`admin:org`
-`repo`
-`user`
+#### Get a GitHub Personal Access Token (PAT)
+
+You can get a GitHub Personal Access Token (PAT) [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
+
+You will need to create the token with these scopes:
+
+```bash
+admin:org (all of them)
+repo (all of them)
+user (all of them)
+```
+
+#### Add GitHub Personal Access Token (PAT) to .env
 
 ```bash
 PAT=<YOUR PAT HERE>
@@ -48,23 +62,11 @@ ORACLE_URL=http://localhost:8090
 COIN_API_URL=http://localhost:8081
 ```
 
-#### OpenQ-Frontend .env for Running without The Graph locally
-
-```bash
-PAT=<YOUR PAT HERE>
-OPENQ_ID=5fbd39c6916b7efb63cc
-OPENQ_SUBGRAPH_HTTP_URL=https://api.thegraph.com/subgraphs/name/openqdev/openq-development
-BASE_URL=http://localhost:3000
-AUTH_URL=http://localhost:3001
-ORACLE_URL=http://localhost:8090
-COIN_API_URL=http://localhost:8081
-```
-
 ### OpenQ-Contracts .env
 
-Create a file called `.env` in the root of the `OpenQ-Contracts` project.
+In the root of `OpenQ-Contracts`, create a `.env` file.
 
-See `.env.docker.sample`.
+Copy the following from `.env.sample` to `.env`. Please don't delete `.env.sample`.
 
 ```bash
 PROVIDER_URL=http://ethnode:8545
@@ -77,7 +79,10 @@ POLYGON_SCAN_API_KEY=VRQAIXQQ77P3D4SV5MT74DAQA27QGXVEBJ
 ```
 
 ### OpenQ-Github-OAuth-Server .env
-Create a file called `.env` in the root of the `OpenQ-Github-OAuth-Server` project.
+
+In the root of `OpenQ-Github-OAuth-Server`, create a `.env` file.
+
+Copy the following from `.env.sample` to `.env`. Please don't delete `.env.sample`.
 
 ```bash
 OPENQ_ID=5fbd39c6916b7efb63cc
@@ -86,27 +91,37 @@ ORIGIN_URL=http://localhost:3000
 COOKIE_SIGNER="entropydfnjd23"
 ```
 
-Contact @FlacoJones for the local OAuth client secret.
+Contact [FlacoJones](https://github.com/FlacoJones) (Andrew O'Brien) for the OAuth Client Secret used for the localhost OAuth flow.
+
+We cannot include the OAuth Client Secret in the OpenQ-Github-OAuth-Server repository because when the [Git Guardian](https://www.gitguardian.com/) bot detects the secret, it revokes it.
 
 ### OpenQ-CoinAPI .env
-Create a file called `.env` in the root of the `OpenQ-CoinAPI` project.
 
-In Docker-Compose:
+In the root of `OpenQ-CoinAPI`, create a `.env` file.
+
+Copy the following from `.env.sample` to `.env`. Please don't delete `.env.sample`.
+
 ```bash
 REDIS_URL=redis
 ORIGIN_URL=http://localhost:3000
 ```
 
 ### OpenQ-Oracle .env
-Create a file called `.env` in the root of the `OpenQ-Oracle` project.
+
+In the root of `OpenQ-Oracle`, create a `.env` file.
+
+Copy the following from `.env.sample` to `.env`. Please don't delete `.env.sample`.
 
 ```bash
 ORIGIN_URL="http://localhost:3000"
-OZ_CLAIM_AUTOTASK_URL="http://openq-oz-claim-autotask:8070"
+OZ_CLAIM_AUTOTASK_URL="http://openq-oz-claim-autotask:8070"f
 ```
 
 ### OpenQ-OZ-Claim-Autotask .env
-Create a file called `.env` in the root of the `OpenQ-OZ-Claim-Autotask` project.
+
+In the root of `OpenQ-OZ-Claim-Autotask`, create a `.env` file.
+
+Copy the following from `.env.sample` to `.env`. Please don't delete `.env.sample`.
 
 ```bash
 COOKIE_SIGNER="entropydfnjd23"
@@ -115,19 +130,23 @@ PROVIDER_URL="http://ethnode:8545"
 ORACLE_PRIVATE_KEY="0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80" # This is the Private Key of the first account on Hardhat Testnet.
 ```
 
-### Booting Fullstack with docker-compose
+## Booting
 
-For local development, we orchestrate with [docker-compose](https://docs.docker.com/compose/).
+You've cloned all of the repositories and you've prepared your environment.
 
-For development.openq.dev, staging.openq.dev, and app.openq.dev (production) we orchestrate with [Kubernetes](https://kubernetes.io/).
+Now let's move into the runtime.
 
-Now that :
+### Booting OpenQ-Fullstack with docker-compose
 
-```bash
-./boot.sh 
-```
+Run `./boot.sh` again.
+
+This time, the boot script will make the .env files for each microservice accessible to its container.
 
 ## Access Services
+
+Each service will be exposed to your localhost 
+
+I suggest using [Postman](https://www.postman.com/) if you'd like to hit a service directly.
 
 | OpenQ Service      | URL |
 | ----------- | ----------- |
@@ -138,27 +157,13 @@ Now that :
 | OpenQ-CoinAPI   | localhost:8081        |
 | Redis   | localhost:6379       |
 | OpenQ-JSON-RPC-Node   | localhost:8545       |
+| OpenQ-OZ-Claim-Autotask   | localhost:8070       |
 
+## Helpful Docker Commands
 
-Any changes you make to an application will trigger an update.
+Sometimes Docker just gets... stuck. 
 
-Run with sudo in case your having trouble with the bash script / docker compose only works in old versions
-
-## Mumbai Contract Addresses
-
-OPENQ_ADDRESS: 0x0c3dCa7865203A9bbdC83942a3f1B1567D331Aa6
-
-MOCK_LINK_TOKEN_ADDRESS: 0x6444FB48C0c640e6C25150bb17b9E9d842126043
-
-MOCK_DAI_TOKEN_ADDRESS: 0xA1c3A3dBFcF4E0BE3f023BAB58254fB4CcB10127
-
-## Clear Images and Rebuild when Adding Dependencies
-
-Clear cache and rebuild images after changing dependencies by running the following commands:
-
-```bash
-docker system prune
-```
+Rather than investigate the exact reason, it's often more expedient to simply unplug it all and plug it back in.
 
 ### Stop and Remove All Containers
 
@@ -166,7 +171,13 @@ docker system prune
 docker stop $(docker ps -aq) && docker rm $(docker ps -aq)
 ```
 
-### Remove all images
+### Docker System Prune
+
+```bash
+docker system prune
+```
+
+### Remove All Images
 
 ```bash
 docker rmi -f $(docker images -a -q)
@@ -184,89 +195,117 @@ docker volume rm $(docker volume ls -q)
 lsof -ti tcp:<PORT> | xargs kill
 ```
 
-```bash
-./boot.sh --build
-```
+# OpenQ Deployment Process
 
-## Deploying Fullstack Across the Environments
+We work hard to maintain a consistent deployment process across local, development, staging and production.
 
-### 1. Deploy Contracts
-```diff
-- WARNING! HARDHAT CURRENTLY RETURNS THE WRONG ADDRESSES FOR CONTRACTS DEPLOYED TO MUMBAI. THIS HAS TO BE DONE IN REMIX...
-```
+Let's go over the steps for getting work off your machine and into the world.
 
-1. Copy the `.env.[environment]` into `.env` and fill with appropriate values.
+### Deploy Contracts
+
+#### Prepare .env
+
+Copy the `.env.[environment]` into `.env` and enter with appropriate values.
 
 NOTE!: Do NOT leave any private keys in the `.env.[environment]` file, as this will be checked in. Always copy into `.env` first to ensure it is ignored.
 
-2. Ensure both the account for `CLIENT` and `CONTRIBUTOR` have enough MATIC to pay for gas. Should be no more than a 1-2 MATIC.
+#### Fund Account for Deployment
 
-3. Run the deploy script for the target environment (mumbai or mainnet):
+Ensure both the account for `CLIENT` and `CONTRIBUTOR` have enough MATIC to pay for gas. Should be no more than a 2-3 MATIC.
+
+#### Run Deployment Script for Target Environment
 
 For [development.openq.dev](https://development.openq.dev): `yarn deploy:mumbai`
 For [staging.openq.dev]((https://staging.openq.dev)) and [app.openq.dev]((https://app.openq.dev)): `yarn deploy:polygon`
 
-4. The OpenQV0 Address must then be updated in 3 other areas
+#### Update OpenQV0 Address
 
-- The Graph config
-- The Helm Values
-- The Open Zeppelin Autotask Secrets
+There are three places which will need the new OpenQV0 contract address:
 
-### 2. Deploy Subgraph
+- [OpenQ Subgraph config](https://github.com/OpenQDev/OpenQ-Graph/tree/main/config)
+- [Open Zeppelin Defender Autotask Secret](https://docs.openzeppelin.com/defender/autotasks#secrets)
+- [Helm values](https://github.com/OpenQDev/OpenQ-Helm/blob/main/values-development.yaml#L60)
 
-1. Update the `OpenQV0.json` ABI in `OpenQ-Graph/abis/OpenQV0.json` with those compiled to `OpenQ-Contracts/artifacts/contracts/OpenQ/Implementations/OpenQV0.sol/OpenQV0.json`.
+We will cover this below for each service.
 
-NOTE!: Only copy in the `abi` field, an array of `OpenQV0.sol`'s properties. NOT the other metadata like `_format` or `sourceName` etc.
+### Deploy OpenQ Subgraph
 
-2. Edit `OpenQ-Graph/config/[environment].json` with:
-- The OpenQAddress you just deployed in Deploy Contracts Step 1.2
-- The `startBlock` (This should be ONE block before the OpenQ contract creation block. If the OpenQ contract was deployed on block 123456 on Mumbai, `startBlock` should be 123455)
+#### Update OpenQV0 ABI
 
-3. Run `yarn prepare-[environment].yml`. This will use Mustache templating to insert those value into `subgraph.yml`
+Update the `OpenQV0.json` ABI in [OpenQ-Graph/abis](https://github.com/OpenQDev/OpenQ-Graph/tree/main/abis)
 
-| Environment      | Deploy Script |
+Use the ABI compiled to the `artifacts` directory in the OpenQ-Contracts repository available at `OpenQ-Contracts/artifacts/contracts/OpenQ/Implementations/OpenQV0.sol/OpenQV0.json`.
+
+Only copy in the `abi` field from the JSON. This is an array of `OpenQV0.sol`'s properties. The other Hardhat-specific metadata like `_format` or `sourceName` will cause errors.
+
+#### Prepare the Config
+
+Edit [`OpenQ-Graph/config/[environment].json`](https://github.com/OpenQDev/OpenQ-Graph/blob/main/config/development.json) with:
+- The new OpenQV0 contract address
+- The `startBlock` in which the OpenQV0 contract was created
+
+It sould look like the following:
+
+```json   
+{
+	"network": "mumbai",
+	"address": "0xBd008f4f3A29E952cff2863b1515BBcdC27F2515",
+	"startBlock": 24630828
+}
+```
+
+#### Prepare subgraph.yml
+
+We use Mustache to pipe in the config values to `subgraph.yml` for deployment.
+
+To do this, run `yarn prepare-[environment].yml`, where [environment] is the target environment.
+
+This will take the values in [`OpenQ-Graph/config/[environment].json`](https://github.com/OpenQDev/OpenQ-Graph/blob/main/config/development.json) and pipe them through [subgraph.yml.mustache](https://github.com/OpenQDev/OpenQ-Graph/blob/main/subgraph.yaml.mustache) to generate the completed `subgraph.yml`.
+
+| Environment      | Prepare Script |
 | ----------- | ----------- |
+| Local      | `yarn prepare-local`       |
 | Development      | `yarn prepare-development`       |
 | Staging      | `yarn prepare-staging`       |
 | Production   | `yarn prepare-production`        |
 
-4. Run the deploy script for the target environment:
+#### Deploy the OpenQ Subgraph
+
+Now we are ready to deploy our subgraph.
 
 | Environment      | Deploy Script |
 | ----------- | ----------- |
+| Local      | `yarn deploy-local`       |
 | Development      | `yarn deploy-development`       |
 | Staging      | `yarn deploy-staging`       |
 | Production   | `yarn deploy-production`        |
 
-5. Confirm the update by going to the Hosted Service Graph Explorer:
+#### Confirm Indexing on the Graph Hosted Service
 
 | Environment      | Subgraph URL |
 | ----------- | ----------- |
+| Local      | http://localhost:8000/subgraphs/name/openqdev/openq       |
 | Development      | https://thegraph.com/hosted-service/subgraph/openqdev/openq-development       |
 | Staging      | https://thegraph.com/hosted-service/subgraph/openqdev/openq-staging       |
 | Production   | https://thegraph.com/hosted-service/subgraph/openqdev/openq        |
 
-### 3. Update Mock Token Contract Addresses in Token Metadata
+### Release Microservices With Helm
 
-1. In `OpenQ-Frontend/constants/config/[environment].json` add the correct MockLink and MockDai token addresses retrieved from the [Deploy Contracts step](https://github.com/OpenQDev/OpenQ-Fullstack#1-deploy-contracts)
+We use Kubernetes, Helm and Digital Ocean to host our microservices.
 
-2. In `OpenQ-Frontend` run:
+#### Update OpenQ ABI
 
-`yarn prepare-mumbai` or `yarn prepare-mainnet`
+Update the abis in [OpenQ-Helm/abis/OpenQV0.json](https://github.com/OpenQDev/OpenQ-Helm/blob/main/abis/OpenQV0.json) with the ABI from the `OpenQ-Contracts/artifacts` directory located at ``OpenQ-Contracts/artifacts/contracts/OpenQ/Implementations/OpenQV0.sol/OpenQV0.json``
 
-3. You will need the JSON output here for the next step.
+NOTE!: Unlike with the OpenQ-Graph, here you DO copy in the FULL ABI including metadata like `_format` or `sourceName` etc.
 
-### 4. Update Helm Values
+#### Update OpenQV0 Address
 
-1. Update the abis in `OpenQ-Helm/abis` with the artifacts from `OpenQ-Contracts/artifacts/contracts/OpenQ.sol/OpenQ.json`
+In the appropriate values file, update the OpenQV0 address [here](https://github.com/OpenQDev/OpenQ-Helm/blob/main/values-development.yaml#L60)
 
-NOTE!: Copy in the FULL ABI including metadata like `_format` or `sourceName` etc.
+#### Deploy Helm
 
-2. Update the token metadata JSON in the root of the Helm directory. Make sure you've updated them with the latest Mock Link and Mock Dai contract addresses.
-
-3. Update the appropriate `values-[environment].yml` file in `OpenQ-Helm` with the new OpenQ, MockLink and MockDai contract addresses. These can be found in the values file at `.contracts.`
-
-4. Tag and push `OpenQ-Helm` to the target environment like so: 
+Tag and push `OpenQ-Helm` to the target environment like so: 
 
 | Environment      | Git Tag Command |
 | ----------- | ----------- |
@@ -274,17 +313,18 @@ NOTE!: Copy in the FULL ABI including metadata like `_format` or `sourceName` et
 | Staging      | `git tag -f staging && git push -f origin staging`       |
 | Production   | `git tag -f production && git push -f origin production`        |
 
-5. This will set off the CircleCI pipeline here to deploy: https://app.circleci.com/pipelines/github/OpenQDev/OpenQ-Helm. Confirm it has passed.
+This will set off the CircleCI pipeline [here](https://app.circleci.com/pipelines/github/OpenQDev/OpenQ-Helm.) to run a `helm upgrade` with the latest values.
 
-### 5. Update OPENQ_ADDRESS secret in Open Zeppelin Defender Autotask
+### Update OPENQ_ADDRESS secret in Open Zeppelin Defender Autotask
 
-### 6. Verify Deployment
+Go to [defender.openzeppelin.com](https://defender.openzeppelin.com/), login as an admin, and update the secret for the appropriate Autotask.
+
+### Verify Deployment
+
+If all went well, you should be able to see your changes for each environment at the following URLs:
 
 | Environment      | URL |
 | ----------- | ----------- |
 | Development      | [development.openq.dev](https://development.openq.dev)       |
 | Staging      | [staging.openq.dev](https://staging.openq.dev)       |
 | Production   | [app.openq.dev](https://app.openq.dev)        |
-
-# Pre-commit Checklist
-✅ Passes Husky Pre-commit ESLINT check

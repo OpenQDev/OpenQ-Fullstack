@@ -37,12 +37,14 @@ do
 done
 
 echo -e "${Red}NOTE:${Color_Off} ${Blue}You will need .env files in the root of the following repositories: ${Color_Off}" 
-echo -e ${Cyan}- OpenQ-Frontend${Color_Off}
-echo -e ${Cyan}- OpenQ-Oracle${Color_Off}
-echo -e ${Cyan}- OpenQ-Github-OAuth-Server${Color_Off}
-echo -e ${Cyan}- OpenQ-CoinAPI \n${Color_Off}
+echo -e ${Cyan}"- OpenQ-Frontend"${Color_Off}
+echo -e ${Cyan}"- OpenQ-Oracle"${Color_Off}
+echo -e ${Cyan}"- OpenQ-Contracts"${Color_Off}
+echo -e ${Cyan}"- OpenQ-Github-OAuth-Server"${Color_Off}
+echo -e ${Cyan}"- OpenQ-OZ-Claim-Autotask"${Color_Off}
+echo -e ${Cyan}"- OpenQ-CoinAPI\n"${Color_Off}
 
-echo -e ${Blue}No worries! See the README for instructions${Color_Off}
+echo -e ${Blue}"No worries! See the README for instructions\n"${Color_Off}
 
 docker stop $(docker ps -aq) && docker rm $(docker ps -aq)
-docker-compose -f docker-compose.yml up $2
+docker-compose -f docker-compose.yml up

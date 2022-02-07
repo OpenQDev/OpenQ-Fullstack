@@ -42,6 +42,8 @@ services:
     build:
       dockerfile: Dockerfile.dev
       context: ./OpenQ-OZ-Claim-Autotask
+    ports:
+      - "8070:8070"
     volumes:
       - /app/node_modules
       - ./OpenQ-OZ-Claim-Autotask:/app
