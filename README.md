@@ -42,11 +42,9 @@ Necessary Scopes:
 PAT=<YOUR PAT HERE>
 OPENQ_ID=5fbd39c6916b7efb63cc
 OPENQ_SUBGRAPH_HTTP_URL=http://localhost:8000/subgraphs/name/openqdev/openq
-OPENQ_SUBGRAPH_WEBSOCKET_URL=ws://localhost:8001/subgraphs/name/openqdev/openq
 BASE_URL=http://localhost:3000
 AUTH_URL=http://localhost:3001
 ORACLE_URL=http://localhost:8090
-API_URL=http://localhost:4000
 COIN_API_URL=http://localhost:8081
 ```
 
@@ -56,11 +54,9 @@ COIN_API_URL=http://localhost:8081
 PAT=<YOUR PAT HERE>
 OPENQ_ID=5fbd39c6916b7efb63cc
 OPENQ_SUBGRAPH_HTTP_URL=https://api.thegraph.com/subgraphs/name/openqdev/openq-development
-OPENQ_SUBGRAPH_WEBSOCKET_URL=ws://localhost:8001/subgraphs/name/openqdev/openq-development
 BASE_URL=http://localhost:3000
 AUTH_URL=http://localhost:3001
 ORACLE_URL=http://localhost:8090
-API_URL=http://localhost:4000
 COIN_API_URL=http://localhost:8081
 ```
 
@@ -74,9 +70,10 @@ See `.env.docker.sample`.
 PROVIDER_URL=http://ethnode:8545
 CHAIN_ID=31337
 BLOCK_EXPLORER_BASE_URL="https://mumbai.polygonscan.com"
-CLIENT=<WALLET_KEY>
-CONTRIBUTOR=<WALLET_KEY>
- # This doesnt actually matter when running locally
+CLIENT="0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80" # This is the Private Key of the first account on Hardhat Testnet. It is the account which deploys all the contracts, so it will be their owner.
+CONTRIBUTOR="0x5de4111afa1a4b94908f83103eb1f1706367c2e68ca870fc3fb9a804cdab365a" # This is the Private Key of the first address on Hardhat Testnet
+ORACLE_ADDRESS="0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266" # This is the Public Address of the first account on Hardhat Testnet.
+POLYGON_SCAN_API_KEY=VRQAIXQQ77P3D4SV5MT74DAQA27QGXVEBJ
 ```
 
 ### OpenQ-Github-OAuth-Server .env
@@ -84,11 +81,12 @@ Create a file called `.env` in the root of the `OpenQ-Github-OAuth-Server` proje
 
 ```bash
 OPENQ_ID=5fbd39c6916b7efb63cc
-OPENQ_SECRET=<get from admin>
+OPENQ_SECRET=<GET FROM ADMIN>
 ORIGIN_URL=http://localhost:3000
+COOKIE_SIGNER="entropydfnjd23"
 ```
 
-Contact @FlacoJones for the development OAuth client secret.
+Contact @FlacoJones for the local OAuth client secret.
 
 ### OpenQ-CoinAPI .env
 Create a file called `.env` in the root of the `OpenQ-CoinAPI` project.
@@ -99,18 +97,22 @@ REDIS_URL=redis
 ORIGIN_URL=http://localhost:3000
 ```
 
-### OpenQ-API .env
-Create a file called `.env` in the root of the `OpenQ-API` project.
-
-```bash
-DATABASE_CONNECTION_STRING="mongodb+srv://admin:<password>!@openq-mongo.y8tho.mongodb.net/user?retryWrites=true&w=majority"
-```
-
 ### OpenQ-Oracle .env
 Create a file called `.env` in the root of the `OpenQ-Oracle` project.
 
 ```bash
 ORIGIN_URL="http://localhost:3000"
+OZ_CLAIM_AUTOTASK_URL="http://openq-oz-claim-autotask:8070"
+```
+
+### OpenQ-OZ-Claim-Autotask .env
+Create a file called `.env` in the root of the `OpenQ-OZ-Claim-Autotask` project.
+
+```bash
+COOKIE_SIGNER="entropydfnjd23"
+OPENQ_ADDRESS="0xcf7ed3acca5a467e9e704c703e8d87f634fb0fc9"
+PROVIDER_URL="http://ethnode:8545"
+ORACLE_PRIVATE_KEY="0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80" # This is the Private Key of the first account on Hardhat Testnet.
 ```
 
 ### Booting Fullstack with docker-compose
@@ -131,7 +133,6 @@ Now that :
 | ----------- | ----------- |
 | OpenQ-Frontend      | localhost:3000       |
 | OpenQ-Graph   | http://localhost:8000/subgraphs/name/openqdev/openq        |
-| OpenQ-API      | localhost:4000       |
 | OpenQ-Oracle   | localhost:8090        |
 | OpenQ-Github-OAuth-Server   | localhost:3001        |
 | OpenQ-CoinAPI   | localhost:8081        |
@@ -205,6 +206,12 @@ NOTE!: Do NOT leave any private keys in the `.env.[environment]` file, as this w
 For [development.openq.dev](https://development.openq.dev): `yarn deploy:mumbai`
 For [staging.openq.dev]((https://staging.openq.dev)) and [app.openq.dev]((https://app.openq.dev)): `yarn deploy:polygon`
 
+4. The OpenQV0 Address must then be updated in 3 other areas
+
+- The Graph config
+- The Helm Values
+- The Open Zeppelin Autotask Secrets
+
 ### 2. Deploy Subgraph
 
 1. Update the `OpenQV0.json` ABI in `OpenQ-Graph/abis/OpenQV0.json` with those compiled to `OpenQ-Contracts/artifacts/contracts/OpenQ/Implementations/OpenQV0.sol/OpenQV0.json`.
@@ -269,7 +276,9 @@ NOTE!: Copy in the FULL ABI including metadata like `_format` or `sourceName` et
 
 5. This will set off the CircleCI pipeline here to deploy: https://app.circleci.com/pipelines/github/OpenQDev/OpenQ-Helm. Confirm it has passed.
 
-### 5. Verify Deployment
+### 5. Update OPENQ_ADDRESS secret in Open Zeppelin Defender Autotask
+
+### 6. Verify Deployment
 
 | Environment      | URL |
 | ----------- | ----------- |

@@ -3,7 +3,6 @@ OpenQ-Frontend/
 OpenQ-Oracle/
 OpenQ-Contracts/
 OpenQ-CoinAPI/
-OpenQ-API/
 OpenQ-Helm/
 OpenQ-JSON-RPC-Node/
 OpenQ-Kubeconfig/
@@ -13,7 +12,7 @@ OpenQ-Github-OAuth-Server/
 OpenQ-Graph-Node/
 OpenQ-Bot/
 OpenQ-Architecture/
-OpenQ-OZ-Claim-AutoTask/
+OpenQ-OZ-Claim-Autotask/
 
 # Data from The Graph Node's Postgres and IPFS
 data/
