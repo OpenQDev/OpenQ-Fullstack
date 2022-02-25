@@ -209,7 +209,9 @@ Copy the `.env.[environment]` into `.env` and enter with appropriate values.
 
 NOTE!: Do NOT leave any private keys in the `.env.[environment]` file, as this will be checked in. Always copy into `.env` first to ensure it is ignored.
 
-#### Fund Account for Deployment
+#### Fund Account for Deployment with MATIC, Mock ChainLink and Dummy ERC20
+
+Use the [Mumbai Polygon Faucet](https://faucet.polygon.technology/) to send Test ERC20 (PoS), mock ChainLink Token, and mock MATIC to both CLIENT and CONTRIBUTOR.
 
 Ensure both the account for `CLIENT` and `CONTRIBUTOR` have enough MATIC to pay for gas. Should be no more than a 2-3 MATIC.
 
