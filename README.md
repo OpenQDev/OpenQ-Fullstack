@@ -311,9 +311,9 @@ Tag and push `OpenQ-Helm` to the target environment like so:
 
 | Environment      | Git Tag Command |
 | ----------- | ----------- |
-| Development      | `git tag -f development && git push -f origin development`       |
-| Staging      | `git tag -f staging && git push -f origin staging`       |
-| Production   | `git tag -f production && git push -f origin production`        |
+| Development      | `git tag -f development-RELEASE-NUMBER && git push -f origin development-RELEASE-NUMBER`       |
+| Staging      | `git tag -f staging-RELEASE-NUMBER && git push -f origin staging-RELEASE-NUMBER`       |
+| Production   | `git tag -f production-RELEASE-NUMBER && git push -f origin production-RELEASE-NUMBER`        |
 
 This will set off the CircleCI pipeline [here](https://app.circleci.com/pipelines/github/OpenQDev/OpenQ-Helm.) to run a `helm upgrade` with the latest values.
 
