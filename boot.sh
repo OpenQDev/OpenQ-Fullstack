@@ -46,5 +46,10 @@ echo -e ${Cyan}"- OpenQ-CoinAPI\n"${Color_Off}
 
 echo -e ${Blue}"No worries! See the README for instructions\n"${Color_Off}
 
+# Save a local file of the openq launched containers for later deletion and removal
+
+echo -e ${Cyan}"Starting all OpenQ containers from scratch..."${Color_Off}
 docker stop $(docker ps -aq) && docker rm $(docker ps -aq)
+echo -e ${Cyan}"Removed stale OpenQ containers. Booting new..."${Color_Off}
+
 docker-compose -f docker-compose.yml up

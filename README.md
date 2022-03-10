@@ -217,8 +217,11 @@ Ensure both the account for `CLIENT` and `CONTRIBUTOR` have enough MATIC to pay 
 
 #### Run Deployment Script for Target Environment
 
-For [development.openq.dev](https://development.openq.dev): `yarn deploy:mumbai`
-For [staging.openq.dev]((https://staging.openq.dev)) and [app.openq.dev]((https://app.openq.dev)): `yarn deploy:polygon`
+| Environment      | Deploy Script |
+| ----------- | ----------- |
+| Development      | `yarn deploy:mumbai`       |
+| Staging      | `yarn deploy:polygon`       |
+| Production   | `yarn deploy:polygon`        |
 
 #### Update OpenQV0 Address
 
@@ -229,6 +232,14 @@ There are three places which will need the new OpenQV0 contract address:
 - [Helm values](https://github.com/OpenQDev/OpenQ-Helm/blob/main/values-development.yaml#L60)
 
 We will cover this below for each service.
+
+## Verify Contracts
+
+| Environment      | Deploy Script |
+| ----------- | ----------- |
+| Development      | ``npx hardhat verify OPENQ_IMPLEMENTATION_ADDRESS --network mumbai``       |
+| Staging      | ``npx hardhat verify OPENQ_IMPLEMENTATION_ADDRESS --network polygon``       |
+| Production   | ``npx hardhat verify OPENQ_IMPLEMENTATION_ADDRESS --network polygon``        |
 
 ### Deploy OpenQ Subgraph
 
@@ -317,9 +328,15 @@ Tag and push `OpenQ-Helm` to the target environment like so:
 
 This will set off the CircleCI pipeline [here](https://app.circleci.com/pipelines/github/OpenQDev/OpenQ-Helm.) to run a `helm upgrade` with the latest values.
 
-### Update OPENQ_ADDRESS secret in Open Zeppelin Defender Autotask
+### Update OPENQ_ADDRESS_[ENVIRONMENT] secret in Open Zeppelin Defender Autotask
 
-Go to [defender.openzeppelin.com](https://defender.openzeppelin.com/), login as an admin, and update the secret for the appropriate Autotask.
+Go to [defender.openzeppelin.com](https://defender.openzeppelin.com/), login as an admin, and update the correct secret for the correct Autotask.
+
+| Environment      | Deploy Script |
+| ----------- | ----------- |
+| Development      | `OPENQ_ADDRESS_DEVELOPMENT`       |
+| Staging      | `OPENQ_ADDRESS_STAGING`       |
+| Production   | `OPENQ_ADDRESS_PRODUCTION`        |
 
 ### Verify Deployment
 
