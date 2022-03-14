@@ -109,6 +109,7 @@ services:
       context: ./OpenQ-Graph
     volumes:
       - /app/node_modules
+      - ./OpenQ-Graph:/app
   graph-node:
     container_name: graph_node
     image: graphprotocol/graph-node
