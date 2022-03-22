@@ -32,6 +32,16 @@ Let's add .env files to each repository now.
 
 Follow the below VERY closely.
 
+### OpenQ-API .env
+
+In the root of `OpenQ-API`, create a `.env` file.
+
+Copy the following from `.env.sample` to `.env`. Please don't delete `.env.sample`.
+
+```bash
+DATABASE_CONNECTION_STRING="mongodb+srv://admin:<password>!@openq-mongo.y8tho.mongodb.net/user?retryWrites=true&w=majority"
+```
+
 ### OpenQ-Frontend .env
 
 In the root of `OpenQ-Frontend`, create a `.env` file.
@@ -158,6 +168,8 @@ I suggest using [Postman](https://www.postman.com/) if you'd like to hit a servi
 | Redis   | localhost:6379       |
 | OpenQ-JSON-RPC-Node   | localhost:8545       |
 | OpenQ-OZ-Claim-Autotask   | localhost:8070       |
+| MongoDB   | localhost:27017       |
+| Mongo-Express UI   | localhost:8089       |
 
 ## Helpful Docker Commands
 

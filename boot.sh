@@ -26,6 +26,7 @@ declare -a repos=("OpenQ-Oracle"
 								"OpenQ-Graph"
                 "OpenQ-Kubeconfig"
 								"OpenQ-Bot"
+								"OpenQ-API"
 								"OpenQ-Architecture"
 								"OpenQ-OZ-Claim-Autotask"
                 )
