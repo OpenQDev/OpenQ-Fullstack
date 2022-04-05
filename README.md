@@ -330,6 +330,10 @@ In the appropriate values file, update the OpenQV0 address [here](https://github
 
 #### Deploy Helm
 
+```bash
+git add . && git commit -m "commit message"
+```
+
 Tag and push `OpenQ-Helm` to the target environment like so: 
 
 | Environment      | Git Tag Command |
