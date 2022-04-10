@@ -4,9 +4,7 @@
 - switch to appropriate branch
 
 1. deploy contracts
-- 
-- deploy block in .env.contracts
-- contract addresses in .env.contracts
+- contract addresses and deploy block in .env.contracts
 
 2. update OpenQ ABIs
 Update ABIs
