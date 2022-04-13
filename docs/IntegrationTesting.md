@@ -139,3 +139,11 @@ You can use the following issue's with several pull request references or no ref
 ---
 #### ✅ Check Console
 - No errors printed during any of the above activites
+
+## Make Pull Request with All Discovered Bugs
+
+Create a PR in the respective repo with the title:
+
+`Integration Test - GITHUB_NAME - DATE`
+
+List all issues found, and link to the sub-issue you created to address these issues
