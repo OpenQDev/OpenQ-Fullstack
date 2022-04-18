@@ -92,10 +92,16 @@ Attempt funding a bounty with all of the following **NINE** combinations:
 | Connected w/ Incorrect Network   | User's Balance Too Low        |
 | Connected w/ Correct Network   | Valid Balance        |
 
-#### ✅ Fund a bounty successfully after confirming the above.
-- Show confirmation with correct information on funding amount, bounty address, 
-- Shows Approve modal and loader if ERC20
-- Shows Transfer immediately if MATIC
+#### ✅ Fund a bounty with MATIC successfully after confirming the above.
+- Show confirmation with correct information on funding amount, token and bounty address.
+- Shows Transfer MATIC
+- Shows Success modal
+- Dismisses Success modal
+- Return to BountyDetails shows the new deposit and correct TVL updated
+
+#### ✅ Fund a bounty with ERC20 successfully after confirming the above.
+- Show confirmation with correct information on funding amount, token and bounty address.
+- Shows Approve modal and loader
 - Shows Transfer modal after Approval txn is confirmed
 - Shows Success modal
 - Dismisses Success modal
