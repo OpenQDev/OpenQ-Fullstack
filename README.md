@@ -145,7 +145,7 @@ Copy the following from `.env.sample` to `.env`. Please don't delete `.env.sampl
 
 ```bash
 COOKIE_SIGNER="entropydfnjd23"
-OPENQ_ADDRESS="0xcf7ed3acca5a467e9e704c703e8d87f634fb0fc9"
+OPENQ_PROXY_ADDRESS="0xcf7ed3acca5a467e9e704c703e8d87f634fb0fc9"
 PROVIDER_URL="http://ethnode:8545"
 ORACLE_PRIVATE_KEY="0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80" # This is the Private Key of the first account on Hardhat Testnet.
 ```

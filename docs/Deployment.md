@@ -21,7 +21,7 @@ Use the [Mumbai Polygon Faucet](https://faucet.polygon.technology) to send the f
 | Staging      | `yarn deploy:polygon`       |
 | Production   | `yarn deploy:polygon`        |
 
-__*Note*__: `OPENQ_ADDRESS` output to `.env.contracts`
+__*Note*__: `OPENQ_PROXY_ADDRESS` output to `.env.contracts`
 
 ### 1.4 Update OpenQV0 Addresses
 
@@ -40,12 +40,12 @@ There are three places which will need the new OpenQV0 contract address:
 
 | Environment      | Deploy Script |
 | ----------- | ----------- |
-| Development      | `OPENQ_ADDRESS_DEVELOPMENT`       |
-| Staging      | `OPENQ_ADDRESS_STAGING`       |
-| Production   | `OPENQ_ADDRESS_PRODUCTION`        |
+| Development      | `OPENQ_PROXY_ADDRESS_DEVELOPMENT`       |
+| Staging      | `OPENQ_PROXY_ADDRESS_STAGING`       |
+| Production   | `OPENQ_PROXY_ADDRESS_PRODUCTION`        |
 
 #### Helm
-- Update the `OPENQ_ADDRESS` value at `Values.contracts.OPENQ_ADDRESS` in the [Helm values YAML](https://github.com/OpenQDev/OpenQ-Helm/blob/main/values-development.yaml#L60)
+- Update the `OPENQ_PROXY_ADDRESS` value at `Values.contracts.OPENQ_PROXY_ADDRESS` in the [Helm values YAML](https://github.com/OpenQDev/OpenQ-Helm/blob/main/values-development.yaml#L60)
 
 ### 1.4 Update OpenQV0 ABI
 
@@ -159,7 +159,7 @@ git push origin development-0.2.0
 
 ```bash
 git add .
-git commit -m "updates OpenQ-Frontend to development-0.3.12, updates OPENQ_ADDRESS to 0x994EDF928B9306F88339C08a1B37424719cc09C6"
+git commit -m "updates OpenQ-Frontend to development-0.3.12, updates OPENQ_PROXY_ADDRESS to 0x994EDF928B9306F88339C08a1B37424719cc09C6"
 git push
 ```
 
