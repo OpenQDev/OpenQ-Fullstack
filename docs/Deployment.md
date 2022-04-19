@@ -44,8 +44,14 @@ There are three places which will need the new OpenQV0 contract address:
 | Staging      | `OPENQ_PROXY_ADDRESS_STAGING`       |
 | Production   | `OPENQ_PROXY_ADDRESS_PRODUCTION`        |
 
-#### Helm
-- Update the `OPENQ_PROXY_ADDRESS` value at `Values.contracts.OPENQ_PROXY_ADDRESS` in the [Helm values YAML](https://github.com/OpenQDev/OpenQ-Helm/blob/main/values-development.yaml#L60)
+#### OpenQ-Frontend .env.<ENVIRONMENT> file
+
+Updating the OPENQ_PROXY_ADDRESS in the frontend requires rebuilding the image.
+
+- Take `.env.<ENVIRONMENT>.sample` file
+- Update `OPENQ_PROXY_ADDRESS` to the new address
+- `base64 .env.<ENVIRONMENT>.sample`
+- In CircleCI, update the <environment>_env file with the new base64 encoded value
 
 ### 1.4 Update OpenQV0 ABI
 
