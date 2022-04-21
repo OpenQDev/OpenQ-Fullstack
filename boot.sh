@@ -15,8 +15,9 @@ else
 fi
 }
 
-declare -a repos=("OpenQ-Oracle"
+declare -a repos=(
                 "OpenQ-CoinAPI"
+								"OpenQ-Oracle"
                 "OpenQ-Frontend" 
                 "OpenQ-Contracts"
                 "OpenQ-Github-OAuth-Server"
