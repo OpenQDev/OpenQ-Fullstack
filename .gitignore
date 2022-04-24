@@ -15,6 +15,7 @@ OpenQ-Architecture/
 OpenQ-OZ-Claim-Autotask/
 OpenQ-Careers/
 OpenQ-API/
+OpenQ-Github-Proxy/
 
 # Data from The Graph Node's Postgres and IPFS
 data/
