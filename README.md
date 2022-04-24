@@ -63,7 +63,7 @@ In the root of `OpenQ-Frontend`, create a `.env` file.
 Copy the following from `.env.sample` to `.env` and include your GitHub Personal Access Token. Please don't delete `.env.sample`.
 
 ```bash
-PAT=<PAT HERE>
+PATS=<PAT HERE>
 OPENQ_ID=5fbd39c6916b7efb63cc
 OPENQ_SUBGRAPH_HTTP_URL=http://localhost:8000/subgraphs/name/openqdev/openq
 BASE_URL=http://localhost:3000
@@ -134,7 +134,7 @@ Copy the following from `.env.sample` to `.env`. Please don't delete `.env.sampl
 
 ```bash
 ORIGIN_URL="http://localhost:3000"
-OZ_CLAIM_AUTOTASK_URL="http://openq-oz-claim-autotask:8070"f
+OZ_CLAIM_AUTOTASK_URL="http://openq-oz-claim-autotask:8070"
 ```
 
 ### 2.7 OpenQ-OZ-Claim-Autotask .env
