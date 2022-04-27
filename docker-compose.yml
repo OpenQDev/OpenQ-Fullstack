@@ -124,23 +124,6 @@ services:
       context: ./OpenQ-Graph
     volumes:
       - /app/node_modules
-  openq-api:
-    container_name: openq-api
-    depends_on:
-      - openq_subgraph_deployer
-      - openq-json-rpc-node
-      - openq-contracts
-      - openq-coinapi
-    build:
-      dockerfile: Dockerfile.dev
-      context: ./OpenQ-API
-    env_file:
-      - ./OpenQ-API/.env
-    ports:
-      - "4000:4000"
-    volumes:
-      - /app/node_modules
-      - ./OpenQ-API:/app
   graph-node:
     container_name: graph_node
     image: graphprotocol/graph-node
@@ -178,4 +161,22 @@ services:
     environment:
       POSTGRES_USER: graph-node
       POSTGRES_PASSWORD: let-me-in
-      POSTGRES_DB: graph-node
+      POSTGRES_DB: graph-node  
+  openq-api:
+    container_name: openq-api
+    depends_on:
+      - openq_subgraph_deployer
+      - openq-json-rpc-node
+      - openq-contracts
+      - openq-coinapi
+      - graph-node
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./OpenQ-API
+    env_file:
+      - ./OpenQ-API/.env
+    ports:
+      - "4000:4000"
+    volumes:
+      - /app/node_modules
+      - ./OpenQ-API:/app
