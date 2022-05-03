@@ -124,6 +124,7 @@ services:
       context: ./OpenQ-Graph
     volumes:
       - /app/node_modules
+      - ./OpenQ-Contracts/.env.contracts:/app/.env.contracts
   graph-node:
     container_name: graph_node
     image: graphprotocol/graph-node
