@@ -34,20 +34,6 @@ services:
       - /app/node_modules
       - ./OpenQ-Oracle:/app
       - ./OpenQ-Contracts/artifacts:/app/artifacts
-  # mongo:
-  #   image: mongo
-  #   restart: always
-  #   ports:
-  #     - 27017:27017
-  # mongo-express:
-  #   image: mongo-express
-  #   restart: always
-  #   ports:
-  #     - 8089:8081
-  #   environment:
-  #     ME_CONFIG_MONGODB_ADMINUSERNAME: root
-  #     ME_CONFIG_MONGODB_ADMINPASSWORD: example
-  #     ME_CONFIG_MONGODB_URL: mongodb://mongo:27017
   openq-oz-claim-autotask:
     container_name: openq-oz-claim-autotask
     depends_on:
@@ -76,12 +62,26 @@ services:
       - ./OpenQ-CoinAPI:/app
     env_file:
       - ./OpenQ-CoinAPI/.env
+  # openq-event-listener:
+  #   container_name: openq-event-listener
+  #   depends_on:
+  #     - openq-json-rpc-node
+  #     - openq-contracts
+  #   build:
+  #     dockerfile: Dockerfile.dev
+  #     context: ./OpenQ-Event-Listener
+  #   volumes:
+  #     - /app/node_modules
+  #     - ./OpenQ-Event-Listener:/app
+  #   env_file:
+  #     - ./OpenQ-Event-Listener/.env
+  #     - ./OpenQ-Contracts/.env.contracts
   openq-frontend:
     container_name: openq-frontend
     depends_on:
       - openq-json-rpc-node
       - openq-contracts
-      # - openq-api
+      - openq-api
     build:
       dockerfile: Dockerfile.dev
       context: ./OpenQ-Frontend
@@ -108,6 +108,18 @@ services:
     volumes:
       - /app/node_modules
       - ./OpenQ-Github-OAuth-Server:/app
+  openq-github-bot:
+    container_name: openq-github-bot
+    build:
+      dockerfile: Dockerfile
+      context: ./OpenQ-Bot
+    env_file:
+      - ./OpenQ-Bot/.env
+    ports:
+      - "3002:3002"
+    volumes:
+      - /app/node_modules
+      - ./OpenQ-Bot:/app
   redis:
     container_name: redis
     image: redis:6.2.6-alpine
@@ -163,21 +175,21 @@ services:
       POSTGRES_USER: graph-node
       POSTGRES_PASSWORD: let-me-in
       POSTGRES_DB: graph-node
-  # openq-api:
-  #   container_name: openq-api
-  #   depends_on:
-  #     - openq_subgraph_deployer
-  #     - openq-json-rpc-node
-  #     - openq-contracts
-  #     - openq-coinapi
-  #     - graph-node
-  #   build:
-  #     dockerfile: Dockerfile.dev
-  #     context: ./OpenQ-API
-  #   env_file:
-  #     - ./OpenQ-API/.env
-  #   ports:
-  #     - "4000:4000"
-  #   volumes:
-  #     - /app/node_modules
-  #     - ./OpenQ-API:/app
+  openq-api:
+    container_name: openq-api
+    depends_on:
+      - openq_subgraph_deployer
+      - openq-json-rpc-node
+      - openq-contracts
+      - openq-coinapi
+      - graph-node
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./OpenQ-API
+    env_file:
+      - ./OpenQ-API/.env
+    ports:
+      - "4000:4000"
+    volumes:
+      - /app/node_modules
+      - ./OpenQ-API:/app

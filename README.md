@@ -70,6 +70,7 @@ BASE_URL=http://localhost:3000
 AUTH_URL=http://localhost:3001
 ORACLE_URL=http://localhost:8090
 COIN_API_URL=http://localhost:8081
+GITHUB_BOT_WEBHOOK=http://localhost:3002
 ```
 
 ### 2.2 OpenQ-API .env
@@ -78,9 +79,23 @@ In the root of `OpenQ-API`, create a `.env` file.
 
 Copy the following from `.env.sample` to `.env`. Please don't delete `.env.sample`.
 
+You can provision a simple MongoDB sandbox using [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
+
 ```bash
 DATABASE_CONNECTION_STRING="mongodb+srv://admin:<password>!@openq-mongo.y8tho.mongodb.net/user?retryWrites=true&w=majority"
 ```
+
+### 2.3 OpenQ-Bot .env
+WEBHOOK_PROXY_URL=https://smee.io/WMnksHYL5cTB4NI
+BASE_URL="http://localhost:3000"
+APP_ID=188745
+PORT=3002
+DEPLOY_ENV=localhost
+PRIVATE_KEY=<Get from admin>
+WEBHOOK_SECRET=<Get from admin>
+GITHUB_CLIENT_ID=<Get from admin>
+GITHUB_CLIENT_SECRET=<Get from admin>
+PAT=<Get from admin>
 
 ### 2.3 OpenQ-Contracts .env
 

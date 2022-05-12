@@ -17,6 +17,7 @@ OpenQ-Careers/
 OpenQ-API/
 OpenQ-Github-Proxy/
 OpenQ-Documentation/
+OpenQ-Event-Listener/
 
 # Data from The Graph Node's Postgres and IPFS
 data/
