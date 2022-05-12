@@ -62,20 +62,6 @@ services:
       - ./OpenQ-CoinAPI:/app
     env_file:
       - ./OpenQ-CoinAPI/.env
-  # openq-event-listener:
-  #   container_name: openq-event-listener
-  #   depends_on:
-  #     - openq-json-rpc-node
-  #     - openq-contracts
-  #   build:
-  #     dockerfile: Dockerfile.dev
-  #     context: ./OpenQ-Event-Listener
-  #   volumes:
-  #     - /app/node_modules
-  #     - ./OpenQ-Event-Listener:/app
-  #   env_file:
-  #     - ./OpenQ-Event-Listener/.env
-  #     - ./OpenQ-Contracts/.env.contracts
   openq-frontend:
     container_name: openq-frontend
     depends_on:
@@ -108,18 +94,6 @@ services:
     volumes:
       - /app/node_modules
       - ./OpenQ-Github-OAuth-Server:/app
-  openq-github-bot:
-    container_name: openq-github-bot
-    build:
-      dockerfile: Dockerfile
-      context: ./OpenQ-Bot
-    env_file:
-      - ./OpenQ-Bot/.env
-    ports:
-      - "3002:3002"
-    volumes:
-      - /app/node_modules
-      - ./OpenQ-Bot:/app
   redis:
     container_name: redis
     image: redis:6.2.6-alpine
