@@ -4,7 +4,7 @@ Welcome to OpenQ! The world's simplest crypto-powered bounty system.
 
 Let's get you started.
 
-## 1 Clone All Repositories
+## 1 Clone All OpenQ Microservices
 
 The OpenQ fullstack consists of several containerized microservices and a local JSON RPC Ethereum node.
 
@@ -24,27 +24,21 @@ To do so on Linux or Mac run:
 chmod u+x boot.sh
 ```
 
-To do so on Windows run:
-
-```bash
-chmod u+x boot.sh
-```
-
 ## 2 Populate `.env` Files
 
 After running `boot.sh` you'll see the error:
 
-`NOTE: You will need .env files in the root of the following repositories:`
+NOTE: You will need .env files in the root of the following repositories:`
 
-There are SEVEN .env files that must be added for OpenQ-Fullstack to boot locally
+There are SEVEN .env files that must be added for OpenQ-Fullstack to boot locally.
 
 Let's add .env files to each repository now.
 
 Follow the below VERY closely.
 
-### 2.2 OpenQ-Frontend .env
+### 2.1 OpenQ-Frontend .env
 
-#### 2.2.1 Get a GitHub Personal Access Token (PAT)
+#### Get a GitHub Personal Access Token (PAT)
 
 You can get a GitHub Personal Access Token (PAT) [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
 
@@ -56,52 +50,53 @@ read:org
 read:user
 ```
 
-#### 2.2.2 Populate .env (including GitHub Personal Access Token)
+#### Populate .env with your GitHub Personal Access Token (PAT)
 
 In the root of `OpenQ-Frontend`, create a `.env` file.
 
-Copy the following from `.env.sample` to `.env` and include your GitHub Personal Access Token. Please don't delete `.env.sample`.
+Copy the following from `.env.sample` to `.env`.
 
 ```bash
-PATS=<PAT HERE>
-OPENQ_ID=5fbd39c6916b7efb63cc
+INFURA_KEY=<MAINNET INFURA KEY HERE>
+PROVIDER_URL="https://polygon-mainnet.g.alchemy.com/v2/oVtMdlzWuMxqRtshcF74cnHZ22iXZJGb"
 OPENQ_SUBGRAPH_HTTP_URL=http://localhost:8000/subgraphs/name/openqdev/openq
 BASE_URL=http://localhost:3000
 AUTH_URL=http://localhost:3001
 ORACLE_URL=http://localhost:8090
+OPENQ_API_URL=http://localhost:4000
 COIN_API_URL=http://localhost:8081
-GITHUB_BOT_WEBHOOK=http://localhost:3002
+BLOCK_EXPLORER_BASE_URL="https://mumbai.polygonscan.com"
+OPENQ_ID=5fbd39c6916b7efb63cc
+PATS=<PAT HERE>
 ```
+
+> **_NOTE:_** The name of the Personal Access Token environment variable is `PATS` since you can include multiple comma-separated PATs to be cycled through.
 
 ### 2.2 OpenQ-API .env
 
 In the root of `OpenQ-API`, create a `.env` file.
 
-Copy the following from `.env.sample` to `.env`. Please don't delete `.env.sample`.
+You can provision a simple MongoDB sandbox using MongoDB Atlas by following the instructions [here](https://www.mongodb.com/docs/atlas/getting-started/).
 
-You can provision a simple MongoDB sandbox using [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
+Copy the following from `.env.sample` to `.env`.
 
 ```bash
-DATABASE_CONNECTION_STRING="mongodb+srv://admin:<password>!@openq-mongo.y8tho.mongodb.net/user?retryWrites=true&w=majority"
+DATABASE_URL="mongodb+srv://<USER>:<PASSWORD>@<CLUSTER_NAME>/openqdb?retryWrites=true&w=majority"
 ```
 
-### 2.3 OpenQ-Bot .env
-WEBHOOK_PROXY_URL=https://smee.io/WMnksHYL5cTB4NI
-BASE_URL="http://localhost:3000"
-APP_ID=188745
-PORT=3002
-DEPLOY_ENV=localhost
-PRIVATE_KEY=<Get from admin>
-WEBHOOK_SECRET=<Get from admin>
-GITHUB_CLIENT_ID=<Get from admin>
-GITHUB_CLIENT_SECRET=<Get from admin>
-PAT=<Get from admin>
+This connects USER Connect to a database in CLUSTER_NAME called `openqdb`.
+
+An example complete `DATABASE_URL` would look like:
+
+```bash
+DATABASE_URL="mongodb+srv://admin:admin123!@local.9kxsm.mongodb.net/openqdb?retryWrites=true&w=majority"
+```
 
 ### 2.3 OpenQ-Contracts .env
 
 In the root of `OpenQ-Contracts`, create a `.env` file.
 
-Copy the following from `.env.sample` to `.env`. Please don't delete `.env.sample`.
+Copy the following from `.env.sample` to `.env`.
 
 ```bash
 PROVIDER_URL=http://ethnode:8545
@@ -117,7 +112,7 @@ POLYGON_SCAN_API_KEY=VRQAIXQQ77P3D4SV5MT74DAQA27QGXVEBJ
 
 In the root of `OpenQ-Github-OAuth-Server`, create a `.env` file.
 
-Copy the following from `.env.sample` to `.env`. Please don't delete `.env.sample`.
+Copy the following from `.env.sample` to `.env`.
 
 ```bash
 OPENQ_ID=5fbd39c6916b7efb63cc
@@ -134,7 +129,7 @@ We cannot include the OAuth Client Secret in the OpenQ-Github-OAuth-Server `.env
 
 In the root of `OpenQ-CoinAPI`, create a `.env` file.
 
-Copy the following from `.env.sample` to `.env`. Please don't delete `.env.sample`.
+Copy the following from `.env.sample` to `.env`.
 
 ```bash
 REDIS_URL=redis
@@ -145,7 +140,7 @@ ORIGIN_URL=http://localhost:3000
 
 In the root of `OpenQ-Oracle`, create a `.env` file.
 
-Copy the following from `.env.sample` to `.env`. Please don't delete `.env.sample`.
+Copy the following from `.env.sample` to `.env`.
 
 ```bash
 ORIGIN_URL="http://localhost:3000"
@@ -160,17 +155,31 @@ Copy the following from `.env.sample` to `.env`. Please don't delete `.env.sampl
 
 ```bash
 COOKIE_SIGNER="entropydfnjd23"
-OPENQ_PROXY_ADDRESS="0xcf7ed3acca5a467e9e704c703e8d87f634fb0fc9"
+OPENQ_PROXY_ADDRESS="0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9"
 PROVIDER_URL="http://ethnode:8545"
 ORACLE_PRIVATE_KEY="0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80" # This is the Private Key of the first account on Hardhat Testnet.
+PAT=<YOUR PAT HERE>
 ```
 
 ## 3 Boot OpenQ-Fullstack
-- Run `./boot.sh`
 
-## 4 Access Services
+In the `OpenQ-Fullstack/` root directory, run:
 
-Navigate to [http://localhost:3000](http://localhost:3000)
+```bash
+./boot.sh
+```
+
+This starts the `docker-compose.yml` file you can find in `OpenQ-Fullstack/docker-compose.yml`.
+
+## 4 Connect Metamask to Local Testnet
+
+The OpenQ-Fullstack Boot will prepare a Hardhat Testnet on your machine at `http://localhost:8545`.
+
+Add this Custom Network RPC URL by following the instructions [here](https://metamask.zendesk.com/hc/en-us/articles/360043227612-How-to-add-a-custom-network-RPC).
+
+## 5 Access Services
+
+You can view the frontend by navigating to [http://localhost:3000](http://localhost:3000).
 
 Each service will also be exposed to your localhost at the following URLs for individual testing.
 
@@ -179,12 +188,11 @@ I suggest using [Postman](https://www.postman.com/) if you'd like to hit a servi
 | OpenQ Service      | URL |
 | ----------- | ----------- |
 | OpenQ-Frontend      | localhost:3000       |
-| OpenQ-Graph   | http://localhost:8000/subgraphs/name/openqdev/openq        |
+| OpenQ-API   | localhost:4000        |
 | OpenQ-Oracle   | localhost:8090        |
 | OpenQ-Github-OAuth-Server   | localhost:3001        |
 | OpenQ-CoinAPI   | localhost:8081        |
-| Redis   | localhost:6379       |
+| OpenQ-Graph   | http://localhost:8000/subgraphs/name/openqdev/openq        |
 | OpenQ-JSON-RPC-Node   | localhost:8545       |
 | OpenQ-OZ-Claim-Autotask   | localhost:8070       |
-| MongoDB   | localhost:27017       |
-| Mongo-Express UI   | localhost:8089       |
+| Redis   | localhost:6379       |
