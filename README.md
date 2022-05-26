@@ -68,6 +68,9 @@ COIN_API_URL=http://localhost:8081
 BLOCK_EXPLORER_BASE_URL="https://mumbai.polygonscan.com"
 OPENQ_ID=5fbd39c6916b7efb63cc
 PATS=<PAT HERE>
+
+OPENQ_API_SSR_URL=http://openq-api:4000
+OPENQ_SUBGRAPH_SSR_HTTP_URL=http://graph_node:8000/subgraphs/name/openqdev/openq
 ```
 
 > **_NOTE:_** The name of the Personal Access Token environment variable is `PATS` since you can include multiple comma-separated PATs to be cycled through.
@@ -150,6 +153,14 @@ OZ_CLAIM_AUTOTASK_URL="http://openq-oz-claim-autotask:8070"
 ### 2.7 OpenQ-OZ-Claim-Autotask .env
 
 In the root of `OpenQ-OZ-Claim-Autotask`, create a `.env` file.
+
+You will need to create a GitHub Personal Access Token with these scopes:
+
+```bash
+public_repo
+read:org
+read:user
+```
 
 Copy the following from `.env.sample` to `.env`. Please don't delete `.env.sample`.
 
