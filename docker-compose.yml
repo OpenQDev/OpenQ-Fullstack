@@ -42,6 +42,9 @@ services:
     build:
       dockerfile: Dockerfile.dev
       context: ./OpenQ-OZ-Claim-Autotask
+    env_file:
+      - ./OpenQ-OZ-Claim-Autotask/.env
+      - ./OpenQ-Contracts/.env.contracts
     ports:
       - "8070:8070"
     volumes:
