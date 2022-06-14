@@ -18,7 +18,6 @@ OpenQ-API/
 OpenQ-Github-Proxy/
 OpenQ-Documentation/
 OpenQ-Bounty-Actions-Autotask/
-OpenQ-API-Autotask/
 
 # Data from The Graph Node's Postgres and IPFS
 data/
