@@ -84,7 +84,6 @@ services:
       - /app/node_modules
       - ./OpenQ-Frontend:/app
       - ./OpenQ-Contracts/artifacts:/app/artifacts
-    entrypoint: [ "yarn", "boot:${DEPLOY_ENV}" ]
   github-oauth-server:
     container_name: github-oauth-server
     build:
