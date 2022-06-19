@@ -3,8 +3,6 @@
 chmod u+x asciiart.sh
 ./asciiart.sh
 
-export DEPLOY_ENV=docker
-
 clone() {
 if [ -d "./$1" ] 
 then
