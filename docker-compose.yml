@@ -65,6 +65,35 @@ services:
       - ./OpenQ-CoinAPI:/app
     env_file:
       - ./OpenQ-CoinAPI/.env
+  openq-event-listener:
+    container_name: openq-event-listener
+    depends_on:
+      - openq-json-rpc-node
+      - openq-contracts
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./OpenQ-Event-Listener
+    volumes:
+      - /app/node_modules
+      - ./OpenQ-Event-Listener:/app
+    env_file:
+      - ./OpenQ-Event-Listener/.env
+      - ./OpenQ-Contracts/.env.contracts
+  openq-bounty-actions-autotask:
+    container_name: openq-bounty-actions-autotask
+    depends_on:
+      - openq-json-rpc-node
+      - openq-contracts
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./OpenQ-Bounty-Actions-Autotask
+    ports:
+      - "8075:8075"
+    volumes:
+      - /app/node_modules
+      - ./OpenQ-Bounty-Actions-Autotask:/app
+    env_file:
+      - ./OpenQ-Bounty-Actions-Autotask/.env
   openq-frontend:
     container_name: openq-frontend
     depends_on:

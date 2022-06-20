@@ -30,6 +30,7 @@ declare -a repos=(
 								"OpenQ-OZ-Claim-Autotask"
 								"OpenQ-Documentation"
 								"OpenQ-Bounty-Actions-Autotask"
+								"OpenQ-Event-Listener"
                 )
 
 for repo in "${repos[@]}"
