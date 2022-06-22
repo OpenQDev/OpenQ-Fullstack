@@ -1,0 +1,26 @@
+version: "3"
+services:
+  openq-api:
+    container_name: openq-api
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./OpenQ-API
+    env_file:
+      - ./OpenQ-API/.env
+    ports:
+      - "4000:4000"
+    volumes:
+      - /app/node_modules
+      - ./OpenQ-API:/app
+  openq-token-price-chron:
+    container_name: openq-token-price-chron
+    depends_on:
+      - openq-api
+    build:
+      dockerfile: Dockerfile
+      context: ./OpenQ-Token-Price-Chron
+    env_file:
+      - ./OpenQ-Token-Price-Chron/.env
+    volumes:
+      - /app/node_modules
+      - ./OpenQ-Token-Price-Chron:/app
