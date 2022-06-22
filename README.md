@@ -172,6 +172,32 @@ ORACLE_PRIVATE_KEY="0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4
 PAT=<YOUR PAT HERE>
 ```
 
+### 2.8 OpenQ-Event-Listener .env
+
+In the root of `OpenQ-Event-Listener`, create a `.env` file.
+
+Copy the following from `.env.sample` to `.env`.
+
+```bash
+PROVIDER_URL='http://ethnode:8545'
+GITHUB_BOT_SECRET=
+OPENQ_API_SECRET="secret123!"
+OPENQ_ADDRESS=0x5FC8d32690cc91D4c39d9d3abcBD16989F875707
+OPENQ_BOUNTY_ACTIONS_AUTOTASK_URL='http://openq-bounty-actions-autotask:8075'
+LOCAL_EVENT_LISTENER_ID='local'
+```
+
+### 2.9 OpenQ-Bounty-Actions-Autotask .env
+
+In the root of `OpenQ-Event-Listener`, create a `.env` file.
+
+Copy the following from `.env.sample` to `.env`.
+
+```bash
+GITHUB_BOT_SECRET="a5d5a4d787f816faabc4738588e8d919bd1a41cf80f8e02685f842b0f2bd49c2"
+OPENQ_API_SECRET="secret123!"
+```
+
 ## 3 Boot OpenQ-Fullstack
 
 In the `OpenQ-Fullstack/` root directory, run:
