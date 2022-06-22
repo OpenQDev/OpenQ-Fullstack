@@ -12,15 +12,15 @@ services:
     volumes:
       - /app/node_modules
       - ./OpenQ-API:/app
-  openq-token-price-chron:
-    container_name: openq-token-price-chron
+  openq-token-price-cronjob:
+    container_name: openq-token-price-cronjob
     depends_on:
       - openq-api
     build:
       dockerfile: Dockerfile
-      context: ./OpenQ-Token-Price-Chron
+      context: ./OpenQ-Token-Price-Cron-Job
     env_file:
-      - ./OpenQ-Token-Price-Chron/.env
+      - ./OpenQ-Token-Price-Cron-Job/.env
     volumes:
       - /app/node_modules
-      - ./OpenQ-Token-Price-Chron:/app
+      - ./OpenQ-Token-Price-Cron-Job:/app
