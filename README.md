@@ -198,6 +198,18 @@ GITHUB_BOT_SECRET="a5d5a4d787f816faabc4738588e8d919bd1a41cf80f8e02685f842b0f2bd4
 OPENQ_API_SECRET="secret123!"
 ```
 
+### 2.10 OpenQ-Token-Price-Cron-Job .env
+
+In the root of `OpenQ-Token-Price-Cron-Job`, create a `.env` file.
+
+Copy the following from `.env.sample` to `.env`.
+
+```bash
+OPENQ_API_URL='http://openq-api:4000'
+OPENQ_SUBGRAPH_HTTP_URL='http://localhost:8000/subgraphs/name/openqdev/openq'
+OPENQ_API_SECRET='secret123!'
+```
+
 ## 3 Boot OpenQ-Fullstack
 
 In the `OpenQ-Fullstack/` root directory, run:
