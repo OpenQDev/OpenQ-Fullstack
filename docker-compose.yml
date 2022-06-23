@@ -1,185 +1,185 @@
 version: "3"
 services:
-  # openq-json-rpc-node:
-  #   image: openq/openq-json-rpc-node:latest
-  #   container_name: ethnode
-  #   hostname: ethnode
-  #   ports:
-  #     - "8545:8545"
-  # openq-contracts:
-  #   container_name: openq-contracts
-  #   depends_on:
-  #     - openq-json-rpc-node
-  #   build:
-  #     dockerfile: Dockerfile
-  #     context: ./OpenQ-Contracts
-  #   volumes:
-  #     - /app/node_modules
-  #     - ./OpenQ-Contracts:/app
-  # openq-oracle:
-  #   container_name: openq-oracle
-  #   depends_on:
-  #     - openq-json-rpc-node
-  #     - openq-contracts
-  #   build:
-  #     dockerfile: Dockerfile.dev
-  #     context: ./OpenQ-Oracle
-  #   ports:
-  #     - "8090:8090"
-  #   env_file:
-  #     - ./OpenQ-Contracts/.env
-  #     - ./OpenQ-Oracle/.env
-  #     - ./OpenQ-Contracts/.env.contracts
-  #   volumes:
-  #     - /app/node_modules
-  #     - ./OpenQ-Oracle:/app
-  #     - ./OpenQ-Contracts/artifacts:/app/artifacts
-  # openq-oz-claim-autotask:
-  #   container_name: openq-oz-claim-autotask
-  #   depends_on:
-  #     - openq-json-rpc-node
-  #     - openq-contracts
-  #   build:
-  #     dockerfile: Dockerfile.dev
-  #     context: ./OpenQ-OZ-Claim-Autotask
-  #   env_file:
-  #     - ./OpenQ-OZ-Claim-Autotask/.env
-  #     - ./OpenQ-Contracts/.env.contracts
-  #   ports:
-  #     - "8070:8070"
-  #   volumes:
-  #     - /app/node_modules
-  #     - ./OpenQ-OZ-Claim-Autotask:/app
-  # openq-coinapi:
-  #   container_name: openq-coinapi
-  #   depends_on:
-  #     - openq-json-rpc-node
-  #     - openq-contracts
-  #   build:
-  #     dockerfile: Dockerfile.dev
-  #     context: ./OpenQ-CoinAPI
-  #   ports:
-  #     - "8081:8081"
-  #   volumes:
-  #     - /app/node_modules
-  #     - ./OpenQ-CoinAPI:/app
-  #   env_file:
-  #     - ./OpenQ-CoinAPI/.env
-  # openq-event-listener:
-  #   container_name: openq-event-listener
-  #   depends_on:
-  #     - openq-json-rpc-node
-  #     - openq-contracts
-  #   build:
-  #     dockerfile: Dockerfile.dev
-  #     context: ./OpenQ-Event-Listener
-  #   volumes:
-  #     - /app/node_modules
-  #     - ./OpenQ-Event-Listener:/app
-  #   env_file:
-  #     - ./OpenQ-Event-Listener/.env
-  #     - ./OpenQ-Contracts/.env.contracts
-  # openq-bounty-actions-autotask:
-  #   container_name: openq-bounty-actions-autotask
-  #   depends_on:
-  #     - openq-json-rpc-node
-  #     - openq-contracts
-  #   build:
-  #     dockerfile: Dockerfile.dev
-  #     context: ./OpenQ-Bounty-Actions-Autotask
-  #   ports:
-  #     - "8075:8075"
-  #   volumes:
-  #     - /app/node_modules
-  #     - ./OpenQ-Bounty-Actions-Autotask:/app
-  #   env_file:
-  #     - ./OpenQ-Bounty-Actions-Autotask/.env
-  # openq-frontend:
-  #   container_name: openq-frontend
-  #   depends_on:
-  #     - openq-json-rpc-node
-  #     - openq-contracts
-  #     - openq-api
-  #   build:
-  #     dockerfile: Dockerfile.dev
-  #     context: ./OpenQ-Frontend
-  #   ports:
-  #     - "3000:3000"
-  #   env_file:
-  #     - ./OpenQ-Contracts/.env
-  #     - ./OpenQ-Frontend/.env
-  #     - ./OpenQ-Contracts/.env.contracts
-  #   volumes:
-  #     - /app/node_modules
-  #     - ./OpenQ-Frontend:/app
-  #     - ./OpenQ-Contracts/artifacts:/app/artifacts
-  # github-oauth-server:
-  #   container_name: github-oauth-server
-  #   build:
-  #     dockerfile: Dockerfile.dev
-  #     context: ./OpenQ-Github-OAuth-Server
-  #   env_file:
-  #     - ./OpenQ-Github-OAuth-Server/.env
-  #   ports:
-  #     - "3001:3001"
-  #   volumes:
-  #     - /app/node_modules
-  #     - ./OpenQ-Github-OAuth-Server:/app
-  # redis:
-  #   container_name: redis
-  #   image: redis:6.2.6-alpine
-  #   ports:
-  #     - "6379:6379"
-  # openq_subgraph_deployer:
-  #   container_name: openq_subgraph_deployer
-  #   depends_on:
-  #     - openq-json-rpc-node
-  #     - openq-contracts
-  #     - graph-node
-  #   build:
-  #     dockerfile: Dockerfile
-  #     context: ./OpenQ-Graph
-  #   volumes:
-  #     - /app/node_modules
-  #     - ./OpenQ-Contracts/.env.contracts:/app/.env.contracts
-  # graph-node:
-  #   container_name: graph_node
-  #   image: graphprotocol/graph-node
-  #   ports:
-  #     - '8000:8000'
-  #     - '8001:8001'
-  #     - '8020:8020'
-  #     - '8030:8030'
-  #     - '8040:8040'
-  #   depends_on:
-  #     - ipfs
-  #     - postgres
-  #   environment:
-  #     postgres_host: postgres
-  #     postgres_user: graph-node
-  #     postgres_pass: let-me-in
-  #     postgres_db: graph-node
-  #     ipfs: 'ipfs:5001'
-  #     ethereum: 'mainnet:http://ethnode:8545'
-  #     GRAPH_LOG: info
-  # ipfs:
-  #   container_name: ipfs
-  #   image: ipfs/go-ipfs:v0.4.23
-  #   ports:
-  #     - '5001:5001'
-  # postgres:
-  #   image: postgres
-  #   ports:
-  #     - '5432:5432'
-  #   command:
-  #     [
-  #       "postgres",
-  #       "-cshared_preload_libraries=pg_stat_statements"
-  #     ]
-  #   environment:
-  #     POSTGRES_USER: graph-node
-  #     POSTGRES_PASSWORD: let-me-in
-  #     POSTGRES_DB: graph-node
+  openq-json-rpc-node:
+    image: openq/openq-json-rpc-node:latest
+    container_name: ethnode
+    hostname: ethnode
+    ports:
+      - "8545:8545"
+  openq-contracts:
+    container_name: openq-contracts
+    depends_on:
+      - openq-json-rpc-node
+    build:
+      dockerfile: Dockerfile
+      context: ./OpenQ-Contracts
+    volumes:
+      - /app/node_modules
+      - ./OpenQ-Contracts:/app
+  openq-oracle:
+    container_name: openq-oracle
+    depends_on:
+      - openq-json-rpc-node
+      - openq-contracts
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./OpenQ-Oracle
+    ports:
+      - "8090:8090"
+    env_file:
+      - ./OpenQ-Contracts/.env
+      - ./OpenQ-Oracle/.env
+      - ./OpenQ-Contracts/.env.contracts
+    volumes:
+      - /app/node_modules
+      - ./OpenQ-Oracle:/app
+      - ./OpenQ-Contracts/artifacts:/app/artifacts
+  openq-oz-claim-autotask:
+    container_name: openq-oz-claim-autotask
+    depends_on:
+      - openq-json-rpc-node
+      - openq-contracts
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./OpenQ-OZ-Claim-Autotask
+    env_file:
+      - ./OpenQ-OZ-Claim-Autotask/.env
+      - ./OpenQ-Contracts/.env.contracts
+    ports:
+      - "8070:8070"
+    volumes:
+      - /app/node_modules
+      - ./OpenQ-OZ-Claim-Autotask:/app
+  openq-coinapi:
+    container_name: openq-coinapi
+    depends_on:
+      - openq-json-rpc-node
+      - openq-contracts
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./OpenQ-CoinAPI
+    ports:
+      - "8081:8081"
+    volumes:
+      - /app/node_modules
+      - ./OpenQ-CoinAPI:/app
+    env_file:
+      - ./OpenQ-CoinAPI/.env
+  openq-event-listener:
+    container_name: openq-event-listener
+    depends_on:
+      - openq-json-rpc-node
+      - openq-contracts
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./OpenQ-Event-Listener
+    volumes:
+      - /app/node_modules
+      - ./OpenQ-Event-Listener:/app
+    env_file:
+      - ./OpenQ-Event-Listener/.env
+      - ./OpenQ-Contracts/.env.contracts
+  openq-bounty-actions-autotask:
+    container_name: openq-bounty-actions-autotask
+    depends_on:
+      - openq-json-rpc-node
+      - openq-contracts
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./OpenQ-Bounty-Actions-Autotask
+    ports:
+      - "8075:8075"
+    volumes:
+      - /app/node_modules
+      - ./OpenQ-Bounty-Actions-Autotask:/app
+    env_file:
+      - ./OpenQ-Bounty-Actions-Autotask/.env
+  openq-frontend:
+    container_name: openq-frontend
+    depends_on:
+      - openq-json-rpc-node
+      - openq-contracts
+      - openq-api
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./OpenQ-Frontend
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./OpenQ-Contracts/.env
+      - ./OpenQ-Frontend/.env
+      - ./OpenQ-Contracts/.env.contracts
+    volumes:
+      - /app/node_modules
+      - ./OpenQ-Frontend:/app
+      - ./OpenQ-Contracts/artifacts:/app/artifacts
+  github-oauth-server:
+    container_name: github-oauth-server
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./OpenQ-Github-OAuth-Server
+    env_file:
+      - ./OpenQ-Github-OAuth-Server/.env
+    ports:
+      - "3001:3001"
+    volumes:
+      - /app/node_modules
+      - ./OpenQ-Github-OAuth-Server:/app
+  redis:
+    container_name: redis
+    image: redis:6.2.6-alpine
+    ports:
+      - "6379:6379"
+  openq_subgraph_deployer:
+    container_name: openq_subgraph_deployer
+    depends_on:
+      - openq-json-rpc-node
+      - openq-contracts
+      - graph-node
+    build:
+      dockerfile: Dockerfile
+      context: ./OpenQ-Graph
+    volumes:
+      - /app/node_modules
+      - ./OpenQ-Contracts/.env.contracts:/app/.env.contracts
+  graph-node:
+    container_name: graph_node
+    image: graphprotocol/graph-node
+    ports:
+      - '8000:8000'
+      - '8001:8001'
+      - '8020:8020'
+      - '8030:8030'
+      - '8040:8040'
+    depends_on:
+      - ipfs
+      - postgres
+    environment:
+      postgres_host: postgres
+      postgres_user: graph-node
+      postgres_pass: let-me-in
+      postgres_db: graph-node
+      ipfs: 'ipfs:5001'
+      ethereum: 'mainnet:http://ethnode:8545'
+      GRAPH_LOG: info
+  ipfs:
+    container_name: ipfs
+    image: ipfs/go-ipfs:v0.4.23
+    ports:
+      - '5001:5001'
+  postgres:
+    image: postgres
+    ports:
+      - '5432:5432'
+    command:
+      [
+        "postgres",
+        "-cshared_preload_libraries=pg_stat_statements"
+      ]
+    environment:
+      POSTGRES_USER: graph-node
+      POSTGRES_PASSWORD: let-me-in
+      POSTGRES_DB: graph-node
   openq-api:
     container_name: openq-api
     depends_on:
@@ -198,15 +198,15 @@ services:
     volumes:
       - /app/node_modules
       - ./OpenQ-API:/app
-  openq-token-price-chron:
-    container_name: openq-token-price-chron
+  openq-token-price-cronjob:
+    container_name: openq-token-price-cronjob
     depends_on:
-      - openq_api
+      - openq-api
     build:
       dockerfile: Dockerfile
-      context: ./OpenQ-Token-Price-Chron
+      context: ./OpenQ-Token-Price-Cron-Job
     env_file:
-      - ./OpenQ-Token-Price-Chron/.env
+      - ./OpenQ-Token-Price-Cron-Job/.env
     volumes:
       - /app/node_modules
-      - ./OpenQ-Token-Price-Chron:/app
+      - ./OpenQ-Token-Price-Cron-Job:/app
