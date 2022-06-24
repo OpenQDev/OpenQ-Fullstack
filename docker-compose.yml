@@ -210,3 +210,13 @@ services:
     volumes:
       - /app/node_modules
       - ./OpenQ-Token-Price-Cron-Job:/app
+  mongo:
+    image: mongo
+    container_name: mongo
+    restart: always
+    command: mongod --quiet --logpath /dev/null
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    ports:
+      - 27017:27017

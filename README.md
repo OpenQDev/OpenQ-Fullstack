@@ -79,12 +79,10 @@ OPENQ_SUBGRAPH_SSR_HTTP_URL=http://graph_node:8000/subgraphs/name/openqdev/openq
 
 In the root of `OpenQ-API`, create a `.env` file.
 
-You can provision a simple MongoDB sandbox using MongoDB Atlas by following the instructions [here](https://www.mongodb.com/docs/atlas/getting-started/).
-
 Copy the following from `.env.sample` to `.env`.
 
 ```bash
-DATABASE_URL="mongodb+srv://<USER>:<PASSWORD>@<CLUSTER_NAME>/openqdb?retryWrites=true&w=majority"
+DATABASE_URL="mongodb://root:root@localhost:27017/openqdb?authSource=admin"
 ```
 
 This connects USER Connect to a database in CLUSTER_NAME called `openqdb`.
@@ -92,7 +90,7 @@ This connects USER Connect to a database in CLUSTER_NAME called `openqdb`.
 An example complete `DATABASE_URL` would look like:
 
 ```bash
-DATABASE_URL="mongodb+srv://admin:admin123!@local.9kxsm.mongodb.net/openqdb?retryWrites=true&w=majority"
+DATABASE_URL="mongodb://root:root@localhost:27017/openqdb?authSource=admin"
 ```
 
 ### 2.3 OpenQ-Contracts .env
