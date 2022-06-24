@@ -82,15 +82,7 @@ In the root of `OpenQ-API`, create a `.env` file.
 Copy the following from `.env.sample` to `.env`.
 
 ```bash
-DATABASE_URL="mongodb://root:root@localhost:27017/openqdb?authSource=admin"
-```
-
-This connects USER Connect to a database in CLUSTER_NAME called `openqdb`.
-
-An example complete `DATABASE_URL` would look like:
-
-```bash
-DATABASE_URL="mongodb://root:root@localhost:27017/openqdb?authSource=admin"
+DATABASE_URL="mongodb://root:root@mongo:27018/openqdb?authSource=admin"
 ```
 
 ### 2.3 OpenQ-Contracts .env
@@ -237,6 +229,7 @@ I suggest using [Postman](https://www.postman.com/) if you'd like to hit a servi
 | OpenQ Service      | URL |
 | ----------- | ----------- |
 | OpenQ-Frontend      | localhost:3000       |
+| Mongo-Express      | localhost:8888       |
 | OpenQ-API   | localhost:4000        |
 | OpenQ-Oracle   | localhost:8090        |
 | OpenQ-Github-OAuth-Server   | localhost:3001        |
