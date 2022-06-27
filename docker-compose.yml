@@ -100,7 +100,7 @@ services:
       - openq-bounty-actions-autotask
       - openq-contracts
     build:
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
       context: ./OpenQ-Bot
     ports:
       - "3006:3006"
