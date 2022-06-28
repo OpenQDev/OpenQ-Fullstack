@@ -196,7 +196,7 @@ Copy the following from `.env.sample` to `.env`.
 
 ```bash
 OPENQ_API_URL='http://openq-api:4000'
-OPENQ_SUBGRAPH_HTTP_URL='https://api.thegraph.com/subgraphs/name/openqdev/openq'
+OPENQ_SUBGRAPH_HTTP_URL='http://graph_node:8000/subgraphs/name/openqdev/openq'
 OPENQ_API_SECRET=secret123!
 INITIAL_WAIT_PERIOD_MS=7000
 DEPLOY_ENV=staging
