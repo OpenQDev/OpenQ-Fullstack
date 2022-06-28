@@ -202,6 +202,27 @@ INITIAL_WAIT_PERIOD_MS=7000
 DEPLOY_ENV=staging
 ```
 
+### 2.11 OpenQ-Bot .env
+
+In the root of `OpenQ-Bot`, create a `.env` file.
+
+You will need to create a GitHub Personal Access Token with these scopes:
+
+```bash
+public_repo
+read:org
+read:user
+```
+
+Copy the following from `.env.sample` to `.env`.
+
+```bash
+PORT=3006
+APP_ID=188745
+BASE_URL = "http://localhost:3000"
+PAT = <YOUR_PAT>
+```
+
 ## 3 Boot OpenQ-Fullstack
 
 In the `OpenQ-Fullstack/` root directory, run:
