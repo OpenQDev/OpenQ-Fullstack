@@ -94,6 +94,21 @@ services:
       - ./OpenQ-Bounty-Actions-Autotask:/app
     env_file:
       - ./OpenQ-Bounty-Actions-Autotask/.env
+  openq-bot:
+    container_name: openq-bot
+    depends_on:
+      - openq-bounty-actions-autotask
+      - openq-contracts
+    build:
+      dockerfile: Dockerfile
+      context: ./OpenQ-Bot
+    ports:
+      - "3006:3006"
+    volumes:
+      - /app/node_modules
+      - ./OpenQ-Bot:/app
+    env_file:
+      - ./OpenQ-Bot/.env    
   openq-frontend:
     container_name: openq-frontend
     depends_on:
