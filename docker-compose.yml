@@ -108,7 +108,7 @@ services:
       - /app/node_modules
       - ./OpenQ-Bot:/app
     env_file:
-      - ./OpenQ-Bot/.env    
+      - ./OpenQ-Bot/.env
   openq-frontend:
     container_name: openq-frontend
     depends_on:
@@ -218,7 +218,7 @@ services:
     depends_on:
       - openq-api
     build:
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
       context: ./OpenQ-Token-Price-Cron-Job
     env_file:
       - ./OpenQ-Token-Price-Cron-Job/.env

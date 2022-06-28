@@ -46,8 +46,8 @@ echo -e ${Cyan}"- OpenQ-Oracle"${Color_Off}
 echo -e ${Cyan}"- OpenQ-Contracts"${Color_Off}
 echo -e ${Cyan}"- OpenQ-Github-OAuth-Server"${Color_Off}
 echo -e ${Cyan}"- OpenQ-OZ-Claim-Autotask"${Color_Off}
-echo -e ${Cyan}"- OpenQ-CoinAPI\n"${Color_Off}
-echo -e ${Cyan}"- OpenQ-Event-Lsitener\n"${Color_Off}
+echo -e ${Cyan}"- OpenQ-CoinAPI"${Color_Off}
+echo -e ${Cyan}"- OpenQ-Event-Lsitener"${Color_Off}
 echo -e ${Cyan}"- OpenQ-Bounty-Actions-Autotask\n"${Color_Off}
 
 echo -e ${Blue}"No worries! See the README for instructions\n"${Color_Off}
