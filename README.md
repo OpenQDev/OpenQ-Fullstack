@@ -83,6 +83,7 @@ Copy the following from `.env.sample` to `.env`.
 
 ```bash
 DATABASE_URL="mongodb://root:root@mongo:27018/openqdb?authSource=admin"
+ORIGINS='localhost:3000'
 ```
 
 ### 2.3 OpenQ-Contracts .env
