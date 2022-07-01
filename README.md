@@ -200,6 +200,7 @@ OPENQ_SUBGRAPH_HTTP_URL='http://graph_node:8000/subgraphs/name/openqdev/openq'
 OPENQ_API_SECRET=secret123!
 INITIAL_WAIT_PERIOD_MS=7000
 DEPLOY_ENV=staging
+CRON_STRING='* * * * * *'
 ```
 
 ### 2.11 OpenQ-Bot .env
