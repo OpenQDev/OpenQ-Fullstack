@@ -83,7 +83,9 @@ Copy the following from `.env.sample` to `.env`.
 
 ```bash
 DATABASE_URL="mongodb://root:root@mongo:27018/openqdb?authSource=admin"
-ORIGINS='localhost:3000'
+OPENQ_API_SECRET='secret123!'
+ORIGINS='http://localhost/:3000,http//openq-frontend:3000,http://localhost:8075,http://openq-bounty-actions-autotask:8075,http://localhost:4000,http://openq-api:4000'
+OPENQ_API_URL=http://localhost:4000/
 ```
 
 ### 2.3 OpenQ-Contracts .env
