@@ -124,6 +124,7 @@ services:
       - ./OpenQ-Contracts/.env
       - ./OpenQ-Frontend/.env
       - ./OpenQ-Contracts/.env.contracts
+      - ./OpenQ-Contracts/.env.superfluid.contracts
     volumes:
       - /app/node_modules
       - ./OpenQ-Frontend:/app
