@@ -124,6 +124,7 @@ services:
       - ./OpenQ-Contracts/.env
       - ./OpenQ-Frontend/.env
       - ./OpenQ-Contracts/.env.contracts
+      - ./OpenQ-Contracts/.env.superfluid.contracts
     volumes:
       - /app/node_modules
       - ./OpenQ-Frontend:/app
@@ -195,6 +196,18 @@ services:
       POSTGRES_USER: graph-node
       POSTGRES_PASSWORD: let-me-in
       POSTGRES_DB: graph-node
+  openq-token-price-cronjob:
+    container_name: openq-token-price-cronjob
+    depends_on:
+      - openq-api
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./OpenQ-Token-Price-Cron-Job
+    env_file:
+      - ./OpenQ-Token-Price-Cron-Job/.env
+    volumes:
+      - /app/node_modules
+      - ./OpenQ-Token-Price-Cron-Job:/app
   openq-api:
     container_name: openq-api
     depends_on:
@@ -213,18 +226,6 @@ services:
     volumes:
       - /app/node_modules
       - ./OpenQ-API:/app
-  openq-token-price-cronjob:
-    container_name: openq-token-price-cronjob
-    depends_on:
-      - openq-api
-    build:
-      dockerfile: Dockerfile.dev
-      context: ./OpenQ-Token-Price-Cron-Job
-    env_file:
-      - ./OpenQ-Token-Price-Cron-Job/.env
-    volumes:
-      - /app/node_modules
-      - ./OpenQ-Token-Price-Cron-Job:/app
   mongo:
     container_name: mongo
     image: openq/mongo-local-replica-set:latest
