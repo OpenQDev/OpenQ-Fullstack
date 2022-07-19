@@ -32,6 +32,7 @@ declare -a repos=(
 								"OpenQ-Bounty-Actions-Autotask"
 								"OpenQ-Event-Listener"
 								"OpenQ-Token-Price-Cron-Job"
+								"Superfluid-Subgraph"
                 )
 
 for repo in "${repos[@]}"
