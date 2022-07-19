@@ -253,3 +253,14 @@ services:
     ports:
       - "8888:8081"
     restart: unless-stopped
+  openq_superfluid_deployer:
+    container_name: openq_superfluid_deployer
+    depends_on:
+      - openq-json-rpc-node
+      - openq-contracts
+      - graph-node
+    build:
+      dockerfile: Dockerfile
+      context: ./Superfluid-Subgraph
+    volumes:
+      - /app/subgraph/node_modules
