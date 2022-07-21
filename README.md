@@ -30,7 +30,7 @@ After running `boot.sh` you'll see the error:
 
 NOTE: You will need .env files in the root of the following repositories:`
 
-There are SEVEN .env files that must be added for OpenQ-Fullstack to boot locally.
+There are MANY .env files that must be added for OpenQ-Fullstack to boot locally.
 
 Let's add .env files to each repository now.
 
@@ -55,6 +55,7 @@ read:user
 In the root of `OpenQ-Frontend`, create a `.env` file.
 
 Copy the following from `.env.sample` to `.env`.
+Note: when in doubt, copy the info below to `.env` and fill in the blanks.
 
 ```bash
 INFURA_KEY=<MAINNET INFURA KEY HERE>
@@ -80,6 +81,7 @@ OPENQ_SUBGRAPH_SSR_HTTP_URL=http://graph_node:8000/subgraphs/name/openqdev/openq
 In the root of `OpenQ-API`, create a `.env` file.
 
 Copy the following from `.env.sample` to `.env`.
+Note: when in doubt, copy the info below to `.env`.
 
 ```bash
 DATABASE_URL="mongodb://root:root@mongo:27018/openqdb?authSource=admin"
@@ -93,6 +95,7 @@ OPENQ_API_URL=http://localhost:4000/
 In the root of `OpenQ-Contracts`, create a `.env` file.
 
 Copy the following from `.env.sample` to `.env`.
+Note: when in doubt, copy the info below to `.env`.
 
 ```bash
 PROVIDER_URL=http://ethnode:8545
@@ -103,6 +106,8 @@ CONTRIBUTOR="0x5de4111afa1a4b94908f83103eb1f1706367c2e68ca870fc3fb9a804cdab365a"
 ORACLE_ADDRESS="0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266" # This is the Public Address of the first account on Hardhat Testnet.
 POLYGON_SCAN_API_KEY=VRQAIXQQ77P3D4SV5MT74DAQA27QGXVEBJ
 ```
+
+> **_NOTE:_** In the root of `OpenQ-Contracts`, there should be an empty file called `.env.superfluid.contracts`. If not, make sure to add it.
 
 ### 2.4 OpenQ-Github-OAuth-Server .env
 
