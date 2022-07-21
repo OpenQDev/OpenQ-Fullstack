@@ -173,7 +173,7 @@ Copy the following from `.env.sample` to `.env`.
 
 ```bash
 PROVIDER_URL='http://ethnode:8545'
-GITHUB_BOT_SECRET=
+GITHUB_BOT_SECRET="a5d5a4d787f816faabc4738588e8d919bd1a41cf80f8e02685f842b0f2bd49c2"
 OPENQ_API_SECRET="secret123!"
 OPENQ_ADDRESS=0x5FC8d32690cc91D4c39d9d3abcBD16989F875707
 OPENQ_BOUNTY_ACTIONS_AUTOTASK_URL='http://openq-bounty-actions-autotask:8075'
@@ -204,6 +204,27 @@ OPENQ_API_SECRET=secret123!
 INITIAL_WAIT_PERIOD_MS=7000
 DEPLOY_ENV=staging
 CRON_STRING='* * * * * *'
+```
+
+### 2.11 OpenQ-Bot .env
+
+In the root of `OpenQ-Bot`, create a `.env` file.
+
+You will need to create a GitHub Personal Access Token with these scopes:
+
+```bash
+public_repo
+read:org
+read:user
+```
+
+Copy the following from `.env.sample` to `.env`.
+
+```bash
+PORT=3006
+APP_ID=188745
+BASE_URL = "http://localhost:3000"
+PAT = <YOUR_PAT>
 ```
 
 ## 3 Boot OpenQ-Fullstack
