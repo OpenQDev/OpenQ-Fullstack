@@ -66,6 +66,7 @@ ORACLE_URL=http://localhost:8090
 OPENQ_API_URL=http://localhost:4000
 COIN_API_URL=http://localhost:8081
 BLOCK_EXPLORER_BASE_URL="https://mumbai.polygonscan.com"
+SUPERFLUID_SUBGRAPH_HTTP_URL="http://localhost:8000/subgraphs/name/superfluid-test/graphql"
 OPENQ_ID=5fbd39c6916b7efb63cc
 PATS=<PAT HERE>
 
