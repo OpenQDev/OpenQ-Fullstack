@@ -87,7 +87,7 @@ Note: when in doubt, copy the info below to `.env`.
 ```bash
 DATABASE_URL="mongodb://root:root@mongo:27018/openqdb?authSource=admin"
 OPENQ_API_SECRET='secret123!'
-ORIGINS='http://localhost/:3000,http//openq-frontend:3000,http://localhost:8075,http://openq-bounty-actions-autotask:8075,http://localhost:4000,http://openq-api:4000'
+ORIGIN=http://localhost/:3000
 OPENQ_API_URL=http://localhost:4000/
 ```
 

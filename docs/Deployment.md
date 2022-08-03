@@ -23,9 +23,9 @@ Use the [Mumbai Polygon Faucet](https://faucet.polygon.technology) to send the f
 
 __*Note*__: `OPENQ_PROXY_ADDRESS` output to `.env.contracts`
 
-### 1.4 Update OpenQV0 Addresses
+### 1.4 Update OpenQV1 Addresses
 
-There are three places which will need the new OpenQV0 contract address:
+There are three places which will need the new OpenQV1 contract address:
 
 #### OpenQ-Graph `config`
 - Navigate to [OpenQ Subgraph config](https://github.com/OpenQDev/OpenQ-Graph/tree/main/config)
@@ -53,13 +53,13 @@ Updating the OPENQ_PROXY_ADDRESS in the frontend requires rebuilding the image.
 - `base64 .env.<ENVIRONMENT>.sample`
 - In CircleCI, update the <environment>_env file with the new base64 encoded value
 
-### 1.4 Update OpenQV0 ABI
+### 1.4 Update OpenQV1 ABI
 
-The updated OpenQV0 ABI will be output to `OpenQ-Contracts/artifacts/contracts/OpenQ/Implementations/OpenQV0.json`
+The updated OpenQV1 ABI will be output to `OpenQ-Contracts/artifacts/contracts/OpenQ/Implementations/OpenQV1.json`
 
-There are two places which will need the new OpenQV0 ABI:
+There are two places which will need the new OpenQV1 ABI:
 
-#### [OpenQ-Helm](https://github.com/OpenQDev/OpenQ-Helm/blob/main/abis/OpenQV0.json)
+#### [OpenQ-Helm](https://github.com/OpenQDev/OpenQ-Helm/blob/main/abis/OpenQV1.json)
 OpenQ-Helm requires the FULL artifact output, including the .
 
 This is because while working locally, the `artifacts` folder from the `OpenQ-Contracts` repository is dynamically loaded into `OpenQ-Frontend` at runtime.
