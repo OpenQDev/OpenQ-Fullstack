@@ -135,7 +135,7 @@ Copy the following from `.env.sample` to `.env`.
 
 ```bash
 REDIS_URL=redis
-_URL=http://localhost:3000
+ORIGIN_URL=http://localhost:3000
 ```
 
 ### 2.6 OpenQ-Oracle .env
