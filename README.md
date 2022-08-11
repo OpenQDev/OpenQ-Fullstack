@@ -87,7 +87,7 @@ Note: when in doubt, copy the info below to `.env`.
 ```bash
 DATABASE_URL="mongodb://root:root@mongo:27018/openqdb?authSource=admin"
 OPENQ_API_SECRET='secret123!'
-ORIGIN=http://localhost/:3000
+ORIGIN=http://localhost:3000/
 OPENQ_API_URL=http://localhost:4000/
 ```
 
@@ -208,7 +208,7 @@ OPENQ_API_URL='http://openq-api:4000'
 OPENQ_SUBGRAPH_HTTP_URL='http://graph_node:8000/subgraphs/name/openqdev/openq'
 OPENQ_API_SECRET=secret123!
 INITIAL_WAIT_PERIOD_MS=7000
-DEPLOY_ENV=staging
+DEPLOY_ENV=local
 CRON_STRING='* * * * * *'
 ```
 
