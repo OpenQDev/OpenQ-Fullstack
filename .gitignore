@@ -22,6 +22,7 @@ OpenQ-Event-Listener/
 OpenQ-Token-Price-Cron-Job/
 Superfluid-Subgraph/
 OpenQ-Squad/
+OpenQ-Dojo/
 
 # Data from The Graph Node's Postgres and IPFS
 data/

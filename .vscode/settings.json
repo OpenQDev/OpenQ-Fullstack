@@ -3,7 +3,9 @@
 		"**/.next": true,
 		"**/artifacts/build-info": true,
 		"**/cache": true,
-		"**/yarn.lock": true
+		"**/yarn.lock": true,
+		"**/generated": true,
+		"**/typechain": true
 	},
 	"search.useIgnoreFiles": false,
 	// The number of spaces a tab is equal to. This setting is overridden

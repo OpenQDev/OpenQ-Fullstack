@@ -1,5 +1,6 @@
 version: "3"
 services:
+  # CONTRACTS + GRAPH
   openq-json-rpc-node:
     image: openq/openq-json-rpc-node:latest
     container_name: ethnode
@@ -16,6 +17,57 @@ services:
     volumes:
       - /app/node_modules
       - ./OpenQ-Contracts:/app
+  openq_subgraph_deployer:
+    container_name: openq_subgraph_deployer
+    depends_on:
+      - openq-json-rpc-node
+      - openq-contracts
+      - graph-node
+    build:
+      dockerfile: Dockerfile
+      context: ./OpenQ-Graph
+    volumes:
+      - /app/node_modules
+      - ./OpenQ-Contracts/.env.contracts:/app/.env.contracts
+  graph-node:
+    container_name: graph_node
+    image: graphprotocol/graph-node
+    ports:
+      - '8000:8000'
+      - '8001:8001'
+      - '8020:8020'
+      - '8030:8030'
+      - '8040:8040'
+    depends_on:
+      - ipfs
+      - postgres
+    environment:
+      postgres_host: postgres
+      postgres_user: graph-node
+      postgres_pass: let-me-in
+      postgres_db: graph-node
+      ipfs: 'ipfs:5001'
+      ethereum: 'mainnet:http://ethnode:8545'
+      GRAPH_LOG: info
+  ipfs:
+    container_name: ipfs
+    image: ipfs/go-ipfs:v0.4.23
+    ports:
+      - '5001:5001'
+  postgres:
+    image: postgres
+    ports:
+      - '5432:5432'
+    command:
+      [
+        "postgres",
+        "-cshared_preload_libraries=pg_stat_statements"
+      ]
+    environment:
+      POSTGRES_USER: graph-node
+      POSTGRES_PASSWORD: let-me-in
+      POSTGRES_DB: graph-node
+  # MICROSERVICES
   openq-oracle:
     container_name: openq-oracle
     depends_on:
@@ -146,56 +198,6 @@ services:
     image: redis:6.2.6-alpine
     ports:
       - "6379:6379"
-  openq_subgraph_deployer:
-    container_name: openq_subgraph_deployer
-    depends_on:
-      - openq-json-rpc-node
-      - openq-contracts
-      - graph-node
-    build:
-      dockerfile: Dockerfile
-      context: ./OpenQ-Graph
-    volumes:
-      - /app/node_modules
-      - ./OpenQ-Contracts/.env.contracts:/app/.env.contracts
-  graph-node:
-    container_name: graph_node
-    image: graphprotocol/graph-node
-    ports:
-      - '8000:8000'
-      - '8001:8001'
-      - '8020:8020'
-      - '8030:8030'
-      - '8040:8040'
-    depends_on:
-      - ipfs
-      - postgres
-    environment:
-      postgres_host: postgres
-      postgres_user: graph-node
-      postgres_pass: let-me-in
-      postgres_db: graph-node
-      ipfs: 'ipfs:5001'
-      ethereum: 'mainnet:http://ethnode:8545'
-      GRAPH_LOG: info
-  ipfs:
-    container_name: ipfs
-    image: ipfs/go-ipfs:v0.4.23
-    ports:
-      - '5001:5001'
-  postgres:
-    image: postgres
-    ports:
-      - '5432:5432'
-    command:
-      [
-        "postgres",
-        "-cshared_preload_libraries=pg_stat_statements"
-      ]
-    environment:
-      POSTGRES_USER: graph-node
-      POSTGRES_PASSWORD: let-me-in
-      POSTGRES_DB: graph-node
   openq-token-price-cronjob:
     container_name: openq-token-price-cronjob
     depends_on:
@@ -253,14 +255,14 @@ services:
     ports:
       - "8888:8081"
     restart: unless-stopped
-  openq_superfluid_deployer:
-    container_name: openq_superfluid_deployer
-    depends_on:
-      - openq-json-rpc-node
-      - openq-contracts
-      - graph-node
-    build:
-      dockerfile: Dockerfile
-      context: ./Superfluid-Subgraph
-    volumes:
-      - /app/subgraph/node_modules
+  # openq_superfluid_deployer:
+  #   container_name: openq_superfluid_deployer
+  #   depends_on:
+  #     - openq-json-rpc-node
+  #     - openq-contracts
+  #     - graph-node
+  #   build:
+  #     dockerfile: Dockerfile
+  #     context: ./Superfluid-Subgraph
+  #   volumes:
+  #     - /app/subgraph/node_modules

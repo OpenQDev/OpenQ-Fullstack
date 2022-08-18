@@ -16,16 +16,16 @@ docker stop $(docker ps -aq) && docker rm $(docker ps -aq)
 docker system prune
 ```
 
-## Remove All Images
-
-```bash
-docker rmi -f $(docker images -a -q)
-```
-
 ## Remove All Volumes
 
 ```bash
 docker volume rm $(docker volume ls -q)
+```
+
+## Remove All Images
+
+```bash
+docker rmi -f $(docker images -a -q)
 ```
 
 ## Kill Process on a Port
