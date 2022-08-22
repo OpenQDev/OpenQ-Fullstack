@@ -210,6 +210,7 @@ OPENQ_API_SECRET=secret123!
 INITIAL_WAIT_PERIOD_MS=7000
 DEPLOY_ENV=local
 CRON_STRING='* * * * * *'
+PAT=<YOUR PAT>
 ```
 
 ### 2.11 OpenQ-Bot .env
@@ -257,15 +258,15 @@ Each service will also be exposed to your localhost at the following URLs for in
 
 I suggest using [Postman](https://www.postman.com/) if you'd like to hit a service directly.
 
-| OpenQ Service      | URL |
-| ----------- | ----------- |
-| OpenQ-Frontend      | localhost:3000       |
-| Mongo-Express      | localhost:8888       |
-| OpenQ-API   | localhost:4000        |
-| OpenQ-Oracle   | localhost:8090        |
-| OpenQ-Github-OAuth-Server   | localhost:3001        |
-| OpenQ-CoinAPI   | localhost:8081        |
-| OpenQ-Graph   | http://localhost:8000/subgraphs/name/openqdev/openq        |
-| OpenQ-JSON-RPC-Node   | localhost:8545       |
-| OpenQ-OZ-Claim-Autotask   | localhost:8070       |
-| Redis   | localhost:6379       |
+| OpenQ Service             | URL                                                 |
+| ------------------------- | --------------------------------------------------- |
+| OpenQ-Frontend            | localhost:3000                                      |
+| Mongo-Express             | localhost:8888                                      |
+| OpenQ-API                 | localhost:4000                                      |
+| OpenQ-Oracle              | localhost:8090                                      |
+| OpenQ-Github-OAuth-Server | localhost:3001                                      |
+| OpenQ-CoinAPI             | localhost:8081                                      |
+| OpenQ-Graph               | http://localhost:8000/subgraphs/name/openqdev/openq |
+| OpenQ-JSON-RPC-Node       | localhost:8545                                      |
+| OpenQ-OZ-Claim-Autotask   | localhost:8070                                      |
+| Redis                     | localhost:6379                                      |

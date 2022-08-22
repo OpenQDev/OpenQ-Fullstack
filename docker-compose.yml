@@ -136,6 +136,8 @@ services:
     depends_on:
       - openq-json-rpc-node
       - openq-contracts
+      - openq-api
+      - mongo
     build:
       dockerfile: Dockerfile.dev
       context: ./OpenQ-Bounty-Actions-Autotask

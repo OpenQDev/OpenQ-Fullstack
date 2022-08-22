@@ -1,26 +1,29 @@
-## Integration Testing
+## Integration Tsdfesting 🧪
 
-The following are the full steps to manually verify the functionality and performance of every OpenQ deployment.
 
-Begin by navigating to the environment under test:
 
-| Environment      | URL |
-| ----------- | ----------- |
-| Development      | [development.openq.dev](https://development.openq.dev)       |
-| Staging      | [staging.openq.dev](https://staging.openq.dev)       |
-| Production   | [app.openq.dev](https://app.openq.dev)        |
+Hello OpenQ Integration Tester.
 
-### Organization Homepage
+Thanks for joining!
+
+Let's get you started...
+
+Begin by navigating to the environment under test. In this case, that is `https://staging.openq.dev`
+
+### OpenQ Explore Homepage
 ---
 #### ✅ First Load
-- Organization card loading placeholder shows
-- Organization cards load quickly (2 seconds maximum)
+- It shows a list of issues
 
-#### ✅ Search an Organization
-- Filters correctly based on search and organization name
+#### ✅ Bounty Card
 
-#### ✅ Toggle between Organization and Issues view
-- Toggles quickly
+##### Single
+- Shows budget
+- 
+
+##### Ongoing
+
+##### Contest
 
 ### Bounty Homepage
 ---
@@ -60,11 +63,11 @@ Create a new Issue on the [OpenQ-TestRepo](https://github.com/OpenQDev/OpenQ-Tes
 
 Attempt minting a bounty with all of the following **NINE** combinations:
 
-| Wallet      | Fund |
-| ----------- | ----------- |
-| Disconnected      | Invalid GitHub Issue URL       |
-| Connected w/ Incorrect Network   | Valid GitHub Issue URL        |
-| Connected w/ Correct Network   | Already Minted Bounty        |
+| Wallet                         | Fund                     |
+| ------------------------------ | ------------------------ |
+| Disconnected                   | Invalid GitHub Issue URL |
+| Connected w/ Incorrect Network | Valid GitHub Issue URL   |
+| Connected w/ Correct Network   | Already Minted Bounty    |
 
 #### ✅ Mint Bounty modal error handling
 - Confirm that the proper errors are shown for each
@@ -86,11 +89,11 @@ Attempt minting a bounty with all of the following **NINE** combinations:
 ---
 Attempt funding a bounty with all of the following **NINE** combinations:
 
-| Wallet      | Fund |
-| ----------- | ----------- |
-| Disconnected      | No Volume       |
-| Connected w/ Incorrect Network   | User's Balance Too Low        |
-| Connected w/ Correct Network   | Valid Balance        |
+| Wallet                         | Fund                   |
+| ------------------------------ | ---------------------- |
+| Disconnected                   | No Volume              |
+| Connected w/ Incorrect Network | User's Balance Too Low |
+| Connected w/ Correct Network   | Valid Balance          |
 
 #### ✅ Fund a bounty with MATIC successfully after confirming the above.
 - Show confirmation with correct information on funding amount, token and bounty address.
@@ -122,11 +125,11 @@ Attempt funding a bounty with all of the following **NINE** combinations:
 
 Attempt claim with all of the following **SIX** combinations:
 
-| User      | Issue/Bounty |
-| ----------- | ----------- |
-| Claimant is merged referent pull request author      | No pull requests references issue       |
-| Claimant is NOT merged referent pull request author   | Unmerged pull request references issue        |
-|    | Merged pull request references issue        |
+| User                                                | Issue/Bounty                           |
+| --------------------------------------------------- | -------------------------------------- |
+| Claimant is merged referent pull request author     | No pull requests references issue      |
+| Claimant is NOT merged referent pull request author | Unmerged pull request references issue |
+|                                                     | Merged pull request references issue   |
 
 You can use the following issue's with several pull request references or no references:
 
