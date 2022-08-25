@@ -92,7 +92,7 @@ services:
       - openq-json-rpc-node
       - openq-contracts
     build:
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
       context: ./OpenQ-OZ-Claim-Autotask
     env_file:
       - ./OpenQ-OZ-Claim-Autotask/.env
@@ -139,7 +139,7 @@ services:
       - openq-api
       - mongo
     build:
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
       context: ./OpenQ-Bounty-Actions-Autotask
     ports:
       - "8075:8075"
