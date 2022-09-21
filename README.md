@@ -74,6 +74,9 @@ PATS=<PAT HERE>
 OPENQ_API_SSR_URL=http://openq-api:4000
 OPENQ_SUBGRAPH_SSR_HTTP_URL=http://graph_node:8000/subgraphs/name/openqdev/openq
 ```
+#### Frontend Linting
+
+OpenQ-Frontend uses husky, prettier, and eslint to enforce code style and linting on commits. If you'd like to contribute to the frontend, please install and enable prettier and eslint extensions in your vscode. If you'd rather not install these extensions, you can run eslint --fix . from the OpenQ-Frontend root directory to fix all auto fixable formatting issues and alert you to any linting issues.
 
 > **_NOTE:_** The name of the Personal Access Token environment variable is `PATS` since you can include multiple comma-separated PATs to be cycled through.
 
