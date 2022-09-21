@@ -181,6 +181,7 @@ services:
       - ./OpenQ-Contracts/.env.superfluid.contracts
     volumes:
       - /app/node_modules
+      - /app/.next
       - ./OpenQ-Frontend:/app
       - ./OpenQ-Contracts/artifacts:/app/artifacts
   github-oauth-server:
