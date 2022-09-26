@@ -23,6 +23,7 @@ OpenQ-Token-Price-Cron-Job/
 Superfluid-Subgraph/
 OpenQ-Squad/
 OpenQ-Dojo/
+OpenQ-Logging/
 
 # Data from The Graph Node's Postgres and IPFS
 data/

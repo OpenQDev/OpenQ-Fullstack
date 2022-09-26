@@ -2,27 +2,21 @@
 . ./colors.sh
 
 declare -a tags=(
-"staging-0.1.2"
-"staging-0.1.3"
-"staging-0.1.4"
-"staging-0.1.5"
-"staging-0.1.6"
-"staging-0.1.7"
-"staging-0.1.8"
-"staging-0.1.9"
-"production-0.1.0"
-"production-0.1.1"
-"production-0.1.2"
-"staging-0.1.0"
-"staging-0.1.1"
-"staging-0.1.10"
+"staging-3"
+"staging-4"
+"staging-5"
+"staging-6"
+"staging-7"
+"staging-8"
+"staging-9"
+"staging-26"
                 )
 
-cd ./OpenQ-Token-Price-Cron-Job
+cd ./OpenQ-Frontend
 
 for tag in "${tags[@]}"
 do
     echo -e "\n${BBlue}$tag${Color_Off}"
 		git tag -d "$tag"
-    git push origin --delete "$tag"
+    git push origin --delete --no-verify "$tag"
 done
