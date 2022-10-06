@@ -6,6 +6,7 @@ OpenQ-CoinAPI/
 OpenQ-Helm/
 OpenQ-JSON-RPC-Node/
 OpenQ-Kubeconfig/
+OpenQ-Codemetrics/
 OpenQ-CertManager/
 OpenQ-Graph/
 OpenQ-Github-OAuth-Server/
@@ -24,6 +25,7 @@ Superfluid-Subgraph/
 OpenQ-Squad/
 OpenQ-Dojo/
 OpenQ-Logging/
+OpenQ-Codemeter/
 
 # Data from The Graph Node's Postgres and IPFS
 data/
