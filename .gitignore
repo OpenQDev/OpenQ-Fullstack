@@ -26,11 +26,14 @@ OpenQ-Squad/
 OpenQ-Dojo/
 OpenQ-Logging/
 OpenQ-Codemeter/
+OpenQ-User-Registration/
 
 # Data from The Graph Node's Postgres and IPFS
 data/
 ipfs/
 postgres/
+
+nohup.out
 
 # For when people run yarn in the wrong directory level :-) Got your back homies
 node_modules/

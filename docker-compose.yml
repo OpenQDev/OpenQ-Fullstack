@@ -1,6 +1,6 @@
 version: "3"
 services:
-  # CONTRACTS + GRAPH
+  ## CONTRACTS + GRAPH
   openq-json-rpc-node:
     image: openq/openq-json-rpc-node:latest
     container_name: ethnode
@@ -67,7 +67,6 @@ services:
       POSTGRES_USER: graph-node
       POSTGRES_PASSWORD: let-me-in
       POSTGRES_DB: graph-node
-  # MICROSERVICES
   openq-oracle:
     container_name: openq-oracle
     depends_on:
@@ -102,6 +101,22 @@ services:
     volumes:
       - /app/node_modules
       - ./OpenQ-OZ-Claim-Autotask:/app
+  openq-user-registration:
+    container_name: openq-user-registration
+    depends_on:
+      - openq-json-rpc-node
+      - openq-contracts
+    build:
+      dockerfile: Dockerfile
+      context: ./OpenQ-User-Registration
+    env_file:
+      - ./OpenQ-User-Registration/.env
+      - ./OpenQ-Contracts/.env.contracts
+    ports:
+      - "8091:8091"
+    volumes:
+      - /app/node_modules
+      - ./OpenQ-User-Registration:/app
   openq-coinapi:
     container_name: openq-coinapi
     depends_on:
@@ -222,7 +237,7 @@ services:
       - openq-coinapi
       - graph-node
     build:
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
       context: ./OpenQ-API
     env_file:
       - ./OpenQ-API/.env

@@ -70,6 +70,8 @@ BLOCK_EXPLORER_BASE_URL="https://mumbai.polygonscan.com"
 SUPERFLUID_SUBGRAPH_HTTP_URL="http://localhost:8000/subgraphs/name/superfluid-test/graphql"
 OPENQ_ID=5fbd39c6916b7efb63cc
 PATS=<PAT HERE>
+GA_MEASUREMENT_ID=foo
+GA_TRACKING_ID=sdf
 
 OPENQ_API_SSR_URL=http://openq-api:4000
 OPENQ_SUBGRAPH_SSR_HTTP_URL=http://graph_node:8000/subgraphs/name/openqdev/openq
@@ -246,6 +248,12 @@ In the `OpenQ-Fullstack/` root directory, run:
 ```
 
 This starts the `docker-compose.yml` file you can find in `OpenQ-Fullstack/docker-compose.yml`.
+
+## 3.5 Configuring Docker Desktop with more memory
+
+It's likely you'll need to provision additional memory for Docker Desktop.
+
+Preferences -> Resources -> Slide Memory to 16GB
 
 ## 4 Connect Metamask to Local Testnet
 
