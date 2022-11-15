@@ -26,5 +26,6 @@
 	],
 	"editor.codeActionsOnSave": {
 		"source.fixAll.eslint": true,
-	}
+	},
+	"prisma.fileWatcher": false
 }

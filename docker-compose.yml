@@ -237,7 +237,7 @@ services:
       - openq-coinapi
       - graph-node
     build:
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
       context: ./OpenQ-API
     env_file:
       - ./OpenQ-API/.env
