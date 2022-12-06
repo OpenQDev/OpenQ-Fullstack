@@ -54,28 +54,8 @@ read:user
 
 In the root of `OpenQ-Frontend`, create a `.env` file.
 
-Copy the following from `.env.sample` to `.env`.
-Note: when in doubt, copy the info below to `.env` and fill in the blanks.
+Copy the content from `.env.sample` to `.env`.
 
-```bash
-INFURA_KEY=<MAINNET INFURA KEY HERE>
-PROVIDER_URL="https://polygon-mainnet.g.alchemy.com/v2/oVtMdlzWuMxqRtshcF74cnHZ22iXZJGb"
-OPENQ_SUBGRAPH_HTTP_URL=http://localhost:8000/subgraphs/name/openqdev/openq
-BASE_URL=http://localhost:3000
-AUTH_URL=http://localhost:3001
-ORACLE_URL=http://localhost:8090
-OPENQ_API_URL=http://localhost:4000
-COIN_API_URL=http://localhost:8081
-BLOCK_EXPLORER_BASE_URL="https://mumbai.polygonscan.com"
-SUPERFLUID_SUBGRAPH_HTTP_URL="http://localhost:8000/subgraphs/name/superfluid-test/graphql"
-OPENQ_ID=5fbd39c6916b7efb63cc
-PATS=<PAT HERE>
-GA_MEASUREMENT_ID=foo
-GA_TRACKING_ID=sdf
-
-OPENQ_API_SSR_URL=http://openq-api:4000
-OPENQ_SUBGRAPH_SSR_HTTP_URL=http://graph_node:8000/subgraphs/name/openqdev/openq
-```
 #### Frontend Linting
 
 OpenQ-Frontend uses husky, prettier, and eslint to enforce code style and linting on commits. If you'd like to contribute to the frontend, please install and enable prettier and eslint extensions in your vscode. If you'd rather not install these extensions, you can run eslint --fix . from the OpenQ-Frontend root directory to fix all auto fixable formatting issues and alert you to any linting issues.
@@ -86,32 +66,13 @@ OpenQ-Frontend uses husky, prettier, and eslint to enforce code style and lintin
 
 In the root of `OpenQ-API`, create a `.env` file.
 
-Copy the following from `.env.sample` to `.env`.
-Note: when in doubt, copy the info below to `.env`.
-
-```bash
-DATABASE_URL="mongodb://root:root@mongo:27018/openqdb?authSource=admin"
-OPENQ_API_SECRET='secret123!'
-ORIGIN=http://localhost:3000/
-OPENQ_API_URL=http://localhost:4000/
-```
+Copy the content from `.env.sample` to `.env`.
 
 ### 2.3 OpenQ-Contracts .env
 
 In the root of `OpenQ-Contracts`, create a `.env` file.
 
-Copy the following from `.env.sample` to `.env`.
-Note: when in doubt, copy the info below to `.env`.
-
-```bash
-PROVIDER_URL=http://ethnode:8545
-CHAIN_ID=31337
-BLOCK_EXPLORER_BASE_URL="https://mumbai.polygonscan.com"
-CLIENT="0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80" # This is the Private Key of the first account on Hardhat Testnet. It is the account which deploys all the contracts, so it will be their owner.
-CONTRIBUTOR="0x5de4111afa1a4b94908f83103eb1f1706367c2e68ca870fc3fb9a804cdab365a" # This is the Private Key of the first address on Hardhat Testnet
-ORACLE_ADDRESS="0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266" # This is the Public Address of the first account on Hardhat Testnet.
-POLYGON_SCAN_API_KEY=VRQAIXQQ77P3D4SV5MT74DAQA27QGXVEBJ
-```
+Copy the content from `.env.sample` to `.env`.
 
 > **_NOTE:_** In the root of `OpenQ-Contracts`, there should be an empty file called `.env.superfluid.contracts`. If not, make sure to add it.
 
@@ -119,16 +80,9 @@ POLYGON_SCAN_API_KEY=VRQAIXQQ77P3D4SV5MT74DAQA27QGXVEBJ
 
 In the root of `OpenQ-Github-OAuth-Server`, create a `.env` file.
 
-Copy the following from `.env.sample` to `.env`.
+Copy the content from `.env.sample` to `.env`.
 
-```bash
-OPENQ_ID=5fbd39c6916b7efb63cc
-OPENQ_SECRET=<GET FROM ADMIN>
-ORIGIN_URL=http://localhost:3000
-COOKIE_SIGNER="entropydfnjd23"
-```
-
-Contact [FlacoJones](https://github.com/FlacoJones) (Andrew O'Brien) for the OAuth Client Secret used for the localhost OAuth flow.
+Contact [FlacoJones](https://github.com/FlacoJones) (Andrew O'Brien) for the OAuth Client Secret used for the localhost OAuth flow, to be placed in `OPENQ_SECRET=<GET FROM ADMIN>`
 
 We cannot include the OAuth Client Secret in the OpenQ-Github-OAuth-Server `.env.sample` because when the [Git Guardian](https://www.gitguardian.com/) bot detects the secret, it revokes it.
 
@@ -136,23 +90,13 @@ We cannot include the OAuth Client Secret in the OpenQ-Github-OAuth-Server `.env
 
 In the root of `OpenQ-CoinAPI`, create a `.env` file.
 
-Copy the following from `.env.sample` to `.env`.
-
-```bash
-REDIS_URL=redis
-ORIGIN_URL=http://localhost:3000
-```
+Copy the content from `.env.sample` to `.env`.
 
 ### 2.6 OpenQ-Oracle .env
 
 In the root of `OpenQ-Oracle`, create a `.env` file.
 
-Copy the following from `.env.sample` to `.env`.
-
-```bash
-ORIGIN_URL="http://localhost:3000"
-OZ_CLAIM_AUTOTASK_URL="http://openq-oz-claim-autotask:8070"
-```
+Copy the content from `.env.sample` to `.env`.
 
 ### 2.7 OpenQ-OZ-Claim-Autotask .env
 
@@ -166,57 +110,25 @@ read:org
 read:user
 ```
 
-Copy the following from `.env.sample` to `.env`. Please don't delete `.env.sample`.
-
-```bash
-COOKIE_SIGNER="entropydfnjd23"
-OPENQ_PROXY_ADDRESS="0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9"
-PROVIDER_URL="http://ethnode:8545"
-ORACLE_PRIVATE_KEY="0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80" # This is the Private Key of the first account on Hardhat Testnet.
-PAT=<YOUR PAT HERE>
-```
+Copy the content from `.env.sample` to `.env`. Please don't delete `.env.sample`.
 
 ### 2.8 OpenQ-Event-Listener .env
 
 In the root of `OpenQ-Event-Listener`, create a `.env` file.
 
-Copy the following from `.env.sample` to `.env`.
-
-```bash
-PROVIDER_URL='http://ethnode:8545'
-GITHUB_BOT_SECRET="a5d5a4d787f816faabc4738588e8d919bd1a41cf80f8e02685f842b0f2bd49c2"
-OPENQ_API_SECRET="secret123!"
-OPENQ_ADDRESS=0x5FC8d32690cc91D4c39d9d3abcBD16989F875707
-OPENQ_BOUNTY_ACTIONS_AUTOTASK_URL='http://openq-bounty-actions-autotask:8075'
-LOCAL_EVENT_LISTENER_ID='local'
-```
+Copy the content from `.env.sample` to `.env`.
 
 ### 2.9 OpenQ-Bounty-Actions-Autotask .env
 
 In the root of `OpenQ-Event-Listener`, create a `.env` file.
 
-Copy the following from `.env.sample` to `.env`.
-
-```bash
-GITHUB_BOT_SECRET="a5d5a4d787f816faabc4738588e8d919bd1a41cf80f8e02685f842b0f2bd49c2"
-OPENQ_API_SECRET="secret123!"
-```
+Copy the content from `.env.sample` to `.env`.
 
 ### 2.10 OpenQ-Token-Price-Cron-Job .env
 
 In the root of `OpenQ-Token-Price-Cron-Job`, create a `.env` file.
 
-Copy the following from `.env.sample` to `.env`.
-
-```bash
-OPENQ_API_URL='http://openq-api:4000'
-OPENQ_SUBGRAPH_HTTP_URL='http://graph_node:8000/subgraphs/name/openqdev/openq'
-OPENQ_API_SECRET=secret123!
-INITIAL_WAIT_PERIOD_MS=7000
-DEPLOY_ENV=local
-CRON_STRING='* * * * * *'
-PAT=<YOUR PAT>
-```
+Copy the content from `.env.sample` to `.env`.
 
 ### 2.11 OpenQ-Bot .env
 
@@ -230,14 +142,7 @@ read:org
 read:user
 ```
 
-Copy the following from `.env.sample` to `.env`.
-
-```bash
-PORT=3006
-APP_ID=188745
-BASE_URL = "http://localhost:3000"
-PAT = <YOUR_PAT>
-```
+Copy the content from `.env.sample` to `.env`.
 
 ## 3 Boot OpenQ-Fullstack
 
