@@ -24,8 +24,9 @@ echo 'CAREFUL THIS SCRIPT STASHES ALL REPOS'
 for repo in "${repos[@]}"
 do
    cd "$repo"
-	 echo "Pulled $repo"
+	 git status
 	 git stash 
 	 git pull
+	 echo "Pulled $repo"
 	 cd ..
 done
