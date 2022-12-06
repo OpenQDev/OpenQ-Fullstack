@@ -27,6 +27,7 @@ OpenQ-Dojo/
 OpenQ-Logging/
 OpenQ-Codemeter/
 OpenQ-User-Registration/
+OpenQ-Espresso/
 
 # Data from The Graph Node's Postgres and IPFS
 data/
