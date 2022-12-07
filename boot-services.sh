@@ -26,7 +26,7 @@ yarn workspace OpenQ-API start:dev &
 yarn workspace OpenQ-Bounty-Actions-Autotask start:dev &
 yarn workspace OpenQ-CoinAPI start:local &
 yarn workspace OpenQ-Event-Listener start:dev &
-yarn workspace OpenQ-Event-Github-OAuth-Server start:dev &
+yarn workspace OpenQ-Github-OAuth-Server start:dev &
 yarn workspace OpenQ-Oracle start:dev &
 yarn workspace OpenQ-Token-Price-Cron-Job start:dev &
 yarn workspace OpenQ-User-Registration start:dev

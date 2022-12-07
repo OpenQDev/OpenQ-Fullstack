@@ -1,0 +1,7 @@
+FROM graphprotocol/graph-node
+ENV postgres_host postgres
+ENV postgres_user graph-node
+ENV postgres_pass let-me-in
+ENV postgres_db graph-node
+ENV ipfs ipfs:5001
+ENV ethereum mainnet:http://localhost:8545
