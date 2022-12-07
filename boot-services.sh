@@ -29,4 +29,5 @@ yarn workspace OpenQ-Event-Listener start:dev &
 yarn workspace OpenQ-Github-OAuth-Server start:dev &
 yarn workspace OpenQ-Oracle start:dev &
 yarn workspace OpenQ-Token-Price-Cron-Job start:dev &
-yarn workspace OpenQ-User-Registration start:dev
+yarn workspace OpenQ-User-Registration start:dev &
+yarn workspace OpenQ-Contracts deploy:localhost
