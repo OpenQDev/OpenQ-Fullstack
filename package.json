@@ -1,8 +1,0 @@
-{
-  "name": "OpenQ-Fullstack",
-	"private": true,
-  "workspaces": [
-    "OpenQ-Frontend",
-    "OpenQ-API"
-  ]
-}
