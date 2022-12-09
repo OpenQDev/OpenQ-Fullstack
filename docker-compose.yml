@@ -167,6 +167,10 @@ services:
     image: redis:6.2.6-alpine
     ports:
       - "6379:6379"
+  curler:
+    container_name: curler
+    image: yauritux/busybox-curl
+    command: sleep 90000
   openq-token-price-cronjob:
     container_name: openq-token-price-cronjob
     depends_on:
@@ -195,7 +199,6 @@ services:
     ports:
       - "4000:4000"
     volumes:
-      - /app/node_modules
       - ./OpenQ-API:/app
   mongo:
     container_name: mongo
