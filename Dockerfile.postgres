@@ -1,6 +1,0 @@
-FROM postgres
-ENV POSTGRES_PASSWORD mysecretpassword
-ENV POSTGRES_USER graph-node
-ENV POSTGRES_PASSWORD let-me-in
-ENV POSTGRES_DB graph-node
-CMD ["postgres", "-cshared_preload_libraries=pg_stat_statements"]
