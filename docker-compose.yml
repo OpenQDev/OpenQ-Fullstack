@@ -67,6 +67,24 @@ services:
       POSTGRES_USER: graph-node
       POSTGRES_PASSWORD: let-me-in
       POSTGRES_DB: graph-node
+  openq-oracle:
+    container_name: openq-oracle
+    depends_on:
+      - openq-json-rpc-node
+      - openq-contracts
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./OpenQ-Oracle
+    ports:
+      - "8090:8090"
+    env_file:
+      - ./OpenQ-Contracts/.env
+      - ./OpenQ-Oracle/.env
+      - ./OpenQ-Contracts/.env.contracts
+    volumes:
+      - /app/node_modules
+      - ./OpenQ-Oracle:/app
+      - ./OpenQ-Contracts/artifacts:/app/artifacts
   openq-user-registration:
     container_name: openq-user-registration
     depends_on:
@@ -83,6 +101,22 @@ services:
     volumes:
       - /app/node_modules
       - ./OpenQ-User-Registration:/app
+  openq-oz-claim-autotask:
+    container_name: openq-oz-claim-autotask
+    depends_on:
+      - openq-json-rpc-node
+      - openq-contracts
+    build:
+      dockerfile: Dockerfile
+      context: ./OpenQ-OZ-Claim-Autotask
+    env_file:
+      - ./OpenQ-OZ-Claim-Autotask/.env
+      - ./OpenQ-Contracts/.env.contracts
+    ports:
+      - "8070:8070"
+    volumes:
+      - /app/node_modules
+      - ./OpenQ-OZ-Claim-Autotask:/app
   openq-coinapi:
     container_name: openq-coinapi
     depends_on:
@@ -211,3 +245,20 @@ services:
       MONGO_REPLICA_PORT: 27018
     ports:
       - '27018:27018'
+  mongo-express:
+    image: mongo-express
+    depends_on:
+      - mongo
+      - openq-api
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=mongo
+      - ME_CONFIG_MONGODB_PORT=27018
+      - ME_CONFIG_MONGODB_ENABLE_ADMIN=true
+      - ME_CONFIG_MONGODB_AUTH_DATABASE=admin
+      - ME_CONFIG_MONGODB_AUTH_USERNAME=root
+      - ME_CONFIG_MONGODB_AUTH_PASSWORD=root
+      - ME_CONFIG_BASICAUTH_USERNAME=root
+      - ME_CONFIG_BASICAUTH_PASSWORD=root
+    ports:
+      - "8888:8081"
+    restart: unless-stopped
