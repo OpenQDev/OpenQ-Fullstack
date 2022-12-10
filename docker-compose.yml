@@ -199,6 +199,7 @@ services:
     ports:
       - "4000:4000"
     volumes:
+      - /app/node_modules
       - ./OpenQ-API:/app
   mongo:
     container_name: mongo
