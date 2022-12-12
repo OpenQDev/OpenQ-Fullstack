@@ -26,6 +26,7 @@ declare -a repos=(
 	"OpenQ-Bot"
 	"OpenQ-API"
 	"OpenQ-Architecture"
+	"OpenQ-Invoice-Server"
 	"OpenQ-OZ-Claim-Autotask"
 	"OpenQ-Documentation"
 	"OpenQ-Bounty-Actions-Autotask"
