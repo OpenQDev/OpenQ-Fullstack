@@ -29,6 +29,7 @@ OpenQ-Logging/
 OpenQ-Codemeter/
 OpenQ-User-Registration/
 OpenQ-Espresso/
+OpenQ-Invoice-Server/
 
 # Data from The Graph Node's Postgres and IPFS
 data/
