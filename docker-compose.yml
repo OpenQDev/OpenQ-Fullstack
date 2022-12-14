@@ -275,6 +275,7 @@ services:
       - "3007:3007"
     volumes:
       - /app/node_modules
+      - /app/tmp
       - ./OpenQ-Invoice-Server:/app
     env_file:
       - ./OpenQ-Invoice-Server/.env
