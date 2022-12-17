@@ -205,6 +205,23 @@ services:
     container_name: curler
     image: yauritux/busybox-curl
     command: sleep 90000
+  openq-invoice-server:
+    container_name: openq-invoice-server
+    depends_on:
+      - openq-api
+      - graph-node
+      - openq-coinapi
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./OpenQ-Invoice-Server
+    ports:
+      - "3007:3007"
+    volumes:
+      - /app/node_modules
+      - /app/tmp
+      - ./OpenQ-Invoice-Server:/app
+    env_file:
+      - ./OpenQ-Invoice-Server/.env
   openq-token-price-cronjob:
     container_name: openq-token-price-cronjob
     depends_on:
@@ -262,20 +279,3 @@ services:
     ports:
       - "8888:8081"
     restart: unless-stopped
-  openq-invoice-server:
-    container_name: openq-invoice-server
-    depends_on:
-      - openq-api
-      - graph-node
-      - openq-coinapi
-    build:
-      dockerfile: Dockerfile.dev
-      context: ./OpenQ-Invoice-Server
-    ports:
-      - "3007:3007"
-    volumes:
-      - /app/node_modules
-      - /app/tmp
-      - ./OpenQ-Invoice-Server:/app
-    env_file:
-      - ./OpenQ-Invoice-Server/.env
