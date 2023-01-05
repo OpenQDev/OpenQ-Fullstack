@@ -1,6 +1,4 @@
-## Integration Tsdfesting 🧪
-
-
+## Integration Testing 🧪
 
 Hello OpenQ Integration Tester.
 

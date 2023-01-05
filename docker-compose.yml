@@ -117,6 +117,15 @@ services:
     volumes:
       - /app/node_modules
       - ./OpenQ-OZ-Claim-Autotask:/app
+  github-proxy:
+    container_name: github-proxy
+    build:
+      dockerfile: Dockerfile
+      context: ./OpenQ-Github-Proxy
+    ports:
+      - "3005:3005"
+    env_file:
+      - ./OpenQ-Github-Proxy/.env
   openq-coinapi:
     container_name: openq-coinapi
     depends_on:
@@ -222,18 +231,6 @@ services:
       - ./OpenQ-Invoice-Server:/app
     env_file:
       - ./OpenQ-Invoice-Server/.env
-  openq-token-price-cronjob:
-    container_name: openq-token-price-cronjob
-    depends_on:
-      - openq-api
-    build:
-      dockerfile: Dockerfile.dev
-      context: ./OpenQ-Token-Price-Cron-Job
-    env_file:
-      - ./OpenQ-Token-Price-Cron-Job/.env
-    volumes:
-      - /app/node_modules
-      - ./OpenQ-Token-Price-Cron-Job:/app
   openq-api:
     container_name: openq-api
     depends_on:

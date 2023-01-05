@@ -38,6 +38,8 @@ postgres/
 
 nohup.out
 
+dump.rdb
+
 # For when people run yarn in the wrong directory level :-) Got your back homies
 node_modules/
 yarn.lock
