@@ -126,6 +126,8 @@ services:
       - "3005:3005"
     env_file:
       - ./OpenQ-Github-Proxy/.env
+    volumes:
+      - ./OpenQ-Github-Proxy:/app
   openq-coinapi:
     container_name: openq-coinapi
     depends_on:

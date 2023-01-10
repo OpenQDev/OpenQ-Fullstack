@@ -49,3 +49,4 @@ yarn.lock
 .DS_Store
 
 notes.txt
+main.go
