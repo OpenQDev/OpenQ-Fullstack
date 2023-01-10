@@ -120,7 +120,7 @@ services:
   github-proxy:
     container_name: github-proxy
     build:
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
       context: ./OpenQ-Github-Proxy
     ports:
       - "3005:3005"
@@ -172,6 +172,18 @@ services:
       - ./OpenQ-Bounty-Actions-Autotask:/app
     env_file:
       - ./OpenQ-Bounty-Actions-Autotask/.env
+  openq-token-price-cronjob:
+    container_name: openq-token-price-cronjob
+    depends_on:
+      - openq-api
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./OpenQ-Token-Price-Cron-Job
+    env_file:
+      - ./OpenQ-Token-Price-Cron-Job/.env
+    volumes:
+      - /app/node_modules
+      - ./OpenQ-Token-Price-Cron-Job:/app
   openq-frontend:
     container_name: openq-frontend
     depends_on:
