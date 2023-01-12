@@ -51,8 +51,6 @@ for repo in "${repos[@]}"; do
 		cp "./$repo/.env.sample" "./$repo/.env"
 		sed -i 's/PAT=.*/PAT='"$PAT"'/' "./$repo/.env"
 		sed -i 's/PATS=.*/PATS='"$PAT"'/' "./$repo/.env"
-		# Woring around Git Guardian for test app secret
-		sed -i 's/OPENQ_SECRET=.*/OPENQ_SECRET='"7e2c7f6d0a297492f40fc9d04c6671bb91d44bfb"'/' "./$repo/.env"
 	fi
 done
 
