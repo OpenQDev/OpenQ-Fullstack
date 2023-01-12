@@ -3,6 +3,13 @@
 chmod u+x asciiart.sh
 ./asciiart.sh
 
+
+if [[ -z "$PAT" ]]; then
+	echo -e "${Yellow}You need to set your GitHub PAT as an environment variable and run boot.sh again:${Color_Off}\n"
+	echo -e "export PAT=..."
+	exit 1
+fi
+
 clone() {
 	if [ -d "./$1" ]; then
 		echo -e "${Blue}$1 directory found${Color_Off}\n"
@@ -39,19 +46,15 @@ declare -a repos=(
 for repo in "${repos[@]}"; do
 	echo -e "\n${BBlue}$repo${Color_Off}"
 	clone "$repo"
+
+	if [ -f "./$repo/.env.sample" ]; then
+		cp "./$repo/.env.sample" "./$repo/.env"
+		sed -i 's/PAT=.*/PAT='"$PAT"'/' "./$repo/.env"
+		sed -i 's/PATS=.*/PATS='"$PAT"'/' "./$repo/.env"
+		# Woring around Git Guardian for test app secret
+		sed -i 's/OPENQ_SECRET=.*/OPENQ_SECRET='"7e2c7f6d0a297492f40fc9d04c6671bb91d44bfb"'/' "./$repo/.env"
+	fi
 done
-
-echo -e "${Red}NOTE:${Color_Off} ${Blue}You will need .env files in the root of the following repositories: ${Color_Off}"
-echo -e ${Cyan}"- OpenQ-Frontend"${Color_Off}
-echo -e ${Cyan}"- OpenQ-Oracle"${Color_Off}
-echo -e ${Cyan}"- OpenQ-Contracts"${Color_Off}
-echo -e ${Cyan}"- OpenQ-Github-OAuth-Server"${Color_Off}
-echo -e ${Cyan}"- OpenQ-OZ-Claim-Autotask"${Color_Off}
-echo -e ${Cyan}"- OpenQ-CoinAPI"${Color_Off}
-echo -e ${Cyan}"- OpenQ-Event-Listener"${Color_Off}
-echo -e ${Cyan}"- OpenQ-Bounty-Actions-Autotask\n"${Color_Off}
-
-echo -e ${Blue}"No worries! See the README for instructions\n"${Color_Off}
 
 # Save a local file of the openq launched containers for later deletion and removal
 
