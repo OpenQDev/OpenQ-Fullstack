@@ -3,6 +3,8 @@
 . ./colors.sh
 chmod u+x asciiart.sh
 ./asciiart.sh
+chmod u+x env.sh
+. ./env.sh
 
 declare -a repos=(
                 "OpenQ-CoinAPI"
@@ -30,19 +32,8 @@ for repo in "${repos[@]}"
 do
     echo -e "\n${BBlue}$repo${Color_Off}"
     clone "$repo"
+		generate_dot_env "$repo"
 done
-
-echo -e "${Red}NOTE:${Color_Off} ${Blue}You will need .env files in the root of the following repositories: ${Color_Off}" 
-echo -e ${Cyan}"- OpenQ-DRM-Frontend"${Color_Off}
-echo -e ${Cyan}"- OpenQ-Oracle"${Color_Off}
-echo -e ${Cyan}"- OpenQ-Contracts"${Color_Off}
-echo -e ${Cyan}"- OpenQ-Github-OAuth-Server"${Color_Off}
-echo -e ${Cyan}"- OpenQ-OZ-Claim-Autotask"${Color_Off}
-echo -e ${Cyan}"- OpenQ-CoinAPI"${Color_Off}
-echo -e ${Cyan}"- OpenQ-Event-Lsitener"${Color_Off}
-echo -e ${Cyan}"- OpenQ-Bounty-Actions-Autotask\n"${Color_Off}
-
-echo -e ${Blue}"No worries! See the README for instructions\n"${Color_Off}
 
 # Save a local file of the openq launched containers for later deletion and removal
 

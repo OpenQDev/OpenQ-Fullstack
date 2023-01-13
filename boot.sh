@@ -3,12 +3,8 @@
 . ./colors.sh
 chmod u+x asciiart.sh
 ./asciiart.sh
-
-if [[ -z "$PAT" ]]; then
-	echo -e "${Yellow}You need to set your GitHub PAT as an environment variable and run boot.sh again:${Color_Off}\n"
-	echo -e "export PAT=..."
-	exit 1
-fi
+chmod u+x env.sh
+. ./env.sh
 
 declare -a repos=(
 	"OpenQ-CoinAPI"
@@ -37,12 +33,7 @@ declare -a repos=(
 for repo in "${repos[@]}"; do
 	echo -e "\n${BBlue}$repo${Color_Off}"
 	clone "$repo"
-
-	if [ -f "./$repo/.env.sample" ]; then
-		cp "./$repo/.env.sample" "./$repo/.env"
-		sed -i 's/PAT=.*/PAT='"$PAT"'/' "./$repo/.env"
-		sed -i 's/PATS=.*/PATS='"$PAT"'/' "./$repo/.env"
-	fi
+	generate_dot_env "$repo"
 done
 
 # Save a local file of the openq launched containers for later deletion and removal
