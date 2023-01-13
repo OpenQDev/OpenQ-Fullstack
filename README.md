@@ -38,6 +38,13 @@ This starts the `docker-compose.yml` file you can find in `OpenQ-Fullstack/docke
 > chmod u+x boot.sh
 > ```
 
+### Forks
+
+To boot from your own forked repositories, export an environment variable:
+
+```bash
+export OPENQ_FORKS=username/OpenQ-Frontend,username/OpenQ-Contracts
+```
 
 ### Configuring Docker Desktop with more memory
 
