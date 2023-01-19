@@ -27,7 +27,7 @@ declare -a repos=(
 	"OpenQ-API"
 	"OpenQ-Architecture"
 	"OpenQ-Github-Proxy"
-	"OpenQ-Invoice-Server"
+	"OpenQ-Email-Server"
 	"OpenQ-OZ-Claim-Autotask"
 	"OpenQ-Bounty-Actions-Autotask"
 	"OpenQ-Event-Listener"
