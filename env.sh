@@ -11,6 +11,7 @@ generate_dot_env() {
 			cp "./$1/.env.sample" "./$1/.env"
 			sed -i 's/PAT=.*/PAT='"$PAT"'/' "./$1/.env"
 			sed -i 's/PATS=.*/PATS='"$PAT"'/' "./$1/.env"
+			sed -i 's/GITHUB_OAUTH_TOKEN=.*/GITHUB_OAUTH_TOKEN='"$PAT"'/' "./$1/.env"
 		else
 			echo -e "${Blue}$1/.env already exists${Color_Off}\n"
 		fi
