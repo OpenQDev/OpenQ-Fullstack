@@ -68,13 +68,13 @@ I suggest using [Postman](https://www.postman.com/) if you'd like to hit a servi
 
 | OpenQ Service             | URL                                                 |
 | ------------------------- | --------------------------------------------------- |
-| OpenQ-Frontend            | localhost:3000                                      |
-| Mongo-Express             | localhost:8888                                      |
-| OpenQ-API                 | localhost:4000                                      |
-| OpenQ-Oracle              | localhost:8090                                      |
-| OpenQ-Github-OAuth-Server | localhost:3001                                      |
-| OpenQ-CoinAPI             | localhost:8081                                      |
+| OpenQ-Frontend            | http://localhost:3000                                      |
+| Mongo-Express             | http://localhost:8888                                      |
+| OpenQ-API                 | http://localhost:4000                                      |
+| OpenQ-Oracle              | http://localhost:8090                                      |
+| OpenQ-Github-OAuth-Server | http://localhost:3001                                      |
+| OpenQ-CoinAPI             | http://localhost:8081                                      |
 | OpenQ-Graph               | http://localhost:8000/subgraphs/name/openqdev/openq |
-| OpenQ-JSON-RPC-Node       | localhost:8545                                      |
-| OpenQ-OZ-Claim-Autotask   | localhost:8070                                      |
+| OpenQ-JSON-RPC-Node       | http://localhost:8545                                      |
+| OpenQ-OZ-Claim-Autotask   | http://localhost:8070                                      |
 | Redis                     | localhost:6379                                      |
