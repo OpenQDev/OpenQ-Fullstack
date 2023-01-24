@@ -228,23 +228,23 @@ services:
     container_name: curler
     image: yauritux/busybox-curl
     command: sleep 90000
-  openq-invoice-server:
-    container_name: openq-invoice-server
+  openq-email-server:
+    container_name: openq-email-server
     depends_on:
       - openq-api
       - graph-node
       - openq-coinapi
     build:
       dockerfile: Dockerfile.dev
-      context: ./OpenQ-Invoice-Server
+      context: ./OpenQ-Email-Server
     ports:
       - "3007:3007"
     volumes:
       - /app/node_modules
       - /app/tmp
-      - ./OpenQ-Invoice-Server:/app
+      - ./OpenQ-Email-Server:/app
     env_file:
-      - ./OpenQ-Invoice-Server/.env
+      - ./OpenQ-Email-Server/.env
   openq-api:
     container_name: openq-api
     depends_on:
