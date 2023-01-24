@@ -51,3 +51,5 @@ yarn.lock
 notes.txt
 test/
 tmp/
+
+.env

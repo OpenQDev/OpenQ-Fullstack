@@ -1,6 +1,16 @@
 if [[ -z "$PAT" ]]; then
-	echo -e "${Yellow}You need to set your GitHub PAT as an environment variable and run boot.sh again:${Color_Off}\n"
-	echo -e "export PAT=..."
+	echo -e "${Red}\$PAT required.${Color_Off}"
+fi
+
+if [[ -z "$OAUTH_CLIENT_ID" ]]; then
+	echo -e "${Red}\$OAUTH_CLIENT_ID required.${Color_Off}"
+fi
+
+if [[ -z "$OAUTH_CLIENT_SECRET" ]]; then
+	echo -e "${Red}\$OAUTH_CLIENT_SECRET required.${Color_Off}"
+fi
+
+if [[ -z "$PAT" ]] || [[ -z "$OAUTH_CLIENT_ID" ]] || [[ -z "$OAUTH_CLIENT_SECRET" ]]; then
 	exit 1
 fi
 

@@ -2,8 +2,8 @@ clone() {
     if [ -d "./$1" ]; then
         echo -e "${Blue}$1 directory found${Color_Off}"
     else
-        if [ -n "$OPENQ_FORKS" ]; then
-            IFS=',' read -r -a forks <<< "$OPENQ_FORKS"
+        if [ -n "$FORKS" ]; then
+            IFS=',' read -r -a forks <<< "$FORKS"
             for fork in "${forks[@]}"; do
                 repo_name=$(echo "$fork" | awk -F '/' '{print $2}')
                 if [ "$repo_name" = "$1" ]; then
