@@ -22,6 +22,8 @@ generate_dot_env() {
 			sed -i 's/PAT=.*/PAT='"$PAT"'/' "./$1/.env"
 			sed -i 's/PATS=.*/PATS='"$PAT"'/' "./$1/.env"
 			sed -i 's/GITHUB_OAUTH_TOKEN=.*/GITHUB_OAUTH_TOKEN='"$PAT"'/' "./$1/.env"
+			sed -i 's/OPENQ_ID=.*/OPENQ_ID='"$OAUTH_CLIENT_ID"'/' "./$1/.env"
+			sed -i 's/OPENQ_SECRET=.*/OPENQ_SECRET='"$OAUTH_CLIENT_SECRET"'/' "./$1/.env"
 		else
 			echo -e "${Blue}$1/.env already exists${Color_Off}\n"
 		fi
