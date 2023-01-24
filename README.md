@@ -32,19 +32,17 @@ This will clone all repositories and generate respective `.env` files.
 
 ## Boot
 
-To boot with [docker-compose](https://docs.docker.com/compose/), simply run:
+To boot OpenQ-Fullstack, using [docker-compose](https://docs.docker.com/compose/) and the `docker-compose.yml` file, simply run:
 
 ```bash
 ./boot.sh
 ```
 
-This starts the `docker-compose.yml` file you can find in `OpenQ-Fullstack/docker-compose.yml`.
-
 ### Docker Desktop
 
 It's likely you'll need to provision additional memory for Docker Desktop.
 
-Go to `Preferences` and then `Resources` and slide *Memory* to 16 GB.
+Go to *Preferences* and then *Resources* and slide *Memory* to 16 GB.
 
 ## Connect Metamask to Local Testnet
 
