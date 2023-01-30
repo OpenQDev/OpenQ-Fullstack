@@ -28,6 +28,14 @@ export PAT=...
 
 #### Prepare Repositories
 
+If, and only if, you are using GitHub codespaces, you should [create another PAT ](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) with the scope: `repo` (Full control of private repositories) and then run the command:
+
+```bash
+git config --global url."https://${GITHUB_TOKEN}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
+```
+
+Note: make sure that the global `.gitconfig` file only contains one config for `insteadOf "https://github.com/"`.
+
 To clone and prepare all repositories run:
 
 ```bash
