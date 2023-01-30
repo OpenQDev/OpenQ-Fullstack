@@ -101,6 +101,22 @@ services:
     volumes:
       - /app/node_modules
       - ./OpenQ-User-Registration:/app
+  openq-document-manager:
+    container_name: openq-document-manager
+    depends_on:
+      - openq-json-rpc-node
+      - openq-contracts
+    build:
+      dockerfile: Dockerfile
+      context: ./OpenQ-Document-Manager
+    env_file:
+      - .//OpenQ-Document-Manager/.env
+      - ./OpenQ-Contracts/.env.contracts
+    ports:
+      - "8092:8092"
+    volumes:
+      - /app/node_modules
+      - .//OpenQ-Document-Manager:/app
   openq-oz-claim-autotask:
     container_name: openq-oz-claim-autotask
     depends_on:
