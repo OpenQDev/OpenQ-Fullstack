@@ -30,6 +30,7 @@ OpenQ-Codemeter/
 OpenQ-User-Registration/
 OpenQ-Espresso/
 OpenQ-Email-Server/
+OpenQ-Document-Manager/
 
 # Data from The Graph Node's Postgres and IPFS
 data/
