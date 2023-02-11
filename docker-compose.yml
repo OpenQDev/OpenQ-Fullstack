@@ -67,6 +67,7 @@ services:
       POSTGRES_USER: graph-node
       POSTGRES_PASSWORD: let-me-in
       POSTGRES_DB: graph-node
+  # MICROSERVICE
   openq-oracle:
     container_name: openq-oracle
     depends_on:
@@ -110,13 +111,13 @@ services:
       dockerfile: Dockerfile
       context: ./OpenQ-Document-Manager
     env_file:
-      - .//OpenQ-Document-Manager/.env
+      - ./OpenQ-Document-Manager/.env
       - ./OpenQ-Contracts/.env.contracts
     ports:
       - "8092:8092"
     volumes:
       - /app/node_modules
-      - .//OpenQ-Document-Manager:/app
+      - ./OpenQ-Document-Manager:/app
   openq-oz-claim-autotask:
     container_name: openq-oz-claim-autotask
     depends_on:

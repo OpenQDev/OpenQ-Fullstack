@@ -31,6 +31,7 @@ OpenQ-User-Registration/
 OpenQ-Espresso/
 OpenQ-Email-Server/
 OpenQ-Document-Manager/
+OpenQ-Batch-Master/
 
 # Data from The Graph Node's Postgres and IPFS
 data/
