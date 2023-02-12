@@ -29,7 +29,6 @@ declare -a repos=(
 	"OpenQ-User-Registration"
 	"OpenQ-Email-Server"
 	"OpenQ-Document-Manager"
-	"OpenQ-Batch-Master"
 )
 
 for repo in "${repos[@]}"; do
