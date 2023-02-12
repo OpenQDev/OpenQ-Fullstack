@@ -51,7 +51,7 @@ services:
       GRAPH_LOG: info
   ipfs:
     container_name: ipfs
-    image: ipfs/go-ipfs:v0.10.0
+    image: ipfs/go-ipfs:v0.18.1
     ports:
       - '5001:5001'
   postgres:
@@ -238,7 +238,7 @@ services:
       - ./OpenQ-Github-OAuth-Server:/app
   redis:
     container_name: redis
-    image: redis:7.0.7-alpine
+    image: redis:7.0.8-alpine
     ports:
       - "6379:6379"
   curler:
