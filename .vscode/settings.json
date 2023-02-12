@@ -5,7 +5,8 @@
 		"**/cache": true,
 		"**/yarn.lock": true,
 		"**/generated": true,
-		"**/typechain": true
+		"**/typechain": true,
+		"**/dist": true
 	},
 	"search.useIgnoreFiles": false,
 	// The number of spaces a tab is equal to. This setting is overridden

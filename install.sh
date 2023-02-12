@@ -22,13 +22,15 @@ declare -a repos=(
 	"OpenQ-API"
 	"OpenQ-Architecture"
 	"OpenQ-Github-Proxy"
-	"OpenQ-Email-Server"
 	"OpenQ-OZ-Claim-Autotask"
 	"OpenQ-Bounty-Actions-Autotask"
 	"OpenQ-Event-Listener"
 	"OpenQ-Token-Price-Cron-Job"
 	"Superfluid-Subgraph"
 	"OpenQ-User-Registration"
+	"OpenQ-Email-Server"
+	"OpenQ-Document-Manager"
+	"OpenQ-Batch-Master"
 )
 
 for repo in "${repos[@]}"; do
