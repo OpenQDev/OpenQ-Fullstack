@@ -1,18 +1,8 @@
-# OpenQ-Fullstack
+# OpenQ Fullstack
 
-Welcome to OpenQ! The world's simplest crypto-powered bounty system.
+OpenQ consists of several containerized microservices and a local JSON RPC Ethereum node.
 
-Let's get you started.
-
-## OpenQ Microservices
-
-The OpenQ fullstack consists of several containerized microservices and a local JSON RPC Ethereum node.
-
-### Install
-
-#### Get a GitHub Personal Access Token (PAT)
-
-[Create a PAT ](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) with these scopes:
+Some of the services require a GitHub Personal Access Token as well as an OAuth app. [Create a PAT](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) with these scopes:
 
 ```bash
 public_repo
@@ -20,13 +10,11 @@ read:org
 read:user
 ```
 
-Now export your PAT as an environment variable, to make it available to the install script:
+[Create the OAuth app](https://github.com/settings/applications/new) with `http://localhost:3000` as *Homepage URL* and `http://localhost:3000/auth/github` as *Authorization callback URL*. Then generate a new client secret.
 
-```bash
-export PAT=...
-```
+## Install
 
-#### Prepare Repositories
+After cloning the repository, create a `.env` file and fill in your PAT, client ID and secret and optional forks to clone from.
 
 If, and only if, you are using GitHub codespaces, you should [create another PAT ](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) with the scope: `repo` (Full control of private repositories) and then run the command:
 
@@ -39,36 +27,32 @@ Note: make sure that the global `.gitconfig` file only contains one config for `
 To clone and prepare all repositories run:
 
 ```bash
+git clone https://github.com/OpenQDev/OpenQ-Fullstack
+cd OpenQ-Fullstack
+cp .env.sample .env
+```
+
+Then run:
+
+```bash
 ./install.sh
 ```
 
-This will automatically generate all necessary `.env` files.
+This will clone all repositories and generate respective `.env` files.
 
-### Boot
+## Boot
 
-To boot with [docker-compose](https://docs.docker.com/compose/), simply run:
+To boot OpenQ-Fullstack, using [docker-compose](https://docs.docker.com/compose/) and the `docker-compose.yml` file, simply run:
 
 ```bash
 ./boot.sh
 ```
 
-This starts the `docker-compose.yml` file you can find in `OpenQ-Fullstack/docker-compose.yml`.
-
-### Forks
-
-To install your own forked repositories, export an environment variable:
-
-```bash
-export OPENQ_FORKS=username/OpenQ-Frontend,username/OpenQ-Contracts
-```
-
-Then run `install.sh` again. If you have previously cloned any of the repositories, remove them first.
-
-### Configuring Docker Desktop with more memory
+### Docker Desktop
 
 It's likely you'll need to provision additional memory for Docker Desktop.
 
-Preferences -> Resources -> Slide Memory to 16GB
+Go to *Preferences* and then *Resources* and slide *Memory* to 16 GB.
 
 ## Connect Metamask to Local Testnet
 
@@ -76,11 +60,11 @@ The OpenQ-Fullstack Boot will prepare a Hardhat Testnet on your machine at `http
 
 Add this Custom Network RPC URL by following the instructions [here](https://metamask.zendesk.com/hc/en-us/articles/360043227612-How-to-add-a-custom-network-RPC).
 
-## Access Services
+## Services
 
 Each service will be exposed to your localhost at the following URLs for individual testing.
 
-I suggest using [Postman](https://www.postman.com/) if you'd like to hit a service directly.
+We suggest using [Postman](https://www.postman.com/) if you'd like to hit a service directly.
 
 | OpenQ Service             | URL                                                 |
 | ------------------------- | --------------------------------------------------- |

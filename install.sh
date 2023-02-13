@@ -1,4 +1,5 @@
 #!/bin/bash
+source .env
 . ./clone.sh
 . ./colors.sh
 chmod u+x asciiart.sh
