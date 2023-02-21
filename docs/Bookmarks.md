@@ -4,7 +4,7 @@ As a new developer with OpenQ, you should bookmark the below links:
 
 - [OpenQ - Development](https://development.openq.dev)
 - [OpenQ - Staging](https://staging.openq.dev)
-- [OpenQ - Production](https://app.openq.dev)
+- [OpenQ - Production](https://www.openq.dev)
 
 ## OpenQ Subgraphs
 

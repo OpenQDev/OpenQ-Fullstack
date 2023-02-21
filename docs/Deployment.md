@@ -188,4 +188,4 @@ git push origin <ENVIRONMENT>-<SEMVER>
 | ----------- | ----------- |
 | Development      | [development.openq.dev](https://development.openq.dev)       |
 | Staging      | [staging.openq.dev](https://staging.openq.dev)       |
-| Production   | [app.openq.dev](https://app.openq.dev)        |
+| Production   | [www.openq.dev](https://www.openq.dev)        |
