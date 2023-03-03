@@ -61,7 +61,8 @@ services:
     command:
       [
         "postgres",
-        "-cshared_preload_libraries=pg_stat_statements"
+        "-cshared_preload_libraries=pg_stat_statements",
+
       ]
     environment:
       POSTGRES_USER: graph-node
