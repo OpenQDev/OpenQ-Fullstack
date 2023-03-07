@@ -135,6 +135,21 @@ services:
     volumes:
       - /app/node_modules
       - ./OpenQ-OZ-Claim-Autotask:/app
+  openq-notification-autotask:
+    container_name: openq-notification-autotask
+    depends_on:
+      - openq-json-rpc-node
+      - openq-contracts
+    build:
+      dockerfile: Dockerfile
+      context: ./OpenQ-Notification-Autotask
+    env_file:
+      - ./OpenQ-Notification-Autotask/.env
+    ports:
+      - "8093:8093"
+    volumes:
+      - /app/node_modules
+      - ./OpenQ-Notification-Autotask:/app
   github-proxy:
     container_name: github-proxy
     build:
