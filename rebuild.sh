@@ -1,3 +1,5 @@
-conatainername=$1
-docker-compose build --no-cache $conatainername $conatainername
-docker-compose up --build --force-recreate --no-deps -d $conatainername
+containername=$1
+docker stop $containername
+docker rm $containername
+docker-compose build --no-cache $containername $containername
+docker-compose up --build --force-recreate --no-deps -d $containername

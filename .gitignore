@@ -41,6 +41,7 @@ postgres/
 nohup.out
 
 dump.rdb
+.env
 
 # For when people run yarn in the wrong directory level :-) Got your back homies
 node_modules/
