@@ -17,6 +17,7 @@ declare -a repos=(
 								"OpenQ-Event-Listener"
 								"OpenQ-Token-Price-Cron-Job"
 								"Superfluid-Subgraph"
+								"OpenQ-Synpress"
                 )
 
 echo 'CAREFUL THIS SCRIPT STASHES ALL REPOS'

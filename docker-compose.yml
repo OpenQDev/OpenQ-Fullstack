@@ -323,3 +323,41 @@ services:
     ports:
       - "8888:8081"
     restart: unless-stopped
+  synpress:
+    container_name: synpress
+    command: sleep infinity
+    environment:
+      DISPLAY: ":14"
+      LIBGL_ALWAYS_INDIRECT: 0
+    volumes_from:
+      - x11-bridge:rw
+    depends_on:
+      - x11-bridge
+    build:
+      dockerfile: Dockerfile
+      context: ./OpenQ-Synpress
+    ports:
+      - "8181:8181"
+    volumes:
+      - /app/node_modules
+    env_file:
+      - ./OpenQ-Synpress/.env
+
+  x11-bridge:
+    image: jare/x11-bridge
+
+    ports:
+      - "8080:8080"
+    volumes:
+      - "/tmp/.X11-unix:/tmp/.X11-unix:rw"
+
+    restart: always
+    depends_on:
+      - openq-frontend
+
+    environment:
+      MODE: tcp
+      XPRA_HTML: "yes"
+      DISPLAY: ":14"
+      XPRA_TCP_PORT: "8080"
+      XPRA_PASSWORD: MUST_BE_SOMETHING
