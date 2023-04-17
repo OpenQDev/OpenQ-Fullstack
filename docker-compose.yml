@@ -10,16 +10,18 @@ services:
   openq-contracts:
     container_name: openq-contracts
     depends_on:
+      - modules_container
       - openq-json-rpc-node
     build:
       dockerfile: Dockerfile
       context: ./OpenQ-Contracts
     volumes:
-      - /app/node_modules
+      - modules_vol:/app/node_modules
       - ./OpenQ-Contracts:/app
   openq_subgraph_deployer:
     container_name: openq_subgraph_deployer
-    depends_on:
+    depends_on:      
+      - modules_container
       - openq-json-rpc-node
       - openq-contracts
       - graph-node
@@ -27,7 +29,7 @@ services:
       dockerfile: Dockerfile
       context: ./OpenQ-Graph
     volumes:
-      - /app/node_modules
+      - modules_vol:/app/node_modules
       - ./OpenQ-Contracts/.env.contracts:/app/.env.contracts
   graph-node:
     container_name: graph_node
@@ -39,6 +41,7 @@ services:
       - '8030:8030'
       - '8040:8040'
     depends_on:
+      - modules_container
       - ipfs
       - postgres
     environment:
@@ -72,6 +75,7 @@ services:
   openq-oracle:
     container_name: openq-oracle
     depends_on:
+      - modules_container
       - openq-json-rpc-node
       - openq-contracts
     build:
@@ -84,12 +88,13 @@ services:
       - ./OpenQ-Oracle/.env
       - ./OpenQ-Contracts/.env.contracts
     volumes:
-      - /app/node_modules
+      - modules_vol:/app/node_modules
       - ./OpenQ-Oracle:/app
       - ./OpenQ-Contracts/artifacts:/app/artifacts
   openq-user-registration:
     container_name: openq-user-registration
     depends_on:
+      - modules_container
       - openq-json-rpc-node
       - openq-contracts
     build:
@@ -101,11 +106,12 @@ services:
     ports:
       - "8091:8091"
     volumes:
-      - /app/node_modules
+      - modules_vol:/app/node_modules
       - ./OpenQ-User-Registration:/app
   openq-document-manager:
     container_name: openq-document-manager
     depends_on:
+      - modules_container
       - openq-json-rpc-node
       - openq-contracts
     build:
@@ -117,7 +123,7 @@ services:
     ports:
       - "8092:8092"
     volumes:
-      - /app/node_modules
+      - modules_vol:/app/node_modules
       - ./OpenQ-Document-Manager:/app
   openq-oz-claim-autotask:
     container_name: openq-oz-claim-autotask
@@ -133,11 +139,12 @@ services:
     ports:
       - "8070:8070"
     volumes:
-      - /app/node_modules
+      - modules_vol:/app/node_modules
       - ./OpenQ-OZ-Claim-Autotask:/app
   openq-notification-autotask:
     container_name: openq-notification-autotask
     depends_on:
+      - modules_container
       - openq-json-rpc-node
       - openq-contracts
     build:
@@ -148,7 +155,7 @@ services:
     ports:
       - "8093:8093"
     volumes:
-      - /app/node_modules
+      - modules_vol:/app/node_modules
       - ./OpenQ-Notification-Autotask:/app
   github-proxy:
     container_name: github-proxy
@@ -164,6 +171,7 @@ services:
   openq-coinapi:
     container_name: openq-coinapi
     depends_on:
+      - modules_container
       - openq-json-rpc-node
       - openq-contracts
     build:
@@ -172,20 +180,21 @@ services:
     ports:
       - "8081:8081"
     volumes:
-      - /app/node_modules
+      - modules_vol:/app/node_modules
       - ./OpenQ-CoinAPI:/app
     env_file:
       - ./OpenQ-CoinAPI/.env
   openq-event-listener:
     container_name: openq-event-listener
     depends_on:
+      - modules_container
       - openq-json-rpc-node
       - openq-contracts
     build:
       dockerfile: Dockerfile.dev
       context: ./OpenQ-Event-Listener
     volumes:
-      - /app/node_modules
+      - modules_vol:/app/node_modules
       - ./OpenQ-Event-Listener:/app
     env_file:
       - ./OpenQ-Event-Listener/.env
@@ -193,6 +202,7 @@ services:
   openq-bounty-actions-autotask:
     container_name: openq-bounty-actions-autotask
     depends_on:
+      - modules_container
       - openq-json-rpc-node
       - openq-contracts
       - openq-api
@@ -203,13 +213,14 @@ services:
     ports:
       - "8075:8075"
     volumes:
-      - /app/node_modules
+      - modules_vol:/app/node_modules
       - ./OpenQ-Bounty-Actions-Autotask:/app
     env_file:
       - ./OpenQ-Bounty-Actions-Autotask/.env
   openq-token-price-cronjob:
     container_name: openq-token-price-cronjob
     depends_on:
+      - modules_container
       - openq-api
     build:
       dockerfile: Dockerfile.dev
@@ -217,11 +228,12 @@ services:
     env_file:
       - ./OpenQ-Token-Price-Cron-Job/.env
     volumes:
-      - /app/node_modules
+      - modules_vol:/app/node_modules
       - ./OpenQ-Token-Price-Cron-Job:/app
   openq-frontend:
     container_name: openq-frontend
     depends_on:
+      - modules_container
       - openq-json-rpc-node
       - openq-contracts
       - openq-api
@@ -236,12 +248,14 @@ services:
       - ./OpenQ-Contracts/.env.contracts
       - ./OpenQ-Contracts/.env.superfluid.contracts
     volumes:
-      - /app/node_modules
+      - modules_vol:/app/node_modules
       - /app/.next
       - ./OpenQ-Frontend:/app
       - ./OpenQ-Contracts/artifacts:/app/artifacts
   github-oauth-server:
     container_name: github-oauth-server
+    depends_on:
+      - modules_container
     build:
       dockerfile: Dockerfile.dev
       context: ./OpenQ-Github-OAuth-Server
@@ -250,7 +264,7 @@ services:
     ports:
       - "3001:3001"
     volumes:
-      - /app/node_modules
+      - modules_vol:/app/node_modules
       - ./OpenQ-Github-OAuth-Server:/app
   redis:
     container_name: redis
@@ -265,6 +279,7 @@ services:
     container_name: openq-email-server
     depends_on:
       - openq-api
+      - modules_container
       - graph-node
       - openq-coinapi
     build:
@@ -273,7 +288,7 @@ services:
     ports:
       - "3007:3007"
     volumes:
-      - /app/node_modules
+      - modules_vol:/app/node_modules
       - /app/tmp
       - ./OpenQ-Email-Server:/app
     env_file:
@@ -283,6 +298,7 @@ services:
     depends_on:
       - openq_subgraph_deployer
       - openq-json-rpc-node
+      - modules_container
       - openq-contracts
       - openq-coinapi
       - graph-node
@@ -294,7 +310,7 @@ services:
     ports:
       - "4000:4000"
     volumes:
-      - /app/node_modules
+      - modules_vol:/app/node_modules
       - ./OpenQ-API:/app
   mongo:
     container_name: mongo
@@ -310,6 +326,7 @@ services:
     image: mongo-express
     depends_on:
       - mongo
+      - modules_container
       - openq-api
     environment:
       - ME_CONFIG_MONGODB_SERVER=mongo
@@ -339,7 +356,7 @@ services:
     ports:
       - "8181:8181"
     volumes:
-      - /app/node_modules
+      - modules_vol:/app/node_modules
     env_file:
       - ./OpenQ-Synpress/.env
 
@@ -361,3 +378,11 @@ services:
       DISPLAY: ":14"
       XPRA_TCP_PORT: "8080"
       XPRA_PASSWORD: MUST_BE_SOMETHING
+  modules_container:
+    volumes:
+      - modules_vol:/app/node_modules
+    build:
+      dockerfile: Dockerfile
+      context: .
+volumes:
+  modules_vol:
