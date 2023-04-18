@@ -339,5 +339,11 @@ services:
     ports:
       - "8888:8081"
     restart: unless-stopped
+  modules_container:
+    volumes:
+      - modules_vol:/app/node_modules
+    build:
+      dockerfile: Dockerfile
+      context: .
 volumes:
   modules_vol:
