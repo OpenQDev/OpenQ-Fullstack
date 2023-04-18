@@ -32,6 +32,7 @@ OpenQ-Espresso/
 OpenQ-Email-Server/
 OpenQ-Document-Manager/
 OpenQ-Notification-Autotask/
+OpenQ-Synpress/
 
 # Data from The Graph Node's Postgres and IPFS
 data/
@@ -54,7 +55,9 @@ yarn.lock
 notes.txt
 test/
 tmp/
+node_modules/
 
 secret.yml
 github.txt
 notes.json
+yarn-error.log

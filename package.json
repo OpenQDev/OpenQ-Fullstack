@@ -1,0 +1,32 @@
+{
+	"name": "module-manager",
+	"private": true,
+	"scripts": {
+		"start": "nodemon index.js"
+	},
+	"workspaces": [
+		"OpenQ-CoinAPI",
+		"OpenQ-Oracle",
+		"OpenQ-Frontend",
+		"OpenQ-Github-OAuth-Server",
+		"OpenQ-Helm",
+		"OpenQ-JSON-RPC-Node",
+		"OpenQ-CertManager",
+		"OpenQ-Graph",
+		"OpenQ-Kubeconfig",
+		"OpenQ-Bot",
+		"OpenQ-API",
+		"OpenQ-Architecture",
+		"OpenQ-Github-Proxy",
+		"OpenQ-OZ-Claim-Autotask",
+		"OpenQ-Bounty-Actions-Autotask",
+		"OpenQ-Event-Listener",
+		"OpenQ-Token-Price-Cron-Job",
+		"Superfluid-Subgraph",
+		"OpenQ-User-Registration",
+		"OpenQ-Document-Manager",
+		"OpenQ-Notification-Autotask",
+		"OpenQ-Synpress",
+		"OpenQ-Contracts"
+	]
+}
