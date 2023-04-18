@@ -60,3 +60,4 @@ node_modules/
 secret.yml
 github.txt
 notes.json
+yarn-error.log
