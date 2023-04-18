@@ -1,0 +1,40 @@
+Arguments: 
+  /usr/local/share/nvm/versions/node/v18.15.0/bin/node /usr/share/yarn/bin/yarn.js
+
+PATH: 
+  /usr/local/rvm/gems/ruby-3.1.4/bin:/usr/local/rvm/gems/ruby-3.1.4@global/bin:/usr/local/rvm/rubies/ruby-3.1.4/bin:/vscode/bin/linux-x64/704ed70d4fd1c6bd6342c436f1ede30d1cff4710/bin/remote-cli:/home/codespace/.local/bin:/home/codespace/.dotnet:/home/codespace/nvm/current/bin:/home/codespace/.php/current/bin:/home/codespace/.python/current/bin:/home/codespace/java/current/bin:/home/codespace/.ruby/current/bin:/home/codespace/.local/bin:/usr/local/oryx:/usr/local/go/bin:/go/bin:/usr/local/sdkman/bin:/usr/local/sdkman/candidates/java/current/bin:/usr/local/sdkman/candidates/gradle/current/bin:/usr/local/sdkman/candidates/maven/current/bin:/usr/local/sdkman/candidates/ant/current/bin:/usr/local/rvm/gems/default/bin:/usr/local/rvm/gems/default@global/bin:/usr/local/rvm/rubies/default/bin:/usr/local/share/rbenv/bin:/opt/conda/bin:/usr/local/php/current/bin:/usr/local/python/current/bin:/usr/local/py-utils/bin:/usr/local/nvs:/usr/local/share/nvm/versions/node/v18.15.0/bin:/usr/local/hugo/bin:/usr/local/dotnet/current:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/codespace/.dotnet/tools:/usr/local/rvm/bin
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  18.15.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  SyntaxError: /workspaces/OpenQ-Fullstack/package.json: Unexpected token ] in JSON at position 139
+      at JSON.parse (<anonymous>)
+      at /usr/share/yarn/lib/cli.js:1629:59
+      at Generator.next (<anonymous>)
+      at step (/usr/share/yarn/lib/cli.js:310:30)
+      at /usr/share/yarn/lib/cli.js:321:13
+
+npm manifest: 
+  {
+  	"name": "module-manager",
+  	"private": true,
+  	"scripts": {
+  		"start": "nodemon index.js"
+  	},
+  	"workspaces": [
+  		"OpenQ-Event-Listener",
+  	]
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

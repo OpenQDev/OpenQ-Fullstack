@@ -55,6 +55,7 @@ yarn.lock
 notes.txt
 test/
 tmp/
+node_modules/
 
 secret.yml
 github.txt

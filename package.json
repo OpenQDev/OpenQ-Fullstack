@@ -8,7 +8,6 @@
 		"OpenQ-CoinAPI",
 		"OpenQ-Oracle",
 		"OpenQ-Frontend",
-		"OpenQ-Contracts",
 		"OpenQ-Github-OAuth-Server",
 		"OpenQ-Helm",
 		"OpenQ-JSON-RPC-Node",
@@ -25,9 +24,9 @@
 		"OpenQ-Token-Price-Cron-Job",
 		"Superfluid-Subgraph",
 		"OpenQ-User-Registration",
-		"OpenQ-Email-Server",
 		"OpenQ-Document-Manager",
 		"OpenQ-Notification-Autotask",
-		"OpenQ-Synpress"
+		"OpenQ-Synpress",
+		"OpenQ-Contracts"
 	]
 }

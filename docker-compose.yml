@@ -251,7 +251,6 @@ services:
       - modules_vol:/app/node_modules
       - /app/.next
       - ./OpenQ-Frontend:/app
-      - ./OpenQ-Contracts/artifacts:/app/artifacts
   github-oauth-server:
     container_name: github-oauth-server
     depends_on:
@@ -288,7 +287,7 @@ services:
     ports:
       - "3007:3007"
     volumes:
-      - modules_vol:/app/node_modules
+      - /app/node_modules
       - /app/tmp
       - ./OpenQ-Email-Server:/app
     env_file:
