@@ -26,7 +26,6 @@ declare -a repos=(
 	"OpenQ-Token-Price-Cron-Job"
 	"Superfluid-Subgraph"
 	"OpenQ-User-Registration"
-	"OpenQ-Synpress"
 )
 
 for repo in "${repos[@]}"; do
