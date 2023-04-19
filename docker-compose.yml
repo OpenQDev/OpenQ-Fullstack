@@ -44,6 +44,10 @@ services:
       - modules_container
       - ipfs
       - postgres
+    healthcheck:
+            test: ["CMD", "ping", "graph-node"]
+            timeout: 30s
+            retries: 10
     environment:
       postgres_host: postgres
       postgres_user: graph-node
