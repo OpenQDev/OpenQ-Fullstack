@@ -31,6 +31,7 @@ declare -a repos=(
 	"OpenQ-Document-Manager"
 	"OpenQ-Notification-Autotask"
 	"OpenQ-Synpress"
+	"OpenQ-DRM-Frontend"
 )
 
 for repo in "${repos[@]}"; do
