@@ -33,7 +33,7 @@ OpenQ-Email-Server/
 OpenQ-Document-Manager/
 OpenQ-Notification-Autotask/
 OpenQ-Synpress/
-OpenQ-DRM-Frontend/
+OpenQ-DRM/
 
 # Data from The Graph Node's Postgres and IPFS
 data/
