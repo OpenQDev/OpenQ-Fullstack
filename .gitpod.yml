@@ -1,5 +1,2 @@
 image:
   file: .gitpod.Dockerfile
-
-# Save a local file of the openq launched containers for later deletion and removal
-COMPOSE_HTTP_TIMEOUT=200 docker-compose -f docker-compose.yml up
