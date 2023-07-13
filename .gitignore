@@ -34,6 +34,7 @@ OpenQ-Document-Manager/
 OpenQ-Notification-Autotask/
 OpenQ-Synpress/
 OpenQ-DRM/
+OpenQ-Workflows/
 
 # Data from The Graph Node's Postgres and IPFS
 data/
