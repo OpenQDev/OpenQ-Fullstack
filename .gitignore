@@ -24,7 +24,6 @@ OpenQ-Event-Listener/
 OpenQ-Token-Price-Cron-Job/
 Superfluid-Subgraph/
 OpenQ-Squad/
-OpenQ-Dojo/
 OpenQ-Logging/
 OpenQ-Codemeter/
 OpenQ-User-Registration/
@@ -35,6 +34,7 @@ OpenQ-Notification-Autotask/
 OpenQ-Synpress/
 OpenQ-DRM/
 OpenQ-Workflows/
+GitGuru/
 
 # Data from The Graph Node's Postgres and IPFS
 data/

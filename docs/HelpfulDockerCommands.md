@@ -13,7 +13,7 @@ docker stop $(docker ps -aq) && docker rm $(docker ps -aq)
 ## Docker System Prune
 
 ```bash
-docker system prune
+docker system prune -f --volumes
 ```
 
 ## Remove All Volumes
