@@ -1,7 +1,10 @@
-# Save a local file of the openq launched containers for later deletion and removal
+source asciiart.sh
 
-echo -e ${Cyan}"Starting all OpenQ containers from scratch..."${Color_Off}
-docker stop $(docker ps -aq) && docker rm $(docker ps -aq)
-echo -e ${Cyan}"Removed stale OpenQ containers. Booting new..."${Color_Off}
+echo ${Cyan}"Removing OpenQ Fullstack containers from previous run..."${Color_Off}
 
-COMPOSE_HTTP_TIMEOUT=200 docker-compose -f docker-compose.yml up
+# Stop and remove containers listed in the specified docker-compose file
+docker-compose -f ./docker-compose.yml down
+
+echo ${Cyan}"Removed stale OpenQ containers. Booting new..."${Color_Off}
+
+COMPOSE_HTTP_TIMEOUT=200 docker-compose -f ./docker-compose.yml up

@@ -1,7 +1,7 @@
 #!/bin/bash
 . ./colors.sh
-echo -e "${BBlue}"
-cat << "EOF"                                                       
+echo "${BBlue}"
+cat <<"EOF"
     ,----..   ,-.----.                      ,--.                 
    /   /   \  \    /  \      ,---,.       ,--.'|    ,----..      
   /   .     : |   :    \   ,'  .' |   ,--,:  : |   /   /   \     
@@ -18,4 +18,4 @@ cat << "EOF"
                 `---`    `----'    '---'            `---`                                                                
 EOF
 
-echo -e "${Color_Off}"
+echo "${Color_Off}"
