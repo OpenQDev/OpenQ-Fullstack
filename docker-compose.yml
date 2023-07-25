@@ -155,7 +155,6 @@ services:
     env_file:
       - ./OpenQ-Github-Proxy/.env
     volumes:
-      - /app/node_modules
       - ./OpenQ-Github-Proxy:/app
   openq-coinapi:
     container_name: openq-coinapi
