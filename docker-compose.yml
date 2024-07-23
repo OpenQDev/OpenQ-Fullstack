@@ -31,7 +31,7 @@ services:
       - ./OpenQ-Contracts/.env.contracts:/app/.env.contracts
   graph-node:
     container_name: graph_node
-    image: graphprotocol/graph-node:v0.29.0-rc.0
+    image: graphprotocol/graph-node:v0.35.1-rc.0
     ports:
       - "8000:8000"
       - "8001:8001"
