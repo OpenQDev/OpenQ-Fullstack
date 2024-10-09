@@ -209,7 +209,7 @@ services:
       - ./OpenQ-Github-OAuth-Server:/app
   redis:
     container_name: redis
-    image: redis:7.0.7-alpine
+    image: redis:7.4.1-alpine
     ports:
       - "6379:6379"
   openq-token-price-cronjob:
